@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129163710) do
+ActiveRecord::Schema.define(version: 20161129163855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,14 @@ ActiveRecord::Schema.define(version: 20161129163710) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "subcategories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -131,4 +139,5 @@ ActiveRecord::Schema.define(version: 20161129163710) do
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
+  add_foreign_key "subcategories", "categories"
 end
