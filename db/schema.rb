@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129160630) do
+ActiveRecord::Schema.define(version: 20161129161948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(version: 20161129160630) do
     t.string   "tumbnail_img"
     t.float    "price"
     t.string   "description"
-    t.integer  "user_id"
     t.string   "gender"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.integer  "brand_id"
+    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -62,5 +64,6 @@ ActiveRecord::Schema.define(version: 20161129160630) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "items", "brands"
   add_foreign_key "items", "users"
 end
