@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129163409) do
+ActiveRecord::Schema.define(version: 20161129163536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20161129163409) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_item_likes_on_item_id", using: :btree
     t.index ["user_id"], name: "index_item_likes_on_user_id", using: :btree
+  end
+
+  create_table "item_sizes", force: :cascade do |t|
+    t.integer  "size_id"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_sizes_on_item_id", using: :btree
+    t.index ["size_id"], name: "index_item_sizes_on_size_id", using: :btree
   end
 
   create_table "items", force: :cascade do |t|
@@ -110,6 +119,8 @@ ActiveRecord::Schema.define(version: 20161129163409) do
   add_foreign_key "item_colors", "items"
   add_foreign_key "item_likes", "items"
   add_foreign_key "item_likes", "users"
+  add_foreign_key "item_sizes", "items"
+  add_foreign_key "item_sizes", "sizes"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
