@@ -12,4 +12,21 @@ class User < ApplicationRecord
                                   dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :orders
+  has_many :item_likes
+  has_many :items
+
+
+  validates :user_name, presence: true, uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :address, presence: true
+  validates :gender, presence: true
+  validates :birth_date, presence: true
+  validates :shoe_size, presence: true, on: :update
+  validates :top_size, presence: true, on: :update
+  validates :bottom_size, presence: true, on: :update
+
+
+
 end
