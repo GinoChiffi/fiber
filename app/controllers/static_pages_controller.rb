@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
   end
 
   def home
+  @items = Item.all
 
   end
 end
