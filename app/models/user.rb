@@ -23,10 +23,7 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :gender, presence: true
   validates :birth_date, presence: true
-  validates :shoe_size, presence: true, on: :update
-  validates :top_size, presence: true, on: :update
-  validates :bottom_size, presence: true, on: :update
-
-
-
+  # validates :shoe_size, presence: true, on: :update
+  # validates :top_size, presence: true, on: :update
+  # validates :bottom_size, presence: true, on: :update
 end
