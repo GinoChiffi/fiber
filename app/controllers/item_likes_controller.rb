@@ -1,0 +1,2 @@
+class ItemLikesController < ApplicationController
+end
