@@ -1,10 +1,9 @@
 class ItemColorsController < ApplicationController
   def index
+    @item_colors = ItemColor.all
   end
 
   def show
-  end
-
-  def find
+    @item_color = ItemColor.find(params[:id])
   end
 end

@@ -6,16 +6,7 @@ class SizesController < ApplicationController
   end
 
   def show
-  end
-
-  def find
-  end
-
-  private
-
-  def set_size
     @size = Size.find(params[:id])
   end
-
 
 end
