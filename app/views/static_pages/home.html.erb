@@ -1,6 +1,14 @@
-<h2>Homepage, user: <%= current_user.user_name %></h2>
+<h2>Homepage, user: <%= current_user.user_name %><br/>
+<%= link_to 'logout', destroy_user_session_path, method: :delete %><br/>
+<%= link_to 'Edit', edit_user_registration_path %></h2>
+
 <% @items.each do |item| %>
-<%= item.name %>
+<%= item.tumbnail_img %><br/>
+<%= item.name %><br/>
+<%= item.price %> $<br/>
+<%= item.description %><br/>
+<%= item.gender %><br/>
+<%= item.item_likes.count %> likes
 <% end %>
 
 
@@ -8,6 +16,3 @@
 
 
 
-
-<%= link_to 'logout', destroy_user_session_path, method: :delete %>
-<%= link_to 'Edit', edit_user_registration_path %>
