@@ -16,7 +16,7 @@
     <%= render '../views/partials/header' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
-    <% unless "static_pages_controller" %>
+    <% unless current_page?(root_url) || current_page?(new_user_session_path) %>
     <%= render '../views/partials/footer' %>
     <% end %>
   </body>
