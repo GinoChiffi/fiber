@@ -9,6 +9,10 @@ end
 def show
 end
 
+
+def find
+end
+
 private
 
     def set_item
