@@ -1,5 +1,8 @@
 class SizesController < ApplicationController
+  before_action, only: [:show]
+
   def index
+    @sizes = Size.all
   end
 
   def show
@@ -7,5 +10,12 @@ class SizesController < ApplicationController
 
   def find
   end
+
+  private
+
+  def set_size
+    @size = Size.find(params[:id])
+  end
+
 
 end
