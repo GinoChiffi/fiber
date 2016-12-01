@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,
                                                        :last_name,
-                                                     :birth_date,
-                                                     :gender,
-                                                     :user_name,
-                                                     :address])
+                                                       :birth_date,
+                                                       :gender,
+                                                        :user_name,
+                                                        :address])
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
