@@ -1,11 +1,10 @@
 class ItemSizesController < ApplicationController
-  def all
+  def index
+    @item_sizes = ItemSize.all
   end
 
   def show
-  end
-
-  def find
+    @item_size = ItemSize.find(params[:id])
   end
 
 end
