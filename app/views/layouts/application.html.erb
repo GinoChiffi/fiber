@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -8,11 +9,15 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <title>jTinder Touch Slider</title>
+    <link rel="stylesheet" type="text/css" href="css/jTinder.css">
   </head>
   <body>
     <%= render '../views/partials/header' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
+    <% unless "static_pages_controller" %>
     <%= render '../views/partials/footer' %>
+    <% end %>
   </body>
 </html>
