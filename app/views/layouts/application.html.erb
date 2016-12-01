@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
+    <%= render '../views/partials/header' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= render '../views/partials/footer' %>
