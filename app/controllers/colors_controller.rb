@@ -1,11 +1,10 @@
 class ColorsController < ApplicationController
   def index
+    @colors = Color.all
   end
 
   def show
-  end
-
-  def find
+    @color = Color.find(params[:id])
   end
 
 end
