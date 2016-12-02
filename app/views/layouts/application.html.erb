@@ -14,11 +14,13 @@
     <link rel="stylesheet" type="text/css" href="css/jTinder.css">
   </head>
   <body>
+  <div id="container">
     <%= render '../views/partials/header' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <% unless current_page?(root_url) || current_page?(new_user_session_path) %>
     <%= render '../views/partials/footer' %>
     <% end %>
+    </div>
   </body>
 </html>
