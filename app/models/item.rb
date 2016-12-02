@@ -2,6 +2,10 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :brand
   has_many :item_likes
+  has_many :item_sizes
+  has_many :item_colors
+  has_many :item_subcategories
+
   has_one :order
   has_many :colors, through: :item_colors
   has_many :sizes, through: :item_sizes
