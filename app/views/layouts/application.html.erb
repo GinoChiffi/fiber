@@ -10,15 +10,21 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <title>jTinder Touch Slider</title>
     <link rel="stylesheet" type="text/css" href="css/jTinder.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   </head>
   <body>
+  <main>
+  <div id="container" class="padding-bottom-100">
     <%= render '../views/partials/header' %>
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <% unless current_page?(root_url) || current_page?(new_user_session_path) %>
-    <%= render '../views/partials/footer' %>
+    </div>
+  </main>
+        <% unless current_page?(root_url) || current_page?(new_user_session_path) %>
+      <%= render '../views/partials/footer' %>
     <% end %>
   </body>
 </html>
