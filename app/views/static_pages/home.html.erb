@@ -12,6 +12,7 @@
 
 
   <%= link_to 'like', item_item_likes_path(item), method: :post %>
+  <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %>
 
 
 <% end %>
