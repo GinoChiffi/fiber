@@ -1,6 +1,13 @@
+<%= form_tag(home_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+
 <h2>Homepage, user: <%= current_user.user_name %><br/>
 <%= link_to 'logout', destroy_user_session_path, method: :delete %><br/>
 <%= link_to 'Edit', edit_user_registration_path %></h2>
+
 
 <% @items.each do |item| %>
 <%= item.tumbnail_img %><br/>
@@ -8,13 +15,9 @@
 <%= item.price %> $<br/>
 <%= item.description %><br/>
 <%= item.gender %><br/>
-<%= item.item_likes.count %> likes
-
-
+<%= item.item_likes.count %> likes<br/>
   <%= link_to 'like', item_item_likes_path(item), method: :post %>
   <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %>
-
-
 <% end %>
 
 
@@ -26,7 +29,6 @@
 
 
 
-<%= link_to 'logout', destroy_user_session_path, method: :delete %>
-<%= link_to 'Edit', edit_user_registration_path %>
+
 
 
