@@ -1,7 +1,7 @@
 class Size < ApplicationRecord
   has_many :items, through: :item_sizes
+  belongs_to :category
 
-  validates :type, presence: true
   validates :selection, presence: true
 end
 
