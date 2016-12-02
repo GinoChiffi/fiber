@@ -13,4 +13,23 @@
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
-@import "materialize"
+
+@import "materialize";
+
+.footer-icon {
+  font-size: 30px;
+}
+
+.social-icon {
+  color: white;
+  &:hover {
+    color: grey;
+  }
+  &:active {
+    color: grey;
+  }
+}
+
+.padding-bottom-100{
+  padding-bottom: 100px;
+}
