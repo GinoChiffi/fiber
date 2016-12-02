@@ -1,12 +1,15 @@
 <%= form_tag(home_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
+    <%= text_field_tag :min_price %>
+    <%= text_field_tag :max_price %>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 
 
-<h2>Homepage, user: <%= current_user.user_name %><br/>
-<%= link_to 'logout', destroy_user_session_path, method: :delete %><br/>
-<%= link_to 'Edit', edit_user_registration_path %></h2>
+
+<h2>Homepage, user: <%= current_user.user_name %><br/></h2>
+<h6><%= link_to 'logout', destroy_user_session_path, method: :delete %><br/>
+<%= link_to 'Edit', edit_user_registration_path %></h6>
 
 
 <% @items.each do |item| %>
