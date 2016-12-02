@@ -21,6 +21,7 @@ class Item < ApplicationRecord
   def self.search(search)
     if search.present?
       where("name LIKE ?", "%#{search}%")
+      where("gender LIKE ?", "%#{search}%")
     else
       unscoped
     end

@@ -15,5 +15,7 @@ class StaticPagesController < ApplicationController
     @items = Item.all.order("created_at DESC")
   end
 
+    @items = @items.to_a.select{ |item| (item.price >= params[:min_price].to_f) && (item.price <= params[:max_price].to_f )}
+
   end
 end
