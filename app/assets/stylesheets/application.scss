@@ -25,9 +25,13 @@
   &:hover {
     color: grey;
   }
-  &:active {
-    color: grey;
-  }
+  &:active{
+    border-color: white;
+    border-left-color: black;
+    border-top-color: black;
+    color: white;
+    background-color: #adadad;
+}
 }
 
 .padding-bottom-100{

@@ -103,10 +103,11 @@ ActiveRecord::Schema.define(version: 20161201101652) do
   end
 
   create_table "sizes", force: :cascade do |t|
-    t.string   "type"
+    t.integer  "category_id"
     t.string   "selection"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_sizes_on_category_id", using: :btree
   end
 
   create_table "subcategories", force: :cascade do |t|

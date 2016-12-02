@@ -5,12 +5,17 @@
 #
 #   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create!(name: 'Luke', movie: movies.first)
+ItemSubcategory.destroy_all
+Subcategory.destroy_all
+Category.destroy_all
+ItemColor.destroy_all
+Color.destroy_all
+ItemSize.destroy_all
+Size.destroy_all
 Item.destroy_all
 User.destroy_all
 Brand.destroy_all
-Subcategory.destroy_all
-Category.destroy_all
-Color.destroy_all
+
 
 
 users = [
@@ -156,17 +161,8 @@ gold = Color.create!(name: 'gold')
 silver = Color.create!(name: 'silver')
 
 
-small = Size.create!(selection: 'small')
-medium = Size.create!(selection: 'medium')
-large = Size.create!(selection: 'large')
-extralarge = Size.create!(selection: 'extralarge')
-onesize = Size.create!(selection: "onesize")
-
 # looping through each existing item and linking it to 1 colour & 1 size
-Item.all.each do |item|
-  ItemColor.create!(color: blue, item: item)
-  ItemSize.create!(size: small, item: item)
-end
+
 
 # items.each { |params| Item.create!(params) }
 
@@ -182,6 +178,13 @@ Subcategory.create!(name: 'Tank Tops', category: a)
 Subcategory.create!(name: 'Jumpers & Cardigans', category: a)
 Subcategory.create!(name: 'Turtlenecks', category: a)
 
+axsmall = Size.create!(selection: 'extrasmall', category: a)
+asmall = Size.create!(selection: 'small', category: a)
+amedium = Size.create!(selection: 'medium', category: a)
+alarge = Size.create!(selection: 'large', category: a)
+aextralarge = Size.create!(selection: 'extralarge', category: a)
+aonesize = Size.create!(selection: "onesize", category: a)
+
 
 b = Category.create!(name: "Jackets")
 Subcategory.create!(name: "Bomber Jackets", category: b)
@@ -196,6 +199,13 @@ Subcategory.create!(name: 'Puffer Jackets', category: b)
 Subcategory.create!(name: 'Track Jackets', category: b)
 Subcategory.create!(name: 'Windbreakers & Anoraks', category: b)
 
+bxsmall = Size.create!(selection: 'extrasmall', category: b)
+bsmall = Size.create!(selection: 'small', category: b)
+bmedium = Size.create!(selection: 'medium', category: b)
+blarge = Size.create!(selection: 'large', category: b)
+bextralarge = Size.create!(selection: 'extralarge', category: b)
+bonesize = Size.create!(selection: "onesize", category: b)
+
 c = Category.create!(name: "Bottoms")
 Subcategory.create!(name: 'Dungarees', category: c)
 Subcategory.create!(name: 'Jeans', category: c)
@@ -203,6 +213,18 @@ Subcategory.create!(name: 'Joggers', category: c)
 Subcategory.create!(name: 'Shorts', category: c)
 Subcategory.create!(name: 'Skirts', category: c)
 Subcategory.create!(name: 'Trousers', category: c)
+
+c30 = Size.create!(selection: '30', category: c)
+c32 = Size.create!(selection: '32', category: c)
+c34 = Size.create!(selection: '34', category: c)
+c36 = Size.create!(selection: '36', category: c)
+c38 = Size.create!(selection: "38", category: c)
+c40 = Size.create!(selection: '40', category: c)
+c42 = Size.create!(selection: '42', category: c)
+c44 = Size.create!(selection: '44', category: c)
+c46 = Size.create!(selection: '46', category: c)
+c48 = Size.create!(selection: "48", category: c)
+c50 = Size.create!(selection: "50", category: c)
 
 d = Category.create!(name: "Shoes")
 Subcategory.create!(name: 'Boots', category: d)
@@ -212,6 +234,22 @@ Subcategory.create!(name: 'Formal', category: d)
 Subcategory.create!(name: 'Heels & Wedges', category: d)
 Subcategory.create!(name: 'Sandals & Pool Sliders', category: d)
 Subcategory.create!(name: 'Trainers', category: d)
+
+d35 = Size.create!(selection: '35', category: d)
+d36 = Size.create!(selection: '36', category: d)
+d37 = Size.create!(selection: '37', category: d)
+d38 = Size.create!(selection: '38', category: d)
+d39 = Size.create!(selection: "39", category: d)
+d40 = Size.create!(selection: '40', category: d)
+d41 = Size.create!(selection: '41', category: d)
+d42 = Size.create!(selection: '42', category: d)
+d43 = Size.create!(selection: '43', category: d)
+d44 = Size.create!(selection: "44", category: d)
+d45 = Size.create!(selection: "45", category: d)
+d46 = Size.create!(selection: '46', category: d)
+d47 = Size.create!(selection: '47', category: d)
+d48 = Size.create!(selection: '48', category: d)
+
 
 e = Category.create!(name: "Underwear")
 Subcategory.create!(name: 'Bodysuits', category: e)
@@ -224,6 +262,12 @@ Subcategory.create!(name: 'Socks', category: e)
 Subcategory.create!(name: 'Tights & Socks', category: e)
 Subcategory.create!(name: 'Underwear', category: e)
 
+exsmall = Size.create!(selection: 'extrasmall', category: e)
+esmall = Size.create!(selection: 'small', category: e)
+emedium = Size.create!(selection: 'medium', category: e)
+elarge = Size.create!(selection: 'large', category: e)
+eextralarge = Size.create!(selection: 'extralarge', category: e)
+
 f = Category.create!(name: "Accessories")
 Subcategory.create!(name: 'Bags & Purses', category: f)
 Subcategory.create!(name: 'Belts', category: f)
@@ -233,6 +277,13 @@ Subcategory.create!(name: 'Scarves & Gloves', category: f)
 Subcategory.create!(name: 'Sunglasses', category: f)
 Subcategory.create!(name: 'Wallets', category: f)
 
+fxsmall = Size.create!(selection: 'extrasmall', category: f)
+fsmall = Size.create!(selection: 'small', category: f)
+fmedium = Size.create!(selection: 'medium', category: f)
+flarge = Size.create!(selection: 'large', category: f)
+fextralarge = Size.create!(selection: 'extralarge', category: f)
+fonesize = Size.create!(selection: "onesize", category: f)
+
 g = Category.create!(name: "Jewellery")
 Subcategory.create!(name: 'Body Jewellery', category: g)
 Subcategory.create!(name: 'Bracelets', category: g)
@@ -241,6 +292,13 @@ Subcategory.create!(name: 'Earrings', category: g)
 Subcategory.create!(name: 'Necklaces', category: g)
 Subcategory.create!(name: 'Rings', category: g)
 Subcategory.create!(name: 'Watches', category: g)
+
+gxsmall = Size.create!(selection: 'extrasmall', category: g)
+gsmall = Size.create!(selection: 'small', category: g)
+gmedium = Size.create!(selection: 'medium', category: g)
+glarge = Size.create!(selection: 'large', category: g)
+gextralarge = Size.create!(selection: 'extralarge', category: g)
+gonesize = Size.create!(selection: "onesize", category: g)
 
 h = Category.create!(name: 'Dresses')
 Subcategory.create!(name: 'Day Dresses', category: h)
@@ -254,9 +312,39 @@ Subcategory.create!(name: 'Maxi Dresses', category: h)
 Subcategory.create!(name: 'Slip Dresses', category: h)
 Subcategory.create!(name: 'Playsuits & Jumpsuits', category: h)
 
+h30 = Size.create!(selection: '30', category: h)
+h32 = Size.create!(selection: '32', category: h)
+h34 = Size.create!(selection: '34', category: h)
+h36 = Size.create!(selection: '36', category: h)
+h38 = Size.create!(selection: "38", category: h)
+h40 = Size.create!(selection: '40', category: h)
+h42 = Size.create!(selection: '42', category: h)
+h44 = Size.create!(selection: '44', category: h)
+h46 = Size.create!(selection: '46', category: h)
+h48 = Size.create!(selection: "48", category: h)
+h50 = Size.create!(selection: "50", category: h)
+
 i = Category.create!(name: "Swimsuits")
 Subcategory.create!(name: 'Bikini Tops', category: i)
 Subcategory.create!(name: 'Bikini Bottoms', category: i)
 Subcategory.create!(name: 'Bikini Sets', category: i)
 Subcategory.create!(name: 'Swimsuits', category: i)
 Subcategory.create!(name: 'Beachwear', category: i)
+Subcategory.create!(name: 'Swimming trunk', category: i)
+Subcategory.create!(name: 'Speedo', category: i)
+
+ixsmall = Size.create!(selection: 'extrasmall', category: i)
+ismall = Size.create!(selection: 'small', category: i)
+imedium = Size.create!(selection: 'medium', category: i)
+ilarge = Size.create!(selection: 'large', category: i)
+iextralarge = Size.create!(selection: 'extralarge', category: i)
+ionesize = Size.create!(selection: "onesize", category: i)
+
+Item.all.each do |item|
+  ItemColor.create!(color: blue, item: item)
+  category = Category.all.sample
+  subcategory = category.subcategories.sample
+  size = category.sizes.sample
+  ItemSubcategory.create(item: item, subcategory: subcategory)
+  ItemSize.create!(size: size, item: item)
+end
