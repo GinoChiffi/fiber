@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :destroy]
   end
 
+
+
   resources :profiles, only: [:show] do
     member do
     patch 'follow'
@@ -16,14 +18,18 @@ Rails.application.routes.draw do
   end
   end
 
+
+
+
 resource :dashboard, only: [:show, :edit, :update]
 resource :settings, only: [:show, :edit, :update]
-
+resource :search, only: [:show, :edit, :update]
 
 
 
 
 
   devise_for :users
+  resources :users, only: [:show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
