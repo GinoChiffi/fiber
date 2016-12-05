@@ -1,0 +1,24 @@
+<h1>Search Page Updated</h1>
+
+<%= form_for @search, html: {class: "pure-form"} do |s| %>
+
+<div class = "field">
+  <%= s.label :name %><br/>
+  <%= s.text_field :name %>
+</div>
+
+
+<div class = "field">
+  <%= s.label :gender %><br/>
+  <%= s.text_field :gender %>
+</div>
+
+
+<div class = "field">
+  <p> <%= s.label :min_price, "Min Price" %> - <%= s.text_field :min_price, size: 10 %></p>
+  <p> <%= s.label :min_price, "Max Price" %> - <%= s.text_field :max_price, size: 10 %></p>
+</div>
+
+<%= s.submit "Search", class: "pure-button pure-button-primary" %>
+
+<% end %>

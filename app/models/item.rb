@@ -18,14 +18,13 @@ class Item < ApplicationRecord
   validates :user_id, presence: true
   validates :brand_id, presence: true
 
-  def self.search(search)
-    if search.present?
-      where("name LIKE ?", "%#{search}%")
-      where("gender LIKE ?", "%#{search}%")
-    else
-      unscoped
-    end
-
+def self.search(search)
+  if search
+    where(["name LIKE ?", "%#{search}%"])
+  else
+    all
   end
+
+end
 
 end
