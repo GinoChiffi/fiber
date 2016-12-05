@@ -1,21 +1,27 @@
+<div class="row">
+  <div class="col m6 offset-m3 center container-full-width">
 
-<h2>Homepage, user: <%= current_user.user_name %><br/></h2>
+    <h2>Homepage, user: <%= current_user.user_name %><br/></h2>
 
 
+    <div class="items">
+      <% @items.each do |item| %>
+      <div class="item">
+      <p><%= item.tumbnail_img %></p>
+      <p><%= item.name %></p>
+      <p><%= item.price %></p>
+      <p><%= item.description %></p>
+      <p><%= item.gender %></p>
+      <p><%= item.item_likes.count %> likes</p>
+      <%= link_to 'like', item_item_likes_path(item), method: :post %>
+      <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %>
+      </div>
+      <% end %>
 
+    </div>
 
-<% @items.each do |item| %>
-<%= item.tumbnail_img %><br/>
-<%= item.name %><br/>
-<%= item.price %> $<br/>
-<%= item.description %><br/>
-<%= item.gender %><br/>
-<%= item.item_likes.count %> likes<br/>
-  <%= link_to 'like', item_item_likes_path(item), method: :post %>
-  <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %><br/>
-  <br/>
-
-<% end %>
+  </div>
+</div>
 
 
 
