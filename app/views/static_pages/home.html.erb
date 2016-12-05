@@ -1,14 +1,7 @@
 
 <h2>Homepage, user: <%= current_user.user_name %><br/></h2>
-<h6><%= link_to 'logout', destroy_user_session_path, method: :delete %> |
-<%= link_to 'Edit', edit_user_registration_path %></h6>
 
-<%= form_tag(home_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
-    <%= text_field_tag :min_price, params[:search], placeholder: "Min Price" %>
-    <%= text_field_tag :max_price, params[:search], placeholder: "Max Price" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
+
 
 
 <% @items.each do |item| %>
@@ -19,7 +12,9 @@
 <%= item.gender %><br/>
 <%= item.item_likes.count %> likes<br/>
   <%= link_to 'like', item_item_likes_path(item), method: :post %>
-  <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %>
+  <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %><br/>
+  <br/>
+
 <% end %>
 
 

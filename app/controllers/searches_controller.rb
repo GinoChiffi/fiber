@@ -1,14 +1,6 @@
-class StaticPagesController < ApplicationController
-  #before_action :authenticate_user!, only: [:landing]
+class SearchesController < ApplicationController
 
-  def landing
-    if current_user
-      redirect_to home_path
-    end
-  end
-
-  def home
-
+  def show
     @items = Item.all
     if params[:search]
       @items = Item.search(params[:search]).order("created_at DESC")
@@ -17,16 +9,8 @@ class StaticPagesController < ApplicationController
     end
 
     @items = @items.to_a.select{ |item| (item.price >= params[:min_price].to_f) && (item.price <= params[:max_price].to_f )}
-
   end
 
-
-
-  def profile
-
+  def edit
   end
-
-  def settings
-  end
-
 end

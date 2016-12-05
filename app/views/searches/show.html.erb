@@ -1,0 +1,10 @@
+<h1>Search Page</h1>
+<%= form_tag(home_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
+    <%= text_field_tag :min_price, params[:search], placeholder: "Min Price" %>
+    <%= text_field_tag :max_price, params[:search], placeholder: "Max Price" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+
+

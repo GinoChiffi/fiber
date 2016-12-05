@@ -1,11 +1,13 @@
 class SettingsController < ApplicationController
 
-before_action, only: [:show, :edit, :update]
+
 
 def edit
 end
 
 def show
+
+  @settings = Setting.all
 
 end
 
