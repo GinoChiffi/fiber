@@ -23,7 +23,7 @@
     <%= yield %>
     </div>
   </main>
-        <% unless current_page?(root_url) || current_page?(new_user_session_path) %>
+        <% unless current_user.nil? %>
       <%= render '../views/partials/footer' %>
     <% end %>
   </body>

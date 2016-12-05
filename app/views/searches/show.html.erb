@@ -1,9 +1,27 @@
-<h1>Search Page</h1>
-<%= form_tag(home_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
-    <%= text_field_tag :min_price, params[:search], placeholder: "Min Price" %>
-    <%= text_field_tag :max_price, params[:search], placeholder: "Max Price" %>
-    <%= submit_tag "Search", :name => nil %>
+<h1>Search Result</h1>
+
+<% if search.search_items.empty? %>
+
+<p>No Records Found</p>
+
+<% else %>
+
+<% @search.search_items.each do |c| %>
+<br/>
+
+
+<%= c.tumbnail_img %><br/>
+<h1><%= c.name %><br/></h1>
+<p>Price: $<%= c.price %> $<br/></p>
+<p><%= c.description %><br/></p>
+<p><%= c.gender %><br/></p>
+<%= c.item_likes.count %> likes<br/>
+  <%= link_to 'like', item_item_likes_path(item), method: :post %>
+  <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %><br/>
+  <br/>
+
+<% end %>
+
 <% end %>
 
 
