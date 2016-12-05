@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205133222) do
+ActiveRecord::Schema.define(version: 20161205170848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 20161205133222) do
     t.string   "gender"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "user_id"
     t.integer  "brand_id"
+    t.integer  "shop_id"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
-    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+    t.index ["shop_id"], name: "index_items_on_shop_id", using: :btree
   end
 
   create_table "orders", force: :cascade do |t|
@@ -111,6 +111,15 @@ ActiveRecord::Schema.define(version: 20161205133222) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.float    "max_price"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "image_shop"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -167,7 +176,7 @@ ActiveRecord::Schema.define(version: 20161205133222) do
   add_foreign_key "item_subcategories", "items"
   add_foreign_key "item_subcategories", "subcategories"
   add_foreign_key "items", "brands"
-  add_foreign_key "items", "users"
+  add_foreign_key "items", "shops"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
   add_foreign_key "subcategories", "categories"
