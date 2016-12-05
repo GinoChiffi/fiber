@@ -1,8 +1,14 @@
+
+<div class="row">
+  <div class="col m6 offset-m3 center container-full-width">
+
 <h2>Homepage, user: <%= current_user.user_name %><br/></h2>
 
 <% if !@search.nil? %>
+<div class="items">
 <% @search.search_items.each do |c| %>
   <br/>
+  <div class="item">
   <%= c.tumbnail_img %><br/>
   <h1><%= c.name %><br/></h1>
   <p>Price: $<%= c.price %> $<br/></p>
@@ -11,11 +17,15 @@
   <p><%= c.item_likes.count %> likes<br/></p>
   <%= link_to 'like', item_item_likes_path(c), method: :post %>
   <%= link_to 'unlike', item_item_like_path(c, c.item_likes), method: :delete %><br/>
+  </div>
   <% end %>
+</div>
+
 
   <% else %>
-
+<div class="items">
  <% @items.each do |item| %>
+ <div class="item">
  <%= item.tumbnail_img %><br/>
 <h1><%= item.name %><br/></h1>
 <p>Price: $<%= item.price %> $<br/></p>
@@ -25,9 +35,13 @@
   <%= link_to 'like', item_item_likes_path(item), method: :post %>
   <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %><br/>
   <br/>
+  </div>
   <% end %>
-
+</div>
 <% end %>
+ </div>
+</div>
+
 
 
 
