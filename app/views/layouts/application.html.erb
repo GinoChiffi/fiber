@@ -23,7 +23,7 @@
     <%= yield %>
     </div>
   </main>
-        <% unless current_user.nil? %>
+    <% unless current_user.nil? %>
       <%= render '../views/partials/footer' %>
     <% end %>
   </body>
