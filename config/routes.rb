@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
 resource :dashboard, only: [:show, :edit, :update]
 resource :settings, only: [:show, :edit, :update]
-resource :searches, only: [:show, :new, :create]
+resources :searches, only: [:index]
+
 
 
 

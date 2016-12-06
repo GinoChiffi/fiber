@@ -3,12 +3,8 @@ class ItemsController < ApplicationController
 
 
 def index
-
-  if search
-  @items = Item.search(params[:params])
-  else
-  @items = Item.all
-  end
+  @q = Item.ransack(params[:q])
+  @items = @q.result(distinct: true)
 end
 
 
