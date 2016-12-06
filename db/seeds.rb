@@ -53,115 +53,22 @@ brands = [
 brands.each { |params| Brand.create!(params) }
 
 
-items = [
-  {
-    name: 'Thermal Shirt',
-    price: 20,
-    description: 'Classic thermal shirt with button collar',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/ThermalShirt_dojkrm.jpg"
-  },
-   {
-    name: 'Triangle Bra',
-    price: 30,
-    description: 'half mesh triangle shaped brassiere',
-    gender: 'Female',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/trianglebra_s7rvfl.jpg"
-  },
-   {
-    name: 'Casio Watch',
-    price: 50,
-    description: 'Vintage gold Casio digital watch',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/CasioWatch_mydzhc.jpg"
-  },
-   {
-    name: 'Bomber Jacket',
-    price: 90,
-    description: "Black Women's bomber jacket",
-    gender: 'Female',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/BomberJacket_bhybsu.jpg"
-  },
-   {
-    name: 'Mesh Midi Dress',
-    price: 60,
-    description: 'Black mesh midi dress, grrrrrr',
-    gender: 'Female',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/MidiDress_j3wihq.jpg"
-  },
-   {
-    name: 'Skinny hipster jeans',
-    price: 70,
-    description: 'Super skinny black hipster jeans. Be like everyone else!',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/SkinnyJeans_cpm7fr.jpg"
-  },
-   {
-    name: 'Reebok trainers',
-    price: 85,
-    description: 'black vintage Reebok sneakers',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/BlackTrainers_cvmbae.jpg"
-  },
-   {
-    name: 'T Shirt',
-    price: 15,
-    description: "Classic olive T-shirt. A staple of everyone's wardrobe",
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/TShirt_djsk8r.jpg"
-  },
-   {
-    name: 'Scarf',
-    price: 30,
-    description: 'Yellow wool scarf with large check pattern',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/Scarf_vghlmk.jpg"
-  },
-   {
-    name: 'Strappy heels',
-    price: 150,
-    description: 'Super sexy high heels with straps',
-    gender: 'Female',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/heels_cwyq2f.jpg"
-  }
-]
+# items.each { |params| Item.create!(params) }
 
-items.each { |params| Item.create!(params) }
-
-red = Color.create!(name: 'red')
-orange = Color.create!(name: 'orange')
-yellow = Color.create!(name: 'yellow')
-green = Color.create!(name: 'green')
-blue = Color.create!(name: 'blue')
-indigo = Color.create!(name: 'indigo')
-violet = Color.create!(name: 'violet')
-white = Color.create!(name: 'white')
-black = Color.create!(name: 'black')
-gold = Color.create!(name: 'gold')
-silver = Color.create!(name: 'silver')
+# red = Color.create!(name: 'red')
+# orange = Color.create!(name: 'orange')
+# yellow = Color.create!(name: 'yellow')
+# green = Color.create!(name: 'green')
+# blue = Color.create!(name: 'blue')
+# indigo = Color.create!(name: 'indigo')
+# violet = Color.create!(name: 'violet')
+# white = Color.create!(name: 'white')
+# black = Color.create!(name: 'black')
+# gold = Color.create!(name: 'gold')
+# silver = Color.create!(name: 'silver')
 
 
-# looping through each existing item and linking it to 1 colour & 1 size
+# looping through each existing item and linking it to 1 color & 1 size
 
 
 # items.each { |params| Item.create!(params) }
@@ -348,3 +255,156 @@ Item.all.each do |item|
   ItemSubcategory.create(item: item, subcategory: subcategory)
   ItemSize.create!(size: size, item: item)
 end
+
+
+items = [
+  {
+    name: 'Thermal Shirt',
+    price: 20,
+    description: 'Classic thermal shirt with button collar',
+    gender: 'Male',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/ThermalShirt.jpg",
+    # category: a,
+    # subcategory: "Shirts",
+    color:
+    shop:
+    size:
+  },
+   {
+    name: 'Triangle Bra',
+    price: 30,
+    description: 'half mesh triangle shaped brassiere',
+    gender: 'Female',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/TriangleBra.jpg",
+    # category: e,
+    # subcategory: "Bras & Bralettes",
+  },
+   {
+    name: 'Casio Watch',
+    price: 50,
+    description: 'Vintage gold Casio digital watch',
+    gender: 'Male',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/CasioWatch.jpg",
+    # category: g,
+    # subcategory: "Watches",
+  },
+   {
+    name: 'Bomber Jacket',
+    price: 90,
+    description: "Black women's bomber jacket",
+    gender: 'Female',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/BomberJacket.jpg",
+    # category: b,
+    # subcategory: "Bomber Jackets",
+  },
+   {
+    name: 'Mesh Midi Dress',
+    price: 60,
+    description: 'Black mesh midi dress, grrrrrr',
+    gender: 'Female',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/MidiDress.jpg",
+    # category: h,
+    # subcategory: "Midi Dresses",
+  },
+   {
+    name: 'Skinny hipster jeans',
+    price: 70,
+    description: 'Super skinny black hipster jeans. Be like everyone else!',
+    gender: 'Male',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/SkinnyJeans.jpg",
+    # category: c,
+    # subcategory: "Jeans",
+  },
+   {
+    name: 'Classic trainers',
+    price: 85,
+    description: 'black vintage Reebok sneakers',
+    gender: 'Male',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/BlackTrainers.jpg",
+    # category: d,
+    # subcategory: "Trainers",
+  },
+   {
+    name: 'T Shirt',
+    price: 15,
+    description: "Classic olive T-shirt. A staple of everyone's wardrobe",
+    gender: 'Male',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/TShirt.jpg",
+    # category: a,
+    # subcategory: "T-shirts",
+  },
+   {
+    name: 'Scarf',
+    price: 30,
+    description: 'Yellow wool scarf with large check pattern',
+    gender: 'Male',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/Scarf.jpg",
+    # category: f,
+    # subcategory: "Scarves & Gloves"
+  },
+   {
+    name: 'Strappy heels',
+    price: 150,
+    description: 'Super sexy high heels with straps',
+    gender: 'Female',
+    user: User.first,
+    brand: Brand.all.sample,
+    tumbnail_img: "Heels.jpg",
+    # category: d,
+    # subcategory: "Heels & Wedges"
+  }
+]
+
+items.each { |params| Item.create!(params) }
+
+red = Color.create!(name: 'red')
+orange = Color.create!(name: 'orange')
+yellow = Color.create!(name: 'yellow')
+green = Color.create!(name: 'green')
+blue = Color.create!(name: 'blue')
+indigo = Color.create!(name: 'indigo')
+violet = Color.create!(name: 'violet')
+white = Color.create!(name: 'white')
+black = Color.create!(name: 'black')
+gold = Color.create!(name: 'gold')
+silver = Color.create!(name: 'silver')
+
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+Brand.create!(name: "Reebok", image: "")
+
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
+Shop.create!(name: "H&M")
