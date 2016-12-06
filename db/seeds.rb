@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create!(name: 'Luke', movie: movies.first)
+
 ItemSubcategory.destroy_all
 Subcategory.destroy_all
 Category.destroy_all
@@ -55,24 +56,23 @@ brands.each { |params| Brand.create!(params) }
 
 # items.each { |params| Item.create!(params) }
 
-# red = Color.create!(name: 'red')
-# orange = Color.create!(name: 'orange')
-# yellow = Color.create!(name: 'yellow')
-# green = Color.create!(name: 'green')
-# blue = Color.create!(name: 'blue')
-# indigo = Color.create!(name: 'indigo')
-# violet = Color.create!(name: 'violet')
-# white = Color.create!(name: 'white')
-# black = Color.create!(name: 'black')
-# gold = Color.create!(name: 'gold')
-# silver = Color.create!(name: 'silver')
+red = Color.create!(name: 'red')
+orange = Color.create!(name: 'orange')
+yellow = Color.create!(name: 'yellow')
+green = Color.create!(name: 'green')
+blue = Color.create!(name: 'blue')
+indigo = Color.create!(name: 'indigo')
+violet = Color.create!(name: 'violet')
+white = Color.create!(name: 'white')
+black = Color.create!(name: 'black')
+gold = Color.create!(name: 'gold')
+silver = Color.create!(name: 'silver')
 
 
-# looping through each existing item and linking it to 1 color & 1 size
 
-
-# items.each { |params| Item.create!(params) }
-
+10.times do
+  Brand.create!(name: Faker::Hipster.word, image: "")
+end
 
 
 a = Category.create!(name: "Tops")
@@ -247,16 +247,6 @@ ilarge = Size.create!(selection: 'large', category: i)
 iextralarge = Size.create!(selection: 'extralarge', category: i)
 ionesize = Size.create!(selection: "onesize", category: i)
 
-Item.all.each do |item|
-  ItemColor.create!(color: blue, item: item)
-  category = Category.all.sample
-  subcategory = category.subcategories.sample
-  size = category.sizes.sample
-  ItemSubcategory.create(item: item, subcategory: subcategory)
-  ItemSize.create!(size: size, item: item)
-end
-
-
 items = [
   {
     name: 'Thermal Shirt',
@@ -265,12 +255,7 @@ items = [
     gender: 'Male',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/ThermalShirt.jpg",
-    # category: a,
-    # subcategory: "Shirts",
-    color:
-    shop:
-    size:
+    tumbnail_img: "app/assets/images/ThermalShirt.jpg"
   },
    {
     name: 'Triangle Bra',
@@ -279,9 +264,7 @@ items = [
     gender: 'Female',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/TriangleBra.jpg",
-    # category: e,
-    # subcategory: "Bras & Bralettes",
+    tumbnail_img: "app/assets/images/TriangleBra.jpg"
   },
    {
     name: 'Casio Watch',
@@ -290,10 +273,8 @@ items = [
     gender: 'Male',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/CasioWatch.jpg",
-    # category: g,
-    # subcategory: "Watches",
-  },
+    tumbnail_img: "app/assets/images/CasioWatch.jpg"
+    },
    {
     name: 'Bomber Jacket',
     price: 90,
@@ -301,9 +282,7 @@ items = [
     gender: 'Female',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/BomberJacket.jpg",
-    # category: b,
-    # subcategory: "Bomber Jackets",
+    tumbnail_img: "app/assets/images/BomberJacket.jpg"
   },
    {
     name: 'Mesh Midi Dress',
@@ -312,9 +291,7 @@ items = [
     gender: 'Female',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/MidiDress.jpg",
-    # category: h,
-    # subcategory: "Midi Dresses",
+    tumbnail_img: "app/assets/images/MidiDress.jpg"
   },
    {
     name: 'Skinny hipster jeans',
@@ -323,10 +300,8 @@ items = [
     gender: 'Male',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/SkinnyJeans.jpg",
-    # category: c,
-    # subcategory: "Jeans",
-  },
+    tumbnail_img: "app/assets/images/SkinnyJeans.jpg"
+    },
    {
     name: 'Classic trainers',
     price: 85,
@@ -334,9 +309,7 @@ items = [
     gender: 'Male',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/BlackTrainers.jpg",
-    # category: d,
-    # subcategory: "Trainers",
+    tumbnail_img: "app/assets/images/BlackTrainers.jpg"
   },
    {
     name: 'T Shirt',
@@ -345,9 +318,7 @@ items = [
     gender: 'Male',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/TShirt.jpg",
-    # category: a,
-    # subcategory: "T-shirts",
+    tumbnail_img: "app/assets/images/TShirt.jpg"
   },
    {
     name: 'Scarf',
@@ -356,9 +327,7 @@ items = [
     gender: 'Male',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/Scarf.jpg",
-    # category: f,
-    # subcategory: "Scarves & Gloves"
+    tumbnail_img: "app/assets/images/Scarf.jpg"
   },
    {
     name: 'Strappy heels',
@@ -367,44 +336,28 @@ items = [
     gender: 'Female',
     user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "Heels.jpg",
-    # category: d,
-    # subcategory: "Heels & Wedges"
+    tumbnail_img: "Heels.jpg"
   }
 ]
 
 items.each { |params| Item.create!(params) }
 
-red = Color.create!(name: 'red')
-orange = Color.create!(name: 'orange')
-yellow = Color.create!(name: 'yellow')
-green = Color.create!(name: 'green')
-blue = Color.create!(name: 'blue')
-indigo = Color.create!(name: 'indigo')
-violet = Color.create!(name: 'violet')
-white = Color.create!(name: 'white')
-black = Color.create!(name: 'black')
-gold = Color.create!(name: 'gold')
-silver = Color.create!(name: 'silver')
+Item.all.each do |item|
+  ItemColor.create!(color: Color.all.sample, item: item)
+  category = Category.all.sample
+  subcategory = category.subcategories.sample
+  size = category.sizes.sample
+  ItemSubcategory.create(item: item, subcategory: subcategory)
+  ItemSize.create!(size: size, item: item)
+end
 
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-Brand.create!(name: "Reebok", image: "")
-
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
-Shop.create!(name: "H&M")
+Shop.create!(name: "H & M"
+Shop.create!(name: "Marks & Spencer")
+Shop.create!(name: "Urban Outfitters")
+Shop.create!(name: "J Crew")
+Shop.create!(name: "Claire's")
+Shop.create!(name: "Madewell")
+Shop.create!(name: "Footlocker")
+Shop.create!(name: "C&A")
+Shop.create!(name: "Macy's")
+Shop.create!(name: "Sunglass Hut")
