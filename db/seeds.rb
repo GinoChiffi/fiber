@@ -70,6 +70,8 @@ silver = Color.create!(name: 'silver')
 
 
 
+
+
 10.times do
   Brand.create!(name: Faker::Hipster.word, image: "")
 end
@@ -247,6 +249,11 @@ ilarge = Size.create!(selection: 'large', category: i)
 iextralarge = Size.create!(selection: 'extralarge', category: i)
 ionesize = Size.create!(selection: "onesize", category: i)
 
+j = Category.create!(name: "Age")
+Subcategory.create!(name: "Infants & Toddlers", category: j)
+Subcategory.create!(name: "Youth", category: j)
+Subcategory.create!(name: "Adults", category: j)
+
 items = [
   {
     name: 'Thermal Shirt',
@@ -342,22 +349,55 @@ items = [
 
 items.each { |params| Item.create!(params) }
 
-Item.all.each do |item|
-  ItemColor.create!(color: Color.all.sample, item: item)
-  category = Category.all.sample
-  subcategory = category.subcategories.sample
-  size = category.sizes.sample
-  ItemSubcategory.create(item: item, subcategory: subcategory)
-  ItemSize.create!(size: size, item: item)
-end
+# Item.all.each do |item|
+#   ItemColor.create!(color: Color.all.sample, item: item)
+#   category = Category.all.sample
+#   subcategory = category.subcategories.sample
+#   size = category.sizes.sample
+#   ItemSubcategory.create(item: item, subcategory: subcategory)
+#   ItemSize.create!(size: size, item: item)
+# end
 
-Shop.create!(name: "H & M"
-Shop.create!(name: "Marks & Spencer")
-Shop.create!(name: "Urban Outfitters")
-Shop.create!(name: "J Crew")
-Shop.create!(name: "Claire's")
-Shop.create!(name: "Madewell")
-Shop.create!(name: "Footlocker")
-Shop.create!(name: "C&A")
-Shop.create!(name: "Macy's")
-Shop.create!(name: "Sunglass Hut")
+ItemColor.create!(color_id: 5, item_id: 1)
+ItemColor.create!(color_id: 5, item_id: 2)
+ItemColor.create!(color_id: 10, item_id: 3)
+ItemColor.create!(color_id: 9, item_id: 4)
+ItemColor.create!(color_id: 9, item_id: 5)
+ItemColor.create!(color_id: 9, item_id: 6)
+ItemColor.create!(color_id: 9, item_id: 7)
+ItemColor.create!(color_id: 4, item_id: 8)
+ItemColor.create!(color_id: 3, item_id: 9)
+ItemColor.create!(color_id: 9, item_id: 10)
+
+ItemSubcategory.create!(item_id: 1, subcategory_id: 1)
+ItemSubcategory.create!(item_id: 2, subcategory_id: 34)
+ItemSubcategory.create!(item_id: 3, subcategory_id: 55)
+ItemSubcategory.create!(item_id: 4, subcategory_id: 9)
+ItemSubcategory.create!(item_id: 5, subcategory_id: 58)
+ItemSubcategory.create!(item_id: 6, subcategory_id: 21)
+ItemSubcategory.create!(item_id: 7, subcategory_id: 32)
+ItemSubcategory.create!(item_id: 8, subcategory_id: 2)
+ItemSubcategory.create!(item_id: 9, subcategory_id: 46)
+ItemSubcategory.create!(item_id: 10, subcategory_id: 30)
+
+ItemSize.create!(item_id: 1, size_id: 4)
+ItemSize.create!(item_id: 2, size_id: 40)
+ItemSize.create!(item_id: 3, size_id: 54)
+ItemSize.create!(item_id: 4, size_id: 10)
+ItemSize.create!(item_id: 5, size_id: 60)
+ItemSize.create!(item_id: 6, size_id: 15)
+ItemSize.create!(item_id: 7, size_id: 29)
+ItemSize.create!(item_id: 8, size_id: 3)
+ItemSize.create!(item_id: 9, size_id: 48)
+ItemSize.create!(item_id: 10, size_id: 27)
+
+# Shop.create!(name: "H & M")
+# Shop.create!(name: "Marks & Spencer")
+# Shop.create!(name: "Urban Outfitters")
+# Shop.create!(name: "J Crew")
+# Shop.create!(name: "Claire's")
+# Shop.create!(name: "Madewell")
+# Shop.create!(name: "Footlocker")
+# Shop.create!(name: "C&A")
+# Shop.create!(name: "Macy's")
+# Shop.create!(name: "Sunglass Hut")
