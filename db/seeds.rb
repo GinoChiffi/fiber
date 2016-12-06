@@ -65,7 +65,7 @@ brands.each { |params| Brand.create!(params) }
 # white = Color.create!(name: 'white')
 # black = Color.create!(name: 'black')
 # gold = Color.create!(name: 'gold')
-# silver = Color.create!(name: 'silver')
+silver = Color.create!(name: 'silver')
 
 
 # looping through each existing item and linking it to 1 color & 1 size
