@@ -13,6 +13,20 @@ class ApplicationController < ActionController::Base
                                                         :address])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :shoe_size, :top_size, :bottom_size, :jacket_size, :underwear_size, :accessoire_size, :jewelry_size, :dress_size, :swimsuit_size])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username,
+                                                        :first_name,
+                                                       :last_name,
+                                                       :birth_date,
+                                                       :gender,
+                                                       :shoe_size,
+                                                       :top_size,
+                                                       :bottom_size,
+                                                       :jacket_size,
+                                                       :underwear_size,
+                                                       :accessoire_size,
+                                                       :jewelry_size,
+                                                       :dress_size,
+                                                       :swimsuit_size,
+                                                       :address])
   end
 end
