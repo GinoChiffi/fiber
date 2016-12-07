@@ -15,8 +15,9 @@
     <%= f.input :last_name, required: true %>
     <%= f.input :user_name, required: true %>
     <%= f.input :address, required: true %>
-    <%= f.input :gender, required: true %>
+    <%= f.input :gender, required: true, :collection => %w[Male Female] %>
     <%= f.input :birth_date, required: true %>
+
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,11 +27,10 @@
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-    <%= f.input :top_size, required: true, hint: "Enter your top-size to optimise the cards" %>
-    <%= f.input :bottom_size, required: true, hint: "Enter your bottom-size to optimise the cards" %>
-    <%= f.input :shoe_size, required: true, hint: "Enter your shoe-size to optimise the cards" %>
-  </div>
 
+    <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Edit personal sizes</a>
+  </div>
+<br/>
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>
@@ -45,3 +45,38 @@
 
   </div>
 </div>
+
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Edit your Sizes</h4>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your top-size to optimise the cards" %>
+    <%= f.input :bottom_size, required: true, placeholder: "Enter your bottom-size to optimise the cards" %>
+    <p class="range-field">
+    <h5>Shoe size</h5>
+    <output name="shoeOutputName" id="usershoeOutput"><%=current_user.shoe_size%></output>
+      <input class="form-control string required" required="required" aria-required="true" type="range" name="user[shoe_size]" id="user_shoe_size" min="32" max="50" value="<%current_user.shoe_size%>" oninput= "usershoeOutput.value = user_shoe_size.value">
+    </p>
+    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <br/>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
+  </div>
+
+    </div>
+
+  </div>
+  <% end %>
+
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>

@@ -249,6 +249,8 @@ d45 = Size.create!(selection: "45", category: d)
 d46 = Size.create!(selection: '46', category: d)
 d47 = Size.create!(selection: '47', category: d)
 d48 = Size.create!(selection: '48', category: d)
+d49 = Size.create!(selection: '49', category: d)
+d50 = Size.create!(selection: '50', category: d)
 
 
 e = Category.create!(name: "Underwear")

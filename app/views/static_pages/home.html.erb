@@ -1,24 +1,39 @@
 
 <div class="row">
-  <div class="col m6 offset-m3 center container-full-width">
+  <div class="col s12 m6 offset-m3 center container-full-width">
 
-<h2>Homepage, user: <%= current_user.user_name %><br/></h2>
 
 <% if !@search.nil? %>
+
 <div class="items">
 <% @search.search_items.each do |c| %>
   <br/>
   <div class="item">
-  <%= c.tumbnail_img %><br/>
-  <h1><%= c.name %><br/></h1>
-  <p>Price: $<%= c.price %> $<br/></p>
-  <p><%= c.description %><br/></p>
-  <p><%= c.gender %><br/></p>
-  <p><%= c.item_likes.count %> likes<br/></p>
-  <%= link_to 'like', item_item_likes_path(c), method: :post %>
-  <%= link_to 'unlike', item_item_like_path(c, c.item_likes), method: :delete %><br/>
+  <div class="card sticky-action">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="<%= c.tumbnail_img %>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+      <p><%= c.name %></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><h2><%= c.name %></h2><i class="material-icons right">close</i></span>
+      <br/>
+      <br/>
+      <br/>
+     <h3>Price: $<%= c.price %> $<br/></h3>
+   <h3><%= c.description %><br/></h3>
+   <h3><%= c.gender %><br/></h3>
+    </div>
+    <div class="card-action">
+        <a <%= link_to 'like', item_item_likes_path(c), method: :post %></a>
+        <a <%= link_to 'unlike', item_item_like_path(c, c.item_likes), method: :delete %><br/></a>
+        <p><%= c.item_likes.count %> likes<br/></p>
+    </div>
   </div>
   <% end %>
+  </div>
 </div>
 
 
