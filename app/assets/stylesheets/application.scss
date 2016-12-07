@@ -16,6 +16,18 @@
 
 @import "materialize";
 
+.full-screen-video{
+  z-index: -10;
+  width: 316%;
+  left: -61%;
+  bottom: 0%;
+}
+
+html {
+  color: white;
+}
+
+
 .footer-icon {
   font-size: 30px;
 }

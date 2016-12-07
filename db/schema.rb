@@ -104,17 +104,6 @@ ActiveRecord::Schema.define(version: 20161207103125) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "searches", force: :cascade do |t|
-    t.string   "name"
-    t.string   "category"
-    t.float    "min_price"
-    t.string   "gender"
-    t.string   "subcategory"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.float    "max_price"
-  end
-
   create_table "shops", force: :cascade do |t|
     t.string   "name"
     t.string   "city"
