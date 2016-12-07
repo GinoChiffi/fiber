@@ -80,7 +80,9 @@ ActiveRecord::Schema.define(version: 20161207103125) do
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.integer  "brand_id"
+    t.integer  "shop_id"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
+    t.index ["shop_id"], name: "index_items_on_shop_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -111,6 +113,15 @@ ActiveRecord::Schema.define(version: 20161207103125) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.float    "max_price"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "description"
+    t.string   "image_shop"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -173,6 +184,7 @@ ActiveRecord::Schema.define(version: 20161207103125) do
   add_foreign_key "item_subcategories", "items"
   add_foreign_key "item_subcategories", "subcategories"
   add_foreign_key "items", "brands"
+  add_foreign_key "items", "shops"
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"

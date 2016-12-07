@@ -8,8 +8,9 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-    if params[:search]
-      @search = Search.find(params[:search])
+    if params[:q]
+      @q = Item.ransack(params[:q])
+      @items = @q.result
     else
       @items = Item.all
     end

@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create!(name: 'Luke', movie: movies.first)
+
 ItemSubcategory.destroy_all
 Subcategory.destroy_all
 Category.destroy_all
@@ -15,6 +16,7 @@ Size.destroy_all
 Item.destroy_all
 User.destroy_all
 Brand.destroy_all
+Shop.destroy_all
 
 
 
@@ -53,100 +55,7 @@ brands = [
 brands.each { |params| Brand.create!(params) }
 
 
-items = [
-  {
-    name: 'Thermal Shirt',
-    price: 20,
-    description: 'Classic thermal shirt with button collar',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/ThermalShirt_dojkrm.jpg"
-  },
-   {
-    name: 'Triangle Bra',
-    price: 30,
-    description: 'half mesh triangle shaped brassiere',
-    gender: 'Female',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/trianglebra_s7rvfl.jpg"
-  },
-   {
-    name: 'Casio Watch',
-    price: 50,
-    description: 'Vintage gold Casio digital watch',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/CasioWatch_mydzhc.jpg"
-  },
-   {
-    name: 'Bomber Jacket',
-    price: 90,
-    description: "Black Women's bomber jacket",
-    gender: 'Female',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/BomberJacket_bhybsu.jpg"
-  },
-   {
-    name: 'Mesh Midi Dress',
-    price: 60,
-    description: 'Black mesh midi dress, grrrrrr',
-    gender: 'Female',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/MidiDress_j3wihq.jpg"
-  },
-   {
-    name: 'Skinny hipster jeans',
-    price: 70,
-    description: 'Super skinny black hipster jeans. Be like everyone else!',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/SkinnyJeans_cpm7fr.jpg"
-  },
-   {
-    name: 'Reebok trainers',
-    price: 85,
-    description: 'black vintage Reebok sneakers',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/BlackTrainers_cvmbae.jpg"
-  },
-   {
-    name: 'T Shirt',
-    price: 15,
-    description: "Classic olive T-shirt. A staple of everyone's wardrobe",
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/TShirt_djsk8r.jpg"
-  },
-   {
-    name: 'Scarf',
-    price: 30,
-    description: 'Yellow wool scarf with large check pattern',
-    gender: 'Male',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/Scarf_vghlmk.jpg"
-  },
-   {
-    name: 'Strappy heels',
-    price: 150,
-    description: 'Super sexy high heels with straps',
-    gender: 'Female',
-    user: User.first,
-    brand: Brand.all.sample,
-    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/heels_cwyq2f.jpg"
-  }
-]
-
-items.each { |params| Item.create!(params) }
+# items.each { |params| Item.create!(params) }
 
 red = Color.create!(name: 'red')
 orange = Color.create!(name: 'orange')
@@ -161,11 +70,14 @@ gold = Color.create!(name: 'gold')
 silver = Color.create!(name: 'silver')
 
 
-# looping through each existing item and linking it to 1 colour & 1 size
 
 
-# items.each { |params| Item.create!(params) }
 
+
+
+3.times do
+  Brand.create!(name: Faker::Hipster.word, image: "")
+end
 
 
 a = Category.create!(name: "Tops")
@@ -342,11 +254,155 @@ ilarge = Size.create!(selection: 'large', category: i)
 iextralarge = Size.create!(selection: 'extralarge', category: i)
 ionesize = Size.create!(selection: "onesize", category: i)
 
+
+Shop.create!(name: "H & M", city: "Antwerp")
+Shop.create!(name: "Marks & Spencer", city: "Brussels")
+Shop.create!(name: "Urban Outfitters", city: "Ghent")
+Shop.create!(name: "J Crew", city: "Antwerp")
+Shop.create!(name: "Claire's", city: "Brussels")
+Shop.create!(name: "Madewell", city: "Ghent")
+Shop.create!(name: "Footlocker", city: "Antwerp")
+Shop.create!(name: "C&A", city: "Brussels")
+Shop.create!(name: "Macy's", city: "Ghent")
+Shop.create!(name: "Sunglass Hut", city: "Antwerp")
+
+j = Category.create!(name: "Age")
+Subcategory.create!(name: "Infants & Toddlers", category: j)
+Subcategory.create!(name: "Youth", category: j)
+Subcategory.create!(name: "Adults", category: j)
+
+
+items = [
+  {
+    name: 'Thermal Shirt',
+    price: 20,
+    description: 'Classic thermal shirt with button collar',
+    gender: 'Male',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/ThermalShirt.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Triangle Bra',
+    price: 30,
+    description: 'half mesh triangle shaped brassiere',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/TriangleBra.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Casio Watch',
+    price: 50,
+    description: 'Vintage gold Casio digital watch',
+    gender: 'Male',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/CasioWatch.jpg",
+    shop_id: Shop.all.sample.id
+    },
+   {
+    name: 'Bomber Jacket',
+    price: 90,
+    description: "Black women's bomber jacket",
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/BomberJacket.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Mesh Midi Dress',
+    price: 60,
+    description: 'Black mesh midi dress, grrrrrr',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/MidiDress.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Skinny hipster jeans',
+    price: 70,
+    description: 'Super skinny black hipster jeans. Be like everyone else!',
+    gender: 'Male',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/SkinnyJeans.jpg"
+    },
+   {
+    name: 'Classic trainers',
+    price: 85,
+    description: 'black vintage Reebok sneakers',
+    gender: 'Male',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/BlackTrainers.jpg"
+  },
+   {
+    name: 'T Shirt',
+    price: 15,
+    description: "Classic olive T-shirt. A staple of everyone's wardrobe",
+    gender: 'Male',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/TShirt.jpg"
+  },
+   {
+    name: 'Scarf',
+    price: 30,
+    description: 'Yellow wool scarf with large check pattern',
+    gender: 'Male',
+    brand: Brand.all.sample,
+    tumbnail_img: "app/assets/images/Scarf.jpg"
+  },
+   {
+    name: 'Strappy heels',
+    price: 150,
+    description: 'Super sexy high heels with straps',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "Heels.jpg"
+  }
+]
+
+items.each { |params| Item.create!(params) }
+
+
 Item.all.each do |item|
-  ItemColor.create!(color: blue, item: item)
+  ItemColor.create!(color: Color.all.sample, item: item)
   category = Category.all.sample
   subcategory = category.subcategories.sample
   size = category.sizes.sample
   ItemSubcategory.create(item: item, subcategory: subcategory)
   ItemSize.create!(size: size, item: item)
+  item.update(shop_id: Shop.all.sample.id)
 end
+
+ItemColor.create!(color_id: 5, item_id: 1)
+ItemColor.create!(color_id: 5, item_id: 2)
+ItemColor.create!(color_id: 10, item_id: 3)
+ItemColor.create!(color_id: 9, item_id: 4)
+ItemColor.create!(color_id: 9, item_id: 5)
+ItemColor.create!(color_id: 9, item_id: 6)
+ItemColor.create!(color_id: 9, item_id: 7)
+ItemColor.create!(color_id: 4, item_id: 8)
+ItemColor.create!(color_id: 3, item_id: 9)
+ItemColor.create!(color_id: 9, item_id: 10)
+
+ItemSubcategory.create!(item_id: 1, subcategory_id: 1)
+ItemSubcategory.create!(item_id: 2, subcategory_id: 34)
+ItemSubcategory.create!(item_id: 3, subcategory_id: 55)
+ItemSubcategory.create!(item_id: 4, subcategory_id: 9)
+ItemSubcategory.create!(item_id: 5, subcategory_id: 58)
+ItemSubcategory.create!(item_id: 6, subcategory_id: 21)
+ItemSubcategory.create!(item_id: 7, subcategory_id: 32)
+ItemSubcategory.create!(item_id: 8, subcategory_id: 2)
+ItemSubcategory.create!(item_id: 9, subcategory_id: 46)
+ItemSubcategory.create!(item_id: 10, subcategory_id: 30)
+
+ItemSize.create!(item_id: 1, size_id: 4)
+ItemSize.create!(item_id: 2, size_id: 40)
+ItemSize.create!(item_id: 3, size_id: 54)
+ItemSize.create!(item_id: 4, size_id: 10)
+ItemSize.create!(item_id: 5, size_id: 60)
+ItemSize.create!(item_id: 6, size_id: 15)
+ItemSize.create!(item_id: 7, size_id: 29)
+ItemSize.create!(item_id: 8, size_id: 3)
+ItemSize.create!(item_id: 9, size_id: 48)
+ItemSize.create!(item_id: 10, size_id: 27)
+

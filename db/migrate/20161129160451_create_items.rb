@@ -5,7 +5,6 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string :tumbnail_img
       t.float :price
       t.string :description
-      t.references :user, foreign_key: true
       t.string :gender
 
       t.timestamps

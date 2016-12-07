@@ -1,0 +1,33 @@
+<h1>Search Page</h1>
+
+<%= search_form_for @q, url: home_path do |f| %>
+
+  <%= f.label "Name" %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.label "Categories" %>
+  <%= f.search_field :subcategories_category_name_eq %>
+
+  <%= f.label "Subcategories" %>
+  <%= f.search_field :subcategories_name_cont %>
+
+  <%= f.label "Gender" %>
+  <%= f.search_field :gender_cont %>
+
+  <%= f.label "Brand" %>
+  <%= f.search_field :brand_name_cont %>
+
+  <%= f.label "Color" %>
+  <%= f.search_field :colors_name_cont %>
+
+  <%= f.label "Size" %>
+  <%= f.search_field :sizes_selection_eq %>
+
+  <%= f.label "Shop" %>
+  <%= f.search_field :shop_name_cont %>
+
+  <%= f.label "City" %>
+  <%= f.search_field :shop_city_eq %>
+
+  <%= f.submit %>
+<% end %>

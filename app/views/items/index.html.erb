@@ -1,9 +1,6 @@
 <h1>Listing Clothes</h1>
 
-<%= form_tag items_path, method: 'get' do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "search" %>
-<% end %>
+
 
 <% @items.each do |item| %>
 <%= item.tumbnail_img %><br/>
@@ -11,6 +8,8 @@
 <%= item.price %> $<br/>
 <%= item.description %><br/>
 <%= item.gender %><br/>
+<%= item.brand.name %><br/>
+<%= item.colors.map(&:name).join(', ') %><br/>
 <%= item.item_likes.count %> likes<br/>
   <%= link_to 'like', item_item_likes_path(item), method: :post %>
   <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %><br/>
