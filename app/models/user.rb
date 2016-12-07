@@ -26,7 +26,20 @@ class User < ApplicationRecord
   # validates :shoe_size, presence: true, on: :update
   # validates :top_size, presence: true, on: :update
   # validates :bottom_size, presence: true, on: :update
+
   def liked_items
     item_likes.map(&:item)
   end
+
+  def female?
+    gender == 'Female'
+  end
+
+  def uptodate?
+    ![shoe_size, top_size, bottom_size,
+    jacket_size, underwear_size, accessoire_size,
+    jewelry_size, dress_size, swimsuit_size]
+    .map(&:present?).include?(false)
+  end
+
 end

@@ -48,6 +48,7 @@ html {
 
 .padding-bottom-100{
   padding-bottom: 100px;
+  word-wrap: break-word;
 }
 
 .homepage-hero-module {
@@ -91,3 +92,29 @@ html {
 .video-container video.fillWidth {
     width: 100%;
 }
+
+.button-margin-top{
+  margin-top: 10px;
+}
+
+/* Text inputs */
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search],
+textarea.materialize-textarea {
+  background-color: white !important;
+  border: 1px solid #eee !important;
+}
+
+// .input-field-form{
+//   background-color: white;
+// }
