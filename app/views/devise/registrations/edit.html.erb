@@ -54,9 +54,41 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <h5>Top size</h5>
+    <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Top-size to optimise the cards" %>
 
-    <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your top-size to optimise the cards" %>
-    <%= f.input :bottom_size, required: true, placeholder: "Enter your bottom-size to optimise the cards" %>
+    <h5>Jacket size</h5>
+    <%= f.input :jacket_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jacket-size to optimise the cards" %>
+
+    <h5>Underwear size</h5>
+    <%= f.input :underwear_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Undies-size to optimise the cards" %>
+
+    <h5>Accessory size</h5>
+    <%= f.input :accessoire_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Accessory-size to optimise the cards" %>
+
+    <h5>Jewlery size</h5>
+    <%= f.input :jewelry_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jewlery-size to optimise the cards" %>
+
+    <h5>Swimsuit size</h5>
+    <%= f.input :swimsuit_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Swimsuit-size to optimise the cards" %>
+
+
+    <p class="range-field">
+      <h5>Dress size</h5>
+        <output name="dressOutputName" id="userdressOutput"><%=current_user.dress_size%></output>
+        <input class="form-control string required" required="required" aria-required="true" type="range" name="user[dress_size]" id="user_dress_size" min="30" max="50" value="<%current_user.dress_size%>" oninput= "userdressOutput.value = user_dress_size.value">
+    </p>
+
+
+    <p class="range-field">
+      <h5>Bottom size</h5>
+        <output name="bottomOutputName" id="userbottomOutput"><%=current_user.bottom_size%></output>
+        <input class="form-control string required" required="required" aria-required="true" type="range" name="user[bottom_size]" id="user_bottom_size" min="30" max="50" value="<%current_user.bottom_size%>" oninput= "userbottomOutput.value = user_bottom_size.value">
+    </p>
+
+
+
+
     <p class="range-field">
     <h5>Shoe size</h5>
     <output name="shoeOutputName" id="usershoeOutput"><%=current_user.shoe_size%></output>
