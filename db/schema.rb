@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206150527) do
+ActiveRecord::Schema.define(version: 20161207103125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,10 +78,12 @@ ActiveRecord::Schema.define(version: 20161206150527) do
     t.string   "gender"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
     t.integer  "brand_id"
     t.integer  "shop_id"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["shop_id"], name: "index_items_on_shop_id", using: :btree
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
   create_table "orders", force: :cascade do |t|
@@ -100,6 +102,17 @@ ActiveRecord::Schema.define(version: 20161206150527) do
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "name"
+    t.string   "category"
+    t.float    "min_price"
+    t.string   "gender"
+    t.string   "subcategory"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.float    "max_price"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -152,6 +165,12 @@ ActiveRecord::Schema.define(version: 20161206150527) do
     t.string   "top_size"
     t.string   "bottom_size"
     t.integer  "search_radius"
+    t.string   "jacket_size"
+    t.string   "underwear_size"
+    t.string   "accessoire_size"
+    t.string   "jewelry_size"
+    t.string   "dress_size"
+    t.string   "swimsuit_size"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -166,6 +185,7 @@ ActiveRecord::Schema.define(version: 20161206150527) do
   add_foreign_key "item_subcategories", "subcategories"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "shops"
+  add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
   add_foreign_key "subcategories", "categories"
