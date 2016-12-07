@@ -16,6 +16,7 @@ Size.destroy_all
 Item.destroy_all
 User.destroy_all
 Brand.destroy_all
+Shop.destroy_all
 
 
 
@@ -72,7 +73,9 @@ silver = Color.create!(name: 'silver')
 
 
 
-10.times do
+
+
+3.times do
   Brand.create!(name: Faker::Hipster.word, image: "")
 end
 
@@ -249,10 +252,23 @@ ilarge = Size.create!(selection: 'large', category: i)
 iextralarge = Size.create!(selection: 'extralarge', category: i)
 ionesize = Size.create!(selection: "onesize", category: i)
 
+
+Shop.create!(name: "H & M", city: "Antwerp")
+Shop.create!(name: "Marks & Spencer", city: "Brussels")
+Shop.create!(name: "Urban Outfitters", city: "Ghent")
+Shop.create!(name: "J Crew", city: "Antwerp")
+Shop.create!(name: "Claire's", city: "Brussels")
+Shop.create!(name: "Madewell", city: "Ghent")
+Shop.create!(name: "Footlocker", city: "Antwerp")
+Shop.create!(name: "C&A", city: "Brussels")
+Shop.create!(name: "Macy's", city: "Ghent")
+Shop.create!(name: "Sunglass Hut", city: "Antwerp")
+
 j = Category.create!(name: "Age")
 Subcategory.create!(name: "Infants & Toddlers", category: j)
 Subcategory.create!(name: "Youth", category: j)
 Subcategory.create!(name: "Adults", category: j)
+
 
 items = [
   {
@@ -260,52 +276,51 @@ items = [
     price: 20,
     description: 'Classic thermal shirt with button collar',
     gender: 'Male',
-    user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/ThermalShirt.jpg"
+    tumbnail_img: "app/assets/images/ThermalShirt.jpg",
+    shop_id: Shop.all.sample.id
   },
    {
     name: 'Triangle Bra',
     price: 30,
     description: 'half mesh triangle shaped brassiere',
     gender: 'Female',
-    user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/TriangleBra.jpg"
+    tumbnail_img: "app/assets/images/TriangleBra.jpg",
+    shop_id: Shop.all.sample.id
   },
    {
     name: 'Casio Watch',
     price: 50,
     description: 'Vintage gold Casio digital watch',
     gender: 'Male',
-    user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/CasioWatch.jpg"
+    tumbnail_img: "app/assets/images/CasioWatch.jpg",
+    shop_id: Shop.all.sample.id
     },
    {
     name: 'Bomber Jacket',
     price: 90,
     description: "Black women's bomber jacket",
     gender: 'Female',
-    user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/BomberJacket.jpg"
+    tumbnail_img: "app/assets/images/BomberJacket.jpg",
+    shop_id: Shop.all.sample.id
   },
    {
     name: 'Mesh Midi Dress',
     price: 60,
     description: 'Black mesh midi dress, grrrrrr',
     gender: 'Female',
-    user: User.first,
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/MidiDress.jpg"
+    tumbnail_img: "app/assets/images/MidiDress.jpg",
+    shop_id: Shop.all.sample.id
   },
    {
     name: 'Skinny hipster jeans',
     price: 70,
     description: 'Super skinny black hipster jeans. Be like everyone else!',
     gender: 'Male',
-    user: User.first,
     brand: Brand.all.sample,
     tumbnail_img: "app/assets/images/SkinnyJeans.jpg"
     },
@@ -314,7 +329,6 @@ items = [
     price: 85,
     description: 'black vintage Reebok sneakers',
     gender: 'Male',
-    user: User.first,
     brand: Brand.all.sample,
     tumbnail_img: "app/assets/images/BlackTrainers.jpg"
   },
@@ -323,7 +337,6 @@ items = [
     price: 15,
     description: "Classic olive T-shirt. A staple of everyone's wardrobe",
     gender: 'Male',
-    user: User.first,
     brand: Brand.all.sample,
     tumbnail_img: "app/assets/images/TShirt.jpg"
   },
@@ -332,7 +345,6 @@ items = [
     price: 30,
     description: 'Yellow wool scarf with large check pattern',
     gender: 'Male',
-    user: User.first,
     brand: Brand.all.sample,
     tumbnail_img: "app/assets/images/Scarf.jpg"
   },
@@ -341,7 +353,6 @@ items = [
     price: 150,
     description: 'Super sexy high heels with straps',
     gender: 'Female',
-    user: User.first,
     brand: Brand.all.sample,
     tumbnail_img: "Heels.jpg"
   }
@@ -349,14 +360,16 @@ items = [
 
 items.each { |params| Item.create!(params) }
 
-# Item.all.each do |item|
-#   ItemColor.create!(color: Color.all.sample, item: item)
-#   category = Category.all.sample
-#   subcategory = category.subcategories.sample
-#   size = category.sizes.sample
-#   ItemSubcategory.create(item: item, subcategory: subcategory)
-#   ItemSize.create!(size: size, item: item)
-# end
+
+Item.all.each do |item|
+  ItemColor.create!(color: Color.all.sample, item: item)
+  category = Category.all.sample
+  subcategory = category.subcategories.sample
+  size = category.sizes.sample
+  ItemSubcategory.create(item: item, subcategory: subcategory)
+  ItemSize.create!(size: size, item: item)
+  item.update(shop_id: Shop.all.sample.id)
+end
 
 ItemColor.create!(color_id: 5, item_id: 1)
 ItemColor.create!(color_id: 5, item_id: 2)
@@ -391,13 +404,3 @@ ItemSize.create!(item_id: 8, size_id: 3)
 ItemSize.create!(item_id: 9, size_id: 48)
 ItemSize.create!(item_id: 10, size_id: 27)
 
-# Shop.create!(name: "H & M")
-# Shop.create!(name: "Marks & Spencer")
-# Shop.create!(name: "Urban Outfitters")
-# Shop.create!(name: "J Crew")
-# Shop.create!(name: "Claire's")
-# Shop.create!(name: "Madewell")
-# Shop.create!(name: "Footlocker")
-# Shop.create!(name: "C&A")
-# Shop.create!(name: "Macy's")
-# Shop.create!(name: "Sunglass Hut")

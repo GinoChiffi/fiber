@@ -15,9 +15,15 @@
   <p><%= c.description %><br/></p>
   <p><%= c.gender %><br/></p>
   <p><%= c.brand.name %><br/></p>
+  <p><%= c.colors.name %><br/></p>
+<% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id} %>
   <p><%= c.item_likes.count %> likes<br/></p>
-  <%= link_to 'like', item_item_likes_path(c), method: :post %>
-  <%= link_to 'unlike', item_item_like_path(c, c.item_likes), method: :delete %><br/>
+    <% if item_like.nil? %>
+
+  <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post %>
+  <% else %>
+  <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete %><br/>
+ <% end %>
   </div>
   <% end %>
 </div>
@@ -33,9 +39,14 @@
 <p><%= item.description %><br/></p>
 <p><%= item.gender %><br/></p>
 <p><%= item.brand.name %><br/></p>
+<p><%= item.colors.name %><br/></p>
+<% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == item.id} %>
   <%= item.item_likes.count %> likes<br/>
-  <%= link_to 'like', item_item_likes_path(item), method: :post %>
-  <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %><br/>
+  <% if item_like.nil? %>
+  <%= link_to 'like', item_item_likes_path(item.id, item_like), method: :post %>
+  <% else %>
+  <%= link_to 'unlike', item_item_like_path(item.id, item_like), method: :delete %><br/>
+  <% end %>
   <br/>
   </div>
   <% end %>

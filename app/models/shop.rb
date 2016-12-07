@@ -5,7 +5,4 @@ class Shop < ApplicationRecord
   validates :address, presence: true, uniqueness: true
   validates :image_shop, presence: true
   validates :description, presence: true
-
-
-
 end

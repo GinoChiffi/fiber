@@ -26,4 +26,7 @@ class User < ApplicationRecord
   # validates :shoe_size, presence: true, on: :update
   # validates :top_size, presence: true, on: :update
   # validates :bottom_size, presence: true, on: :update
+  def liked_items
+    item_likes.map(&:item)
+  end
 end
