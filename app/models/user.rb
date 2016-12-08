@@ -36,10 +36,17 @@ class User < ApplicationRecord
   end
 
   def uptodate?
-    ![shoe_size, top_size, bottom_size,
-    jacket_size, underwear_size, accessoire_size,
-    jewelry_size, dress_size, swimsuit_size]
-    .map(&:present?).include?(false)
+    if gender == 'Female'
+      ![shoe_size, top_size, bottom_size,
+      jacket_size, underwear_size, accessoire_size,
+      jewelry_size, dress_size, swimsuit_size]
+      .map(&:present?).include?(false)
+    else
+      ![shoe_size, top_size, bottom_size,
+      jacket_size, underwear_size, accessoire_size,
+      jewelry_size, swimsuit_size]
+      .map(&:present?).include?(false)
+    end
   end
 
 end

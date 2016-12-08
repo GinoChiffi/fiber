@@ -16,10 +16,26 @@
   padding: 0; }
 
 .navbar-brand {
-    position: absolute;
+    position: fixed;
     padding: -20px;
 }
 
 .image { height: 100px;
     width: auto;
+}
+.header{
+  position: fixed;
+  min-height: 2px;
+  position: fixed;
+  padding: -20px;
+  width: 100%;
+  padding: 0;
+  background-color: #FAFAFA;
+  height:70px;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.image{
+  margin-top: -11px;
+
 }

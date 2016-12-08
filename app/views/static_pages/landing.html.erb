@@ -7,8 +7,10 @@
 <div class="row">
   <div class="col m6 s12 offset-m3 center">
 <br/>
-<br/>
-<br/>
+
+<div id="letter-container" class="letter-container">
+  <h2><p>... and then there was <span>F</span><span>!</span><span>B</span><span>E</span><span>R</span></p></h2>
+</div>
 <br/>
 <br/>
     <%= link_to 'login', new_user_session_path, class: "btn btn-primary" %>
@@ -23,3 +25,9 @@
   link_to "like this item", item_likes_path(item), method: post
 end
  -->
+
+<script>
+      $(document).ready(function() {
+        $(".letter-container").lettering();
+      });
+</script>

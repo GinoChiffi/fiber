@@ -1,6 +1,7 @@
 //= require jquery
 //= require materialize-sprockets
 //= require jquery_ujs
+//= require lettering
 //= require_tree .
 
 

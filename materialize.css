@@ -3390,6 +3390,11 @@ input[type=range] + .thumb {
   padding-top: 0;
 }
 
+.edit-col {
+  padding: 10px;
+
+}
+
 .row {
   margin-left: auto;
   margin-right: auto;
