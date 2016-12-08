@@ -18,6 +18,7 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'materialize-sass'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'binding_of_caller'
