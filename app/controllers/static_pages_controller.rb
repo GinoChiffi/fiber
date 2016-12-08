@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  #before_action :authenticate_user!, only: [:landing]
+  before_action :authenticate_user!
 
   def landing
     if current_user

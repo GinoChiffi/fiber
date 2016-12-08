@@ -18,8 +18,6 @@ User.destroy_all
 Brand.destroy_all
 Shop.destroy_all
 
-
-
 users = [
   {
     email: 'max@gmail.com',
@@ -27,6 +25,21 @@ users = [
     user_name: 'max',
     first_name: "Max",
     last_name:  "Bobbitt",
+    address:  "Brussels",
+    url_address: "not applicable",
+    gender: "Male",
+    birth_date: "01/01/1980",
+    shoe_size: "43",
+    top_size: "L",
+    bottom_size: "40",
+    search_radius: 3
+  },
+  {
+    email: 'devis.o@hotmail.com',
+    password: 'fishfish',
+    user_name: 'fish',
+    first_name: "Olivier",
+    last_name:  "Devis",
     address:  "Brussels",
     url_address: "not applicable",
     gender: "Male",
@@ -329,7 +342,8 @@ items = [
     description: 'Super skinny black hipster jeans. Be like everyone else!',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/SkinnyJeans.jpg"
+    tumbnail_img: "app/assets/images/SkinnyJeans.jpg",
+    shop_id: Shop.all.sample.id
     },
    {
     name: 'Classic trainers',
@@ -337,7 +351,8 @@ items = [
     description: 'black vintage Reebok sneakers',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/BlackTrainers.jpg"
+    tumbnail_img: "app/assets/images/BlackTrainers.jpg",
+    shop_id: Shop.all.sample.id
   },
    {
     name: 'T Shirt',
@@ -345,7 +360,8 @@ items = [
     description: "Classic olive T-shirt. A staple of everyone's wardrobe",
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/TShirt.jpg"
+    tumbnail_img: "app/assets/images/TShirt.jpg",
+    shop_id: Shop.all.sample.id
   },
    {
     name: 'Scarf',
@@ -353,7 +369,8 @@ items = [
     description: 'Yellow wool scarf with large check pattern',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/Scarf.jpg"
+    tumbnail_img: "app/assets/images/Scarf.jpg",
+    shop_id: Shop.all.sample.id
   },
    {
     name: 'Strappy heels',
@@ -361,7 +378,8 @@ items = [
     description: 'Super sexy high heels with straps',
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "Heels.jpg"
+    tumbnail_img: "Heels.jpg",
+    shop_id: Shop.all.sample.id
   }
 ]
 
