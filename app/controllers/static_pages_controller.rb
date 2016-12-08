@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
         @not_found = true
       end
     else
-      @items = Item.all
+      @items = ItemsByUserSettings.call(current_user)
     end
   end
 
