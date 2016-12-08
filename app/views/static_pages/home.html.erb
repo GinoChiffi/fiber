@@ -1,7 +1,9 @@
 
 <div class="row">
   <div class="col s12 m6 offset-m3 center container-full-width">
-
+<% if @not_found %>
+<h1>Not found Motherfucka !</h1>
+<%end%>
 <div class="items">
   <% @items.each do |c| %>
   <br/>
@@ -13,7 +15,8 @@
   <p><%= c.description %><br/></p>
   <p><%= c.gender %><br/></p>
   <p><%= c.brand.name %><br/></p>
-  <p><%= c.colors.name %><br/></p>
+
+  <p><%= c.colors.first.name %><br/></p>
 <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id} %>
   <p><%= c.item_likes.count %> likes<br/></p>
     <% if item_like.nil? %>
