@@ -2,8 +2,8 @@
 
 <%= search_form_for @q, url: home_path do |f| %>
 
-  <%= f.label "Name" %>
-  <%= f.search_field :name_cont %>
+  <%= f.label "Search" %>
+  <%= f.search_field :name_or_brand_name_or_shop_name_or_colors_name_or_subcategories_name_or_subcategories_category_name_cont %>
 
   <%= f.label :price_gteq, "Min Price" %>
   <%= f.search_field :price_gteq %>
@@ -12,7 +12,7 @@
   <%= f.search_field :price_lteq %>
 
   <%= f.label "Categories" %>
-  <%= f.search_field :subcategories_category_name_eq %>
+  <%= f.search_field :subcategories_category_name_cont %>
 
   <%= f.label "Subcategories" %>
   <%= f.search_field :subcategories_name_cont %>
@@ -20,14 +20,8 @@
   <%= f.label :gender_eq, "Gender" %>
   <%= f.search_field :gender_eq %>
 
-  <%= f.label "Brand" %>
-  <%= f.search_field :brand_name_cont %>
-
   <%= f.label "Color" %>
   <%= f.search_field :colors_name_cont %>
-
-  <%= f.label "Shop" %>
-  <%= f.search_field :shop_name_cont %>
 
   <%= f.label "City" %>
   <%= f.search_field :shop_city_eq %>
