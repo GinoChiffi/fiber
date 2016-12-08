@@ -63,4 +63,8 @@ def self.find_for_facebook_oauth(auth)
   end
 
 
+  def sizes
+    [shoe_size, jacket_size, bottom_size, underwear_size, accessoire_size, jewelry_size, top_size, swimsuit_size, dress_size].compact.reject(&:empty?)
+  end
+
 end
