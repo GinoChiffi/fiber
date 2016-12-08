@@ -18,6 +18,7 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'materialize-sass'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'omniauth-facebook'
 gem 'procto'
 
 group :development, :test do
