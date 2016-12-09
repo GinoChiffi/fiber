@@ -1,5 +1,5 @@
 class SubcategoriesController < ApplicationController
-  # before_action, only: [:show]
+  #before_action, only: [:show]
 
   def index
     @subcategories = Subcategory.all
