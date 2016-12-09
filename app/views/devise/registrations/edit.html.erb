@@ -25,7 +25,9 @@
     <%= f.input :user_name, required: true %>
     <%= f.input :address, required: true %>
     <%= f.input :gender, required: true, :collection => %w[Male Female] %>
-    <%= f.input :birth_date, required: true %>
+
+
+    <%= f.input :birth_date, required: true, input_html: {"type" => "text", "class" => "datepicker picker__input", "readonly" =>"", "tabindex" =>"-1", "aria-haspopup" => "true", "aria-expanded" => "false", "aria-readonly" => "false", "aria-owns" => "birthdate_root" } %>
 
     <%= f.input :email, required: true, autofocus: true %>
 
@@ -114,9 +116,15 @@
   </div>
   <% end %>
 
+
+<!-- SCRIPTS -->
 <script>
   $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a  dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
   });
 </script>
