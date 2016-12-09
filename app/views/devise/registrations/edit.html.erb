@@ -26,8 +26,13 @@
     <%= f.input :address, required: true %>
     <%= f.input :gender, required: true, :collection => %w[Male Female] %>
 
+<div class="input-field">
+    <input data-birthdate='<%= current_user.birth_date.to_date %>' name="user[birth_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
+    <label ng-class="{active: user.birth_date.length}">
+        Birth Date
+    </label>
+</div>
 
-    <%= f.input :birth_date, required: true, input_html: {"type" => "text", "class" => "datepicker picker__input", "readonly" =>"", "tabindex" =>"-1", "aria-haspopup" => "true", "aria-expanded" => "false", "aria-readonly" => "false", "aria-owns" => "birthdate_root" } %>
 
     <%= f.input :email, required: true, autofocus: true %>
 
@@ -124,7 +129,20 @@
     $('.modal').modal();
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a  dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
+      selectYears: 100, // Creates a dropdown of 15 years to control year
+      max: true
     });
+    var $input = $('.datepicker').pickadate()
+    var date = $('.datepicker').data('birthdate')
+    // Use the picker object directly.
+    var picker = $input.pickadate('picker')
+    // Using JavaScript Date objects.
+    picker.set('select', new Date(date))
+    $(".datepicker").change(function() {
+      date = new Date($(".datepicker").val())
+      date = [date.getDate(), date.getMonth() + 1, date.getFullYear()].join('/');
+      $(".datepicker").val(date)
+    });
+
   });
 </script>
