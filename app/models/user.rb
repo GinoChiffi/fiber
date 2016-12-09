@@ -18,15 +18,8 @@ class User < ApplicationRecord
   has_many :items
 
 
-  validates :user_name, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :address, presence: true
-  validates :gender, presence: true
-  validates :birth_date, presence: true
-  # validates :shoe_size, presence: true, on: :update
-  # validates :top_size, presence: true, on: :update
-  # validates :bottom_size, presence: true, on: :update
 
   def liked_items
     item_likes.map(&:item)

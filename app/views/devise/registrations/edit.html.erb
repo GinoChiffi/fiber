@@ -27,7 +27,7 @@
     <%= f.input :gender, required: true, :collection => %w[Male Female] %>
 
 <div class="input-field">
-    <input data-birthdate='<%= current_user.birth_date.to_date %>' name="user[birth_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
+    <input data-birthdate='<%= current_user.birth_date.try(:to_date) %>' name="user[birth_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
     <label ng-class="{active: user.birth_date.length}">
         Birth Date
     </label>
