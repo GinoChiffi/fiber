@@ -1,5 +1,7 @@
 <h1>Search Page</h1>
 
+<div class="row">
+<div class="col m6 offset-m3 center">
 <%= search_form_for @q, url: home_path do |f| %>
 
   <%= f.label "Search" %>
@@ -11,14 +13,16 @@
   <%= f.label :price_lteq, "Max Price" %>
   <%= f.search_field :price_lteq %>
 
+
   <%= f.label "Categories" %>
   <%= f.search_field :subcategories_category_name_cont %>
 
   <%= f.label "Subcategories" %>
   <%= f.search_field :subcategories_name_cont %>
 
-  <%= f.label :gender_eq, "Gender" %>
-  <%= f.search_field :gender_eq %>
+
+<%= f.label "Gender" %>
+<%= f.select :gender_eq, options_for_select([['Select', ''], ['Male'], ['Female']]) %>
 
   <%= f.label "Color" %>
   <%= f.search_field :colors_name_cont %>
@@ -29,6 +33,7 @@
   <%= f.label "Size" %>
   <%= f.search_field :sizes_value_eq %>
 
-
   <%= f.submit %>
-<% end %>
+  <% end %>
+</div>
+</div>

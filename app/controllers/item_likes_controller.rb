@@ -1,15 +1,22 @@
 class ItemLikesController < ApplicationController
   before_action :authenticate_user!
+  skip_before_filter  :verify_authenticity_token
+
   def create
-    ItemLike.where(user_id: current_user.id, item_id: params[:item_id]).first_or_create!
-    redirect_to :back
+
+    @item_like = ItemLike.where(user_id: current_user.id, item_id: params[:item_id]).first_or_create!
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
     @item_like = ItemLike.find(params[:id])
     if @item_like
       @item_like.destroy
-      redirect_to :back
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

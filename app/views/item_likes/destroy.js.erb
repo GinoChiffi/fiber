@@ -1,0 +1,13 @@
+item = $('[data-item=<%= @item_like.item.id %>]')
+if ( $('.profil.item').length > 0 ) {
+  item.remove()
+} else {
+  likeCount = item.find('.like-count').html()
+  likeCount = parseInt(likeCount)
+  if ( likeCount != 0 ) {
+    likeCount = likeCount - 1
+    item.find('.like-count').html(likeCount)
+    item.find('.unlike-btn').html('')
+    item.find('.like-btn').html('<a data-remote="true" rel="nofollow" data-method="post" href="/items/<%= @item_like.item.id %>/item_likes">like</a>')
+  }
+}
