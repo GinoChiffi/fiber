@@ -1,7 +1,6 @@
-<h1>Search Page</h1>
-
 <div class="row">
 <div class="col m6 offset-m3 center">
+<h1>Search Page</h1>
 <%= search_form_for @q, url: home_path do |f| %>
 
   <%= f.label "Search" %>
@@ -30,7 +29,7 @@
   <%= f.label "City" %>
   <%= f.search_field :shop_city_eq %>
 
-  <%= f.label "Size" %>
+  <%= f.label "Top Size" %>
   <%= f.search_field :sizes_value_eq %>
 
   <%= f.submit %>
