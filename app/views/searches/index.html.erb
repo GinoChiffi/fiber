@@ -12,25 +12,26 @@
   <%= f.label :price_lteq, "Max Price" %>
   <%= f.search_field :price_lteq %>
 
-
-  <%= f.label "Categories" %>
-  <%= f.search_field :subcategories_category_name_cont %>
-
-  <%= f.label "Subcategories" %>
-  <%= f.search_field :subcategories_name_cont %>
-
-
-<%= f.label "Gender" %>
-<%= f.select :gender_eq, options_for_select([['Select', ''], ['Male'], ['Female']]) %>
+  <%= f.label "Gender" %>
+  <%= f.select :gender_eq, options_for_select([['Select', ''], ['Male'], ['Female']]), include_blank: true %>
 
   <%= f.label "Color" %>
-  <%= f.search_field :colors_name_cont %>
+  <%= f.select :colors_id_eq, options_from_collection_for_select(Color.all, "id", "name", @q.colors_id_eq), include_blank: true %>
 
   <%= f.label "City" %>
   <%= f.search_field :shop_city_eq %>
 
-  <%= f.label "Top Size" %>
-  <%= f.search_field :sizes_value_eq %>
+
+  <%= f.label "Category" %>
+  <%= f.select :subcategories_category_id_eq,options_from_collection_for_select(Category.all, "id", "name", @q.subcategories_category_id_eq), include_blank: true %>
+
+  <%= f.label "Subcategory" %>
+  <%= f.select :subcategories_id_eq, options_from_collection_for_select(Subcategory.all, "id", "name", @q.subcategories_id_eq), include_blank: true %>
+
+
+  <%= f.label "Size" %>
+  <%= f.select :sizes_id_eq, options_from_collection_for_select(Size.all, "id", "value", @q.sizes_id_eq), include_blank: true %>
+
 
   <%= f.submit %>
   <% end %>
