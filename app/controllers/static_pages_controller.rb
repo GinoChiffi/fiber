@@ -13,11 +13,11 @@ class StaticPagesController < ApplicationController
       @q = Item.ransack(params[:q])
       @items = @q.result
       if @items.empty?
-         @items = ItemsByUserSettings.call(current_user)
+         @items = Item.all
         @not_found = true
       end
     else
-      @items = Item.all
+      @items = ItemsByUserSettings.call(current_user)
     end
   end
 

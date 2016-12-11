@@ -7,7 +7,6 @@
     <div class="items">
       <% @items.each do |c| %>
         <div class="item" data-item='<%= c.id %>'>
-
           <%= c.tumbnail_img %><br/>
           <h1><%= c.name %><br/></h1>
           <p>Price: $<%= c.price %> $<br/></p>
@@ -23,7 +22,6 @@
           <div class="like-btn">
             <% if item_like.nil? %>
               <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
-              <p>Like this</p>
             <% end %>
           </div>
           <div class="unlike-btn">
