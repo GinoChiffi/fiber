@@ -13,6 +13,17 @@
     <link rel="stylesheet" type="text/css" href="css/jTinder.css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <script src="/path/to/isotope.pkgd.min.js"></script>
+    <script>$('.grid').isotope({
+  // options
+  itemSelector: '.grid-item',
+  layoutMode: 'fitRows',
+});</script>
+<script>$grid.isotope({ layoutMode: 'packery' })</script>
+
+
+
   </head>
   <div id="header" class="header">
   <%= render '../views/partials/header' %>

@@ -1,15 +1,28 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="contains-page">
 <div class="row">
   <div class="col s12 m6 offset-m3 center container-full-width">
 <% if @not_found %>
 <h1>Not found Motherfucka !</h1>
 <%end%>
-<div class="items">
   <% @items.each do |c| %>
   <br/>
-  <div class="item">
-
-  <%= c.tumbnail_img %><br/>
+<div id="wrappera">
+  <div id="columnsa">
+    <div class="pina">
+  <%= link_to (image_tag c.tumbnail_img) %><br/>
   <h1><%= c.name %><br/></h1>
   <p>Price: $<%= c.price %> $<br/></p>
   <p><%= c.description %><br/></p>
@@ -31,6 +44,8 @@
   </div>
 </div>
 </div>
+</div>
+
 
 
 
