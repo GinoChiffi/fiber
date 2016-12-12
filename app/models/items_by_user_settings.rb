@@ -8,10 +8,11 @@ class ItemsByUserSettings
 
   def call
     sizes = user.sizes
-    @tops = Item.joins(item_sizes: :size)
+    items = Item.joins(item_sizes: :size)
                 .where(gender: user.gender)
                 .where(item_sizes: {sizes: {value: sizes}})
                 .distinct
+    items.any? ? items : Item.all
   end
 end
 
