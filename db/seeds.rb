@@ -297,7 +297,7 @@ items = [
     description: 'Classic thermal shirt with button collar',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/ThermalShirt.jpg",
+    tumbnail_img: "catalog/ThermalShirt.jpg",
     shop_id: Shop.all.sample.id
   },
    {
@@ -306,7 +306,7 @@ items = [
     description: 'half mesh triangle shaped brassiere',
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/TriangleBra.jpg",
+    tumbnail_img: "catalog/TriangleBra.jpg",
     shop_id: Shop.all.sample.id
   },
    {
@@ -315,7 +315,7 @@ items = [
     description: 'Vintage gold Casio digital watch',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/CasioWatch.jpg",
+    tumbnail_img: "catalog/CasioWatch.jpg",
     shop_id: Shop.all.sample.id
     },
    {
@@ -324,7 +324,7 @@ items = [
     description: "Black women's bomber jacket",
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/BomberJacket.jpg",
+    tumbnail_img: "catalog/BomberJacket.jpg",
     shop_id: Shop.all.sample.id
   },
    {
@@ -333,7 +333,7 @@ items = [
     description: 'Black mesh midi dress, grrrrrr',
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/MidiDress.jpg",
+    tumbnail_img: "catalog/MidiDress.jpg",
     shop_id: Shop.all.sample.id
   },
    {
@@ -342,7 +342,7 @@ items = [
     description: 'Super skinny black hipster jeans. Be like everyone else!',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/SkinnyJeans.jpg",
+    tumbnail_img: "catalog/SkinnyJeans.jpg",
     shop_id: Shop.all.sample.id
     },
    {
@@ -351,7 +351,7 @@ items = [
     description: 'black vintage Reebok sneakers',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/BlackTrainers.jpg",
+    tumbnail_img: "catalog/BlackTrainers.jpg",
     shop_id: Shop.all.sample.id
   },
    {
@@ -360,7 +360,7 @@ items = [
     description: "Classic olive T-shirt. A staple of everyone's wardrobe",
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/TShirt.jpg",
+    tumbnail_img: "catalog/TShirt.jpg",
     shop_id: Shop.all.sample.id
   },
    {
@@ -369,7 +369,7 @@ items = [
     description: 'Yellow wool scarf with large check pattern',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "app/assets/images/Scarf.jpg",
+    tumbnail_img: "catalog/Scarf.jpg",
     shop_id: Shop.all.sample.id
   },
    {
@@ -378,7 +378,7 @@ items = [
     description: 'Super sexy high heels with straps',
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "Heels.jpg",
+    tumbnail_img: "catalog/Heels.jpg",
     shop_id: Shop.all.sample.id
   }
 ]
