@@ -21,7 +21,13 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: [:show, :edit, :update]
   resource :settings, only: [:show, :edit, :update]
+
   resources :searches, only: [:index]
+  namespace :searches do
+    get '/subcategories_collection' => 'searches#subcategories_collection', as: :subcategories_collection
+    get '/sizes_collection' => 'searches#sizes_collection', as: :sizes_collection
+  end
+
   resources :users, only: [:show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
