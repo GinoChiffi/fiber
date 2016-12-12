@@ -11,3 +11,7 @@ if ( $('.profil.item').length > 0 ) {
     item.find('.like-btn').html('<a data-remote="true" rel="nofollow" data-method="post" href="/items/<%= @item_like.item.id %>/item_likes">like</a>')
   }
 }
+
+userLikeCount = $('.user-like-count').html()
+userLikeCount = parseInt(userLikeCount) - 1
+$('.user-like-count').html(userLikeCount)
