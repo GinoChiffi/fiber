@@ -3,7 +3,11 @@
   <div>
     <%= @order.item.tumbnail_img  %>
     <%= @order.item.name %>
-    <%= @order.item.price %>
+    Brand: <%= @order.item.brand.name %>
+    Shop: <%= @order.item.shop.name %>
+    Price: <%= @order.item.price %>
+    Advance: <%= @order.item.downpayment_price %>
+    City: <%= @order.item.shop.city %>
   </div>
 
 
@@ -11,6 +15,7 @@
 <%= simple_form_for(@order, as: @order, url: orders_path(@order), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
     <div class="input-field">
+      <%= f.select :color_id, options_for_select(@colors)%>
       <%= f.select :size_id, options_for_select(@sizes)%>
       <input data-birthdate='<%= @order.pick_up_date %>' name="order[pick_up_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
       <label ng-class="{active: user.birth_date.length}">

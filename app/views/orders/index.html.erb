@@ -4,12 +4,16 @@
 
 <% @orders.each do |o| %>
   <div>
-    <%= o.item.tumbnail_img  %>
-    <%= o.item.name %>
-     <%= o.size.value %>
-    Price: <%= o.item.price %>
-    Advance: <%= o.item.downpayment_price %>
-    Date: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
+            <%= o.item.tumbnail_img  %>
+            <%= o.item.name %>
+            <%= o.size.value %>
+    Brand:  <%= o.item.brand.name %>
+    Shop:   <%= o.item.shop.name %>
+    Color:  <%= o.item.colors.map(&:name).map(&:capitalize).join(', ') %>
+    City:   <%= o.item.shop.city %>
+    Price:  <%= o.item.price %>
+    Advance:<%= o.item.downpayment_price %>
+    Date:   <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
     <%= link_to "Cancel Order", order_path(id: o.id), method: :delete %>
   </div>
 <% end %>
