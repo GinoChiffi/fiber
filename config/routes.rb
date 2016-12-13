@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   resource :dashboard, only: [:show, :edit, :update]
   resource :settings, only: [:show, :edit, :update]
 
