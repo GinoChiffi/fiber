@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show] do
     resources :item_likes, only: [:create, :destroy]
-    resources :orders, only: [:create, :destroy]
   end
 
+  resources :orders, only: [:index, :new, :create, :destroy]
   resources :profiles, only: [:show] do
     member do
       patch 'follow'

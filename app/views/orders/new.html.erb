@@ -1,0 +1,48 @@
+<h1>Place an order</h1>
+
+  <div>
+    <%= @order.item.tumbnail_img  %>
+    <%= @order.item.name %>
+    <%= @order.item.price %>
+  </div>
+
+
+
+<%= simple_form_for(@order, as: @order, url: orders_path(@order), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
+    <div class="input-field">
+      <%= f.select :size_id, options_for_select(@sizes)%>
+      <input data-birthdate='<%= @order.pick_up_date %>' name="order[pick_up_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
+      <label ng-class="{active: user.birth_date.length}">
+          Pick up date
+      </label>
+      <%= f.input :item_id, as: :hidden, input_html: { value: @item_id } %>
+    </div>
+    <%= f.button :submit, "Confirm" %>
+<% end %>
+
+<%#= link_to ' All Orders', orders_path, method: :get %>
+
+<!-- SCRIPTS -->
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a  dropdown to control month
+      selectYears: 1, // Creates a dropdown of 15 years to control year
+      min: true
+    });
+    var $input = $('.datepicker').pickadate()
+    var date = $('.datepicker').data('birthdate')
+    // Use the picker object directly.
+    var picker = $input.pickadate('picker')
+    // Using JavaScript Date objects.
+    picker.set('select', new Date(date))
+    $(".datepicker").change(function() {
+      date = new Date($(".datepicker").val())
+      date = [date.getDate(), date.getMonth() + 1, date.getFullYear()].join('/');
+      $(".datepicker").val(date)
+    });
+
+  });
+</script>

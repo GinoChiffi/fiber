@@ -16,4 +16,8 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :gender, presence: true
   validates :brand_id, presence: true
+
+  def downpayment_price
+    self.price * 0.1
+  end
 end
