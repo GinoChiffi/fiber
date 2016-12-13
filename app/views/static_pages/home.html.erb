@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col s12">
     <% if @not_found %>
-      <h1>Not found Motherfucka !</h1>
+      <div id="letter-container" class="letter-container">
+  <h2><p><span>W</span><span>e</span><span> </span><span>d</span><span>i</span><span>d</span><span>n</span><span>'</span><span>t</span><span> </span><span>f</span><span>i</span><span>n</span><span>d</span><span> </span><span>p</span><span>r</span><span>o</span><span>d</span><span>u</span><span>c</span><span>t</span><span>s</span><span>!</span><span>!</span></p></h2>
+</div>
     <% end %>
 
 
@@ -88,9 +90,9 @@
     $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+    $(".letter-container").lettering();
   });
 </script>
-
 
 
 

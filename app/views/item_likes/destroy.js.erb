@@ -1,6 +1,13 @@
-item = $('[data-item=<%= @item_like.item.id %>]')
+// function delete_row(e)
+// {
+//     e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+// }
+
+
+item = $('.card[data-item=<%= @item_like.item.id %>]')
 if ( $('.profil.item').length > 0 ) {
-  item.remove()
+  console.log(item)
+  item.parent().remove();
 } else {
   likeCount = item.find('.like-count').html()
   likeCount = parseInt(likeCount)
@@ -15,3 +22,4 @@ if ( $('.profil.item').length > 0 ) {
 userLikeCount = $('.user-like-count').html()
 userLikeCount = parseInt(userLikeCount) - 1
 $('.user-like-count').html(userLikeCount)
+
