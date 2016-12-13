@@ -1,5 +1,87 @@
-<h1>All Orders</h1>
- <%= current_user.orders.count %> Orders
+<div class="center">
+<% if current_user.orders.count == 1 %>
+ <h3> You have <%= current_user.orders.count %> order</h3>
+ <% else %>
+ <h3> You have <%= current_user.orders.count %> orders</h3>
+ <% end %>
+</div>
+
+<div class="row">
+ <% @orders.each do |o| %>
+    <div class="col s6 m6 l3">
+      <div class="card" data-item="<%= o.id %>">
+        <a class="modal-trigger  waves-light " href="#modal<%= o.id %>">
+          <div class="card-image">
+            <%= image_tag o.item.tumbnail_img %>
+          </div>
+        </a>
+
+        <div class="card-content">
+          <div class="card-title"><%= o.item.name %></div>
+          <p>Price: $<%= o.item.price %></p>
+          <span class="like-count"><%= o.item.item_likes.count %></span> likes
+        </div>
+
+        <div class="card-action">
+          <%= link_to "Cancel Order", order_path(id: o.id), method: :delete %>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<!-- Modal Structure -->
+<% @orders.each do |o| %>
+  <div id="modal<%= o.id %>" class="modal profil item" data-item="<%= o.id %>">
+    <div class="modal-content">
+      <div class="center">
+        <h4><%= o.item.name %></h4>
+          <%= image_tag o.item.tumbnail_img, class: "modal-image" %><br/>
+          <br/>
+          Price: $<%= o.item.price %> <br/>
+          Selected Size: <%= o.size.value %><br/>
+          <span class="like-count"><%= o.item.item_likes.count %></span> likes
+          <br/>
+          <br/>
+      </div>
+      <div class= "row">
+        <div class= "col s6 m6">
+          Brand: <%= o.item.brand.name %><br/>
+          Description: <%= o.item.description %><br/>
+        </div>
+        <div class= "col s6 m6">
+          Price: <%= o.item.price %><br/>
+    Advance: <%= o.item.downpayment_price %><br/>
+    Date: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
+          <br/>
+          </div>
+          <div class="center">
+            <%= link_to "Cancel Order", order_path(id: o.id), method: :delete, class: "btn btn-primary"%>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer ">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>
+    </div>
+  </div>
+<% end %>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>
+
+
+
+
 
 
 <% @orders.each do |o| %>
