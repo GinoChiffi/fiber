@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
                                                         :address])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username,
+    devise_parameter_sanitizer.permit(:account_update, keys: [:user_name,
                                                         :first_name,
                                                        :last_name,
                                                        :birth_date,
