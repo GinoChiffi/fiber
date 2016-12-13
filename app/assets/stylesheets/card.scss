@@ -6,6 +6,10 @@
   height: 180px;
 
 }.card-title{
-      height: 90px;
+      height: 70px;
     overflow: hidden;
+}
+
+.card .card-content .card-title {
+  line-height: 30px !important;
 }

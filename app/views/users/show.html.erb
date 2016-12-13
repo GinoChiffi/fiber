@@ -2,8 +2,11 @@
 <div class="row">
   <div class="col s6 m6">
     <img src="http://cps-static.rovicorp.com/3/JPG_500/MI0000/049/MI0000049473.jpg?partner=allrovi.com" class="avatar-profile">
+    <br/>
+    <br/>
+    Items <%= current_user.first_name %> liked.
   </div>
-  <div class="col s6 m6" align="right">
+  <div class="col s6 m6 center">
     <strong>
       <h5><%= current_user.user_name %></h5>
       <%= link_to "Orders", orders_path, method: :get %>
@@ -11,7 +14,11 @@
         <span class='user-like-count'>
           <%= current_user.liked_items.count %>
         </span>
+        <% if current_user.liked_items.count == 1 %>
+        <br/>like
+        <% else %>
         <br/>likes
+        <% end %>
       </h6>
     </strong>
   </div>
@@ -29,10 +36,15 @@
         </a>
 
         <div class="card-content">
+        <div class= "center">
           <div class="card-title"><%= c.name %></div>
-          <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
-          <p>Price: $<%= c.price %></p>
-          <span class="like-count"><%= c.item_likes.count %></span> likes
+            <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
+            <p>Price: $<%= c.price %></p>
+            <span class="like-count"><%= c.item_likes.count %></span> likes
+            <%= link_to new_order_path(item_id: c.id), method: :get do %>
+              <div class="btn btn-primary center">Order</div>
+            <% end %>
+          </div>
         </div>
 
         <div class="card-action">
@@ -75,6 +87,12 @@
           Gender: <%= c.gender %><br/>
           Brand: <%= c.brand.name %><br/>
           Colors: <%= c.colors.map(&:name).join(', ') %><br/>
+          <br/>
+          </div>
+          <div class="center">
+            <%= link_to new_order_path(item_id: c.id), method: :get do %>
+              <div class="btn btn-primary center">Order</div>
+            <% end %>
         </div>
       </div>
     </div>
