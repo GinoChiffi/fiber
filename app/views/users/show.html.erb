@@ -6,6 +6,7 @@
   <div class="col s6 m6" align="right">
     <strong>
       <h5><%= current_user.user_name %></h5>
+      <%= link_to "Orders", orders_path, method: :get %>
       <h6>
         <span class='user-like-count'>
           <%= current_user.liked_items.count %>
@@ -29,7 +30,7 @@
   <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == item.id} %>
   <%= item.item_likes.count %> likes<br/>
   <%= link_to 'unlike', item_item_like_path(item.id, item_like), remote: true, method: :delete %><br/>
-  <%= link_to item_orders_path(item.id), method: :post do %>
+  <%= link_to new_order_path(item_id: item.id), method: :get do %>
   <div class="btn btn-primary">Order</div>
   <br/>
   <% end %>

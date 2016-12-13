@@ -1,0 +1,20 @@
+<h1>All Orders</h1>
+ <%= current_user.orders.count %> Orders
+
+
+<% @orders.each do |o| %>
+  <div>
+    <%= o.item.tumbnail_img  %>
+    <%= o.item.name %>
+     <%= o.size.value %>
+    Price: <%= o.item.price %>
+    Advance: <%= o.item.downpayment_price %>
+    Date: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
+    <%= link_to "Cancel Order", order_path(id: o.id), method: :delete %>
+  </div>
+<% end %>
+
+
+
+
+
