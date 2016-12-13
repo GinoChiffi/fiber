@@ -1,33 +1,39 @@
-
 <div class="row">
-  <div class="col s12 m6 offset-m3 center container-full-width">
+  <div class="col s12">
     <% if @not_found %>
-    <h1>Not found Motherfucka !</h1>
-    <%end%>
-    <div class="items">
-      <% @items.each do |c| %>
-        <div class="item" data-item='<%= c.id %>'>
-          <%= c.tumbnail_img %><br/>
-          <h1><%= c.name %><br/></h1>
-          <p>Price: $<%= c.price %> $<br/></p>
-          <p><%= c.description %><br/></p>
-          <p><%= c.gender %><br/></p>
-          <p><%= c.brand.name %><br/></p>
+      <h1>Not found Motherfucka !</h1>
+    <% end %>
 
-          <p><%= c.colors.first.name %><br/></p>
-          <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
-          <p>
-            <span class="like-count"> <%= c.item_likes.count %></span> likes<br/>
-          </p>
-          <div class="like-btn">
-            <% if item_like.nil? %>
-              <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
-            <% end %>
-          </div>
-          <div class="unlike-btn">
-            <% unless item_like.nil? %>
-              <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %><br/>
-              <% end %>
+
+    <div class="row">
+      <% @items.each do |c| %>
+        <div class="col s6 m6 l3">
+          <div class="card" data-item="<%= c.id %>">
+            <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
+              <div class="card-image">
+                <%= image_tag c.tumbnail_img %>
+              </div>
+            </a>
+            <div class="card-content">
+              <div class="card-title"><%= c.name %></div>
+              <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
+
+              <p>Price: $<%= c.price %></p>
+                <span class="like-count"><%= c.item_likes.count %></span> likes
+
+            </div>
+            <div class="card-action">
+              <div class="like-btn">
+                <% if item_like.nil? %>
+                  <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
+                <% end %>
+              </div>
+              <div class="unlike-btn">
+                <% unless item_like.nil? %>
+                  <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %><br/>
+                  <% end %>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
@@ -35,9 +41,55 @@
   </div>
 </div>
 
+<!-- Modal Structure -->
+<% @items.each do |c| %>
+  <div id="modal<%= c.id %>" class="modal" data-item="<%= c.id %>">
+    <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
+    <div class="modal-content">
+      <div class="center">
+        <h4><%= c.name %></h4>
+          <%= image_tag c.tumbnail_img, class: "modal-image" %><br/>
+          <br/>
+          Price: $<%= c.price %> <br/>
+          <span class="like-count"><%= c.item_likes.count %></span> likes
+          <br/>
+          <br/>
+      </div>
+      <div class= "row">
+        <div class= "col s6 m6">
+          Description: <%= c.description %><br/>
+        </div>
+        <div class= "col s6 m6">
+          Gender: <%= c.gender %><br/>
+          Brand: <%= c.brand.name %><br/>
+          Colors: <%= c.colors.map(&:name).join(', ') %><br/>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer ">
+      <div class="like-btn modal-close btn-flat">
+        <% if item_like.nil? %>
+          <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
+        <% end %>
+      </div>
+      <div class="unlike-btn modal-close btn-flat">
+        <% unless item_like.nil? %>
+          <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %><br/>
+        <% end %>
+      </div>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>
+    </div>
+  </div>
+<% end %>
 
 
-
+<script>
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>
 
 
 

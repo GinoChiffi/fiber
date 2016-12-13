@@ -14,6 +14,8 @@
 @import "pages/index";
 @import "vendor/index";
 @import "profile_header";
+@import "modal";
+@import "card";
 @import "materialize";
 
 .full-screen-video{
@@ -22,11 +24,6 @@
   left: -61%;
   bottom: 0%;
 }
-
-html {
-  color: white;
-}
-
 
 .footer-icon {
   font-size: 30px;
@@ -119,9 +116,6 @@ select {
   display: inline-block !important;
 }
 
-// .input-field-form{
-//   background-color: white;
-// }
 
 
 

@@ -20,12 +20,12 @@
   <body>
 
   <main>
-  <div id="container" class="padding-bottom-100 padding-top-60">
-    <%= yield %>
+    <div id="container" class="padding-bottom-100 padding-top-60">
+      <%= yield %>
     </div>
   </main>
-        <% unless current_user.nil? %>
-      <%= render '../views/partials/footer' %>
-    <% end %>
+  <% unless current_user.nil? %>
+    <%= render '../views/partials/footer' %>
+  <% end %>
   </body>
 </html>

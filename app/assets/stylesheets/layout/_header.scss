@@ -20,14 +20,10 @@
     padding: -20px;
 }
 
-.image { height: 100px;
-    width: auto;
-}
-.header{
+.header {
+  z-index: 999;
   position: fixed;
   min-height: 2px;
-  position: fixed;
-  padding: -20px;
   width: 100%;
   padding: 0;
   background-color: #FAFAFA;
@@ -35,7 +31,8 @@
   border-bottom: 1px solid #E1E1E1;
 }
 
-.image{
+.header-logo {
   margin-top: -11px;
-
+  height: 100px;
+  width: auto;
 }
