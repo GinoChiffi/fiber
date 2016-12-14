@@ -9,30 +9,33 @@
     <div class="row">
       <% @items.each do |c| %>
         <div class="col s6 m6 l3">
-          <div class="card" data-item="<%= c.id %>">
-            <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
-              <div class="card-image">
-                <%= image_tag c.tumbnail_img %>
+          <div class="center-align">
+            <div class="card" data-item="<%= c.id %>">
+              <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
+                <div class="card-image">
+                  <%= image_tag c.tumbnail_img %>
+                </div>
+              </a>
+              <div class="card-content">
+                <div class="card-title"><%= c.name %></div>
+                <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
+                <p>Price: $<%= c.price %></p>
+                <span class="like-count">
+                  <%= c.item_likes.count %>
+                </span> likes
               </div>
-            </a>
-            <div class="card-content">
-              <div class="card-title"><%= c.name %></div>
-              <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
-
-              <p>Price: $<%= c.price %></p>
-                <span class="like-count"><%= c.item_likes.count %></span> likes
-
-            </div>
-            <div class="card-action">
-              <div class="like-btn">
-                <% if item_like.nil? %>
-                  <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
-                <% end %>
-              </div>
-              <div class="unlike-btn">
-                <% unless item_like.nil? %>
-                  <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %><br/>
+              <div class="card-action">
+                <div class="like-btn">
+                  <% if item_like.nil? %>
+                    <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
                   <% end %>
+                </div>
+                <div class="unlike-btn">
+                  <% unless item_like.nil? %>
+                    <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
+                    <br/>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
