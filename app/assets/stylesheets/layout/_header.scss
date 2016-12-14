@@ -1,38 +1,17 @@
-.header-content{
-    padding:0 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header-top, .header-top-hidden {
-  min-height: 2px; }
-
-.header-top-hidden {
-  visibility: hidden; }
-
-.header-top-hidden .header-content-wrap {
-  width: 100%;
-  padding: 0; }
-
-.navbar-brand {
-    position: fixed;
-    padding: -20px;
-}
-
 .header {
   z-index: 999;
   position: fixed;
   min-height: 2px;
   width: 100%;
-  padding: 0;
-  background-color: #FAFAFA;
-  height:70px;
-  border-bottom: 1px solid #E1E1E1;
+  background-color: $red;
+  height: 65px;
+  border-bottom: 1px solid $gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-logo {
-  margin-top: -11px;
-  height: 100px;
-  width: auto;
+  height: 100%;
+  margin-top: 2vh;
 }
