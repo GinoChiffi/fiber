@@ -19,6 +19,11 @@
 @import "materialize";
 @import "landing";
 
+body {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400;
+}
+
 .full-screen-video{
   z-index: -10;
   width: 316%;
