@@ -2,8 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable,
-  :omniauthable, omniauth_providers: [:facebook]
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauthable, omniauth_providers: [:facebook]
 
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -17,7 +17,6 @@ class User < ApplicationRecord
   has_many :item_likes
   has_many :items
 
-
   validates :first_name, presence: true
   validates :last_name, presence: true
 
@@ -27,6 +26,10 @@ class User < ApplicationRecord
 
   def female?
     gender == 'Female'
+  end
+
+  def male?
+    gender == 'male'
   end
 
   def uptodate?
@@ -42,7 +45,8 @@ class User < ApplicationRecord
       .map(&:present?).include?(false)
     end
   end
-def self.find_for_facebook_oauth(auth)
+
+  def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
     user_params[:facebook_picture_url] = auth.info.image
@@ -50,21 +54,27 @@ def self.find_for_facebook_oauth(auth)
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
 
     user = User.where(provider: auth.provider, uid: auth.uid).first
-    user ||= User.where(email: auth.info.email).first
+    user ||= User.where(email: auth.info.email).first # User did a regular sign up in the past.
     if user
       user.update(user_params)
     else
       user = User.new(user_params)
-      user.password = Devise.friendly_token[0,20]
+      user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
     end
 
     return user
   end
 
-
   def sizes
     [shoe_size, jacket_size, bottom_size, underwear_size, accessoire_size, jewelry_size, top_size, swimsuit_size, dress_size].compact.reject(&:empty?)
   end
 
+  def profile_picture_url
+    !facebook_picture_url.blank? ? facebook_picture_url : profile_pic
+  end
+
+  def has_profile_picture?
+    !profile_picture_url.blank?
+  end
 end

@@ -1,34 +1,19 @@
-
-<br/>
-<br/>
-<br/>
-
 <%= render 'layouts/cover_video' %>
-<div class="row">
-  <div class="col m6 s12 offset-m3 center">
-<br/>
 
-<div id="letter-container" class="letter-container">
-  <h2><p>... and then there was <span>F</span><span>!</span><span>B</span><span>E</span><span>R</span></p></h2>
-</div>
-<br/>
-<br/>
-    <%= link_to 'login', new_user_session_path, class: "btn btn-primary" %>
-    <%= link_to 'register', new_user_registration_path, class: "btn btn-primary" %>
-<%= link_to "Sign up with Facebook", user_facebook_omniauth_authorize_path,
-    class: "btn blue darken-4" %>
+<div class="landing-container valign-wrapper">
+  <div class="valign center-align">
+    <div>
+    <%= link_to 'Login', new_user_session_path, class: "btn red lighten-1 devise-btn" %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: "btn red lighten-1 devise-btn" %>
+    </div>
+    <div>
+      <%= link_to "Sign Up with Facebook", user_facebook_omniauth_authorize_path, class: "btn blue darken-4 devise-btn" %>
+    </div>
   </div>
 </div>
 
-
-<!-- @items.each do item
-  item.name
-  link_to "like this item", item_likes_path(item), method: post
-end
- -->
-
 <script>
-      $(document).ready(function() {
-        $(".letter-container").lettering();
-      });
+  $(document).ready(function() {
+    $(".letter-container").lettering();
+  });
 </script>
