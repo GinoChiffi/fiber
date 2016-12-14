@@ -19,6 +19,16 @@ if ( $('.profil.item').length > 0 ) {
   }
 }
 
+modal = $('.modal[data-item=<%= @item_like.item.id %>]')
+modalLikeCount = modal.find('.like-count').html()
+modalLikeCount = parseInt(modalLikeCount)
+if ( modalLikeCount != 0 ) {
+  modalLikeCount = modalLikeCount - 1
+  modal.find('.like-count').html(modalLikeCount)
+  modal.find('.unlike-btn').html('')
+  modal.find('.like-btn').html('<a data-remote="true" rel="nofollow" data-method="post" href="/items/<%= @item_like.item.id %>/item_likes">like</a>')
+}
+
 userLikeCount = $('.user-like-count').html()
 userLikeCount = parseInt(userLikeCount) - 1
 $('.user-like-count').html(userLikeCount)
