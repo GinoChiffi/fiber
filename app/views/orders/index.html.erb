@@ -48,7 +48,8 @@
         <br/>
         <br/>
         Price: $<%= o.item.price %> <br/>
-        Selected Size: <%= o.size.value %><br/>
+        Size: <%= o.size.value %><br/>
+        Color: <%= o.item.item_colors.map(&:color).map(&:name).join(', ') %><br/>
         <span class="like-count">
           <%= o.item.item_likes.count %>
         </span> likes
