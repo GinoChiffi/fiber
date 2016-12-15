@@ -18,11 +18,11 @@
       <span class="waves-effect waves-light btn">Orders</span>
       <% end %>
   </div>
-  </div>
+</div>
 
 
 <div class="row">
- <% current_user.liked_items.each do |c| %>
+  <% current_user.liked_items.each do |c| %>
     <div class="col s6 m6 l3">
       <div class="card" data-item="<%= c.id %>">
         <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
@@ -32,8 +32,8 @@
         </a>
 
         <div class="card-content">
-        <div class= "center">
-          <div class="card-title"><%= c.name %></div>
+          <div class= "center">
+            <div class="card-title"><%= c.name %></div>
             <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
             <p>Price: $<%= c.price %></p>
             <span class="like-count"><%= c.item_likes.count %></span> likes
@@ -52,7 +52,7 @@
           <div class="unlike-btn">
             <% unless item_like.nil? %>
               <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %><br/>
-              <% end %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -60,10 +60,9 @@
   <% end %>
 </div>
 
-
 <!-- Modal Structure -->
 <% current_user.liked_items.each do |c| %>
-  <div id="modal<%= c.id %>" class="modal profil item" data-item="<%= c.id %>">
+  <div id="modal<%= c.id %>" class="modal item-modal" data-item="<%= c.id %>">
     <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
     <div class="modal-content">
       <div class="center">
@@ -92,7 +91,7 @@
           </div>
           <div class="center">
             <%= link_to new_order_path(item_id: c.id), method: :get do %>
-              <div class="btn btn-primary center">Order</div>
+              <div class="btn center margin-top-15">Order</div>
             <% end %>
         </div>
       </div>
@@ -116,54 +115,3 @@
     $('.modal').modal();
   });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-<% current_user.liked_items.each do |item| %>
-<div class='profil item' data-item='<%= item.id %>'>
-  <%= item.tumbnail_img %><br/>
-  <%= item.name %><br/>
-  <%= item.price %> $<br/>
-  <%= item.description %><br/>
-  <%= item.gender %><br/>
-  <%= item.brand.name %><br/>
-  <%= item.colors.map(&:name).join(', ') %><br/>
-  <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == item.id} %>
-  <%= item.item_likes.count %> likes<br/>
-  <%= link_to 'unlike', item_item_like_path(item.id, item_like), remote: true, method: :delete %><br/>
-  <%= link_to new_order_path(item_id: item.id), method: :get do %>
-  <div class="btn btn-primary">Order</div>
-  <br/>
-  <% end %>
-</div>
-<% end %> -->
-

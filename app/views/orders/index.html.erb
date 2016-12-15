@@ -1,9 +1,9 @@
 <div class="center">
-<% if current_user.orders.count == 1 %>
- <h3> You have <%= current_user.orders.count %> order</h3>
- <% else %>
- <h3> You have <%= current_user.orders.count %> orders</h3>
- <% end %>
+  <% if current_user.orders.count == 1 %>
+    <h5> You have <%= current_user.orders.count %> Order</h5>
+  <% else %>
+    <h5> You have <%= current_user.orders.count %> Orders</h5>
+  <% end %>
 </div>
 
 <div class="row">
@@ -19,32 +19,41 @@
         <div class="card-content">
           <div class="card-title"><%= o.item.name %></div>
           <p>Price: $<%= o.item.price %></p>
-          <span class="like-count"><%= o.item.item_likes.count %></span> likes
+          <p>Pick-Up: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %></p>
+          <span class="like-count">
+            <%= o.item.item_likes.count %>
+          </span> likes
         </div>
 
         <div class="card-action">
           <%= link_to "Cancel Order", order_path(id: o.id), method: :delete %>
-
         </div>
       </div>
     </div>
   <% end %>
 </div>
 
-
 <!-- Modal Structure -->
 <% @orders.each do |o| %>
-  <div id="modal<%= o.id %>" class="modal profil item" data-item="<%= o.id %>">
+  <div id="modal<%= o.id %>" class="modal item-modal" data-item="<%= o.id %>">
     <div class="modal-content">
       <div class="center">
-        <h4><%= o.item.name %></h4>
-          <%= image_tag o.item.tumbnail_img, class: "modal-image" %><br/>
-          <br/>
-          Price: $<%= o.item.price %> <br/>
-          Selected Size: <%= o.size.value %><br/>
-          <span class="like-count"><%= o.item.item_likes.count %></span> likes
-          <br/>
-          <br/>
+        <div class="pull-right">
+          <a href="#!" class="modal-action modal-close btn-flat">&times</a>
+        </div>
+        <div>
+          <h4><%= o.item.name %></h4>
+        </div>
+        <%= image_tag o.item.tumbnail_img, class: "modal-image" %>
+        <br/>
+        <br/>
+        Price: $<%= o.item.price %> <br/>
+        Selected Size: <%= o.size.value %><br/>
+        <span class="like-count">
+          <%= o.item.item_likes.count %>
+        </span> likes
+        <br/>
+        <br/>
       </div>
       <div class= "row">
         <div class= "col s6 m6">
@@ -52,25 +61,17 @@
           Description: <%= o.item.description %><br/>
         </div>
         <div class= "col s6 m6">
-          Price: <%= o.item.price %><br/>
-    Advance: <%= o.item.downpayment_price %><br/>
-    Date: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
+          Advance: <%= o.item.downpayment_price %><br/>
+          Pick-Up: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
           <br/>
-          </div>
-          <div class="center">
-            <%= link_to "Cancel Order", order_path(id: o.id), method: :delete, class: "btn btn-primary"%>
-
+        </div>
+        <div class="center">
+          <%= link_to "Cancel Order", order_path(id: o.id), method: :delete, class: "btn margin-top-15"%>
         </div>
       </div>
     </div>
-
-    <div class="modal-footer ">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>
-    </div>
   </div>
 <% end %>
-</div>
-
 
 <script>
     $(document).ready(function(){
@@ -79,28 +80,18 @@
   });
 </script>
 
-
-
-
-
-
-<% @orders.each do |o| %>
-  <div>
-            <%= o.item.tumbnail_img  %>
-            <%= o.item.name %>
-            <%= o.size.value %>
-    Brand:  <%= o.item.brand.name %>
-    Shop:   <%= o.item.shop.name %>
-    Color:  <%= o.item.colors.map(&:name).map(&:capitalize).join(', ') %>
-    City:   <%= o.item.shop.city %>
-    Price:  <%= o.item.price %>
-    Advance:<%= o.item.downpayment_price %>
-    Date:   <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
-    <%= link_to "Cancel Order", order_path(id: o.id), method: :delete %>
-  </div>
-<% end %>
-
-
-
-
-
+<%# @orders.each do |o| %>
+<!--   <div>
+            <%#= o.item.tumbnail_img  %>
+            <%#= o.item.name %>
+            <%#= o.size.value %>
+    Brand:  <%#= o.item.brand.name %>
+    Shop:   <%#= o.item.shop.name %>
+    Color:  <%#= o.item.colors.map(&:name).map(&:capitalize).join(', ') %>#
+    City:   <%#= o.item.shop.city %>
+    Price:  <%#= o.item.price %>
+    Advance:<%#= o.item.downpayment_price %>
+    Date:   <%#= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
+    <%#= link_to "Cancel Order", order_path(id: o.id), method: :delete %>
+  </div> -->
+<%# end %>

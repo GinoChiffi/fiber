@@ -1,5 +1,4 @@
 class SizesController < ApplicationController
-  #before_action, only: [:show]
 
   def index
     @sizes = Size.all
