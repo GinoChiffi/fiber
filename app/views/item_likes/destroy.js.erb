@@ -6,7 +6,6 @@
 
 item = $('.card[data-item=<%= @item_like.item.id %>]')
 if ( $('.profil.item').length > 0 ) {
-  console.log(item)
   item.parent().remove();
 } else {
   likeCount = item.find('.like-count').html()
