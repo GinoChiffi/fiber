@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 40vh;
+  padding-top: 20vh;
 }
 
 .devise-btn {
@@ -17,4 +17,11 @@
       line-height: 3.4;
       margin-top: -28px;
 
+}
+
+.card-landing {
+  background-color: white !important;
+  font-size: 12px;
+  line-height: 20px;
+  box-shadow: 5px 5px 44px 10px rgba(0,0,0,0.45);
 }
