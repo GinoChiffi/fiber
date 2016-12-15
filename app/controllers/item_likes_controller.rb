@@ -1,7 +1,6 @@
 class ItemLikesController < ApplicationController
 
   def create
-
     @item_like = ItemLike.where(user_id: current_user.id, item_id: params[:item_id]).first_or_create!
     respond_to do |format|
       format.js
@@ -17,5 +16,4 @@ class ItemLikesController < ApplicationController
       end
     end
   end
-
 end
