@@ -90,19 +90,20 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Top-size to optimise the cards" %>
+        <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Top Size" %>
 
-        <%= f.input :jacket_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jacket-size to optimise the cards" %>
+        <%= f.input :jacket_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Jacket Size" %>
 
-        <%= f.input :underwear_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Undies-size to optimise the cards" %>
+        <%= f.input :underwear_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Underwear Size" %>
 
-        <%= f.input :accessoire_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Accessory-size to optimise the cards" %>
+        <%= f.input :accessoire_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Accessory Size" %>
 
-        <%= f.input :jewelry_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jewlery-size to optimise the cards" %>
+        <%= f.input :jewelry_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Jewelry Size" %>
 
-        <%= f.input :swimsuit_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Swimsuit-size to optimise the cards" %>
+        <%= f.input :swimsuit_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Swimsuit Size" %>
 
         <% if current_user.female? %>
+          <%= f.label 'Dress Size', required: true %>
           <output name="dressOutputName" id="userdressOutput">
             <%=current_user.dress_size%>
           </output>
@@ -111,6 +112,7 @@
           </p>
         <% end %>
 
+        <%= f.label 'Trouser Size', required: true %>
         <output name="bottomOutputName" id="userbottomOutput">
           <%=current_user.bottom_size%>
         </output>
@@ -118,6 +120,7 @@
           <%= f.input_field :bottom_size, type: "range", id: "user_bottom_size", min:30, max:50, oninput: "userbottomOutput.value = user_bottom_size.value" %>
         </p>
 
+        <%= f.label 'Shoe Size', required: true %>
         <output name="shoeOutputName" id="usershoeOutput">
           <%=current_user.shoe_size%>
         </output>
