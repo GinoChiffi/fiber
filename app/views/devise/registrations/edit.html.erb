@@ -1,130 +1,145 @@
 <div class="row">
   <div class="col m6 offset-m3 center">
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-
-
-<% unless current_user.uptodate? %>
-<div class="alert alert-danger">
-  Update your sizes to have a better experience.
-</div>
-
-<% end %>
-
-<div class="progress">
-    <div class="determinate" style="width: <%= user_account_progress(current_user) %>% "></div>
-</div>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name, required: true %>
-    <%= f.input :last_name, required: true %>
-    <%= f.input :user_name, required: true %>
-    <%= f.input :address, required: true %>
-    <%= f.input :gender, required: true, :collection => %w[Male Female] %>
-
-<div class="input-field">
-    <input data-birthdate='<%= current_user.birth_date.try(:to_date) %>' name="user[birth_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
-    <label ng-class="{active: user.birth_date.length}">
-        Birth Date
-    </label>
-</div>
-
-
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% unless current_user.uptodate? %>
+      <div class="alert alert-danger">
+        Update your sizes to have a better experience.
+      </div>
     <% end %>
 
-    <%= f.input :password, autocomplete: "off", include_blank: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, include_blank: "we need your current password to confirm your changes", required: true %>
+    <div class="progress">
+      <div class="determinate" style="width: <%= user_account_progress(current_user) %>% "></div>
+    </div>
 
-    <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Edit personal sizes</a>
-  </div>
-<br/>
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-<br/>
-<h6>Unhappy?</h6>
+    <%= simple_form_for(resource, as: resource_name,
+          url: registration_path(resource_name),
+          html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-     <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "waves-effect waves-light btn button-margin-top" %>
+      <div class="form-inputs">
+        <%= f.input :first_name, required: true %>
+        <%= f.input :last_name, required: true %>
+        <%= f.input :user_name, required: true %>
+        <%= f.input :address, required: true %>
+        <%= f.input :gender, required: true, :collection => %w[Male Female] %>
 
-    <%= link_to 'logout', destroy_user_session_path, method: :delete, class: "waves-effect waves-light btn button-margin-top"%>
+        <div class="form-group">
+          <%= f.label 'Birthdate', required: true %>
+          <div class="input-field">
+            <input data-birthdate='<%= current_user.birth_date.try(:to_date) %>' name="user[birth_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
+          </div>
+        </div>
+
+        <%= f.input :email, required: true, autofocus: true %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+
+        <%= f.input :password,
+              autocomplete: "off",
+              include_blank: "leave it blank if you don't want to change it",
+              required: false %>
+        <%= f.input :password_confirmation, required: false %>
+        <%= f.input :current_password,
+              include_blank: "we need your current password to confirm your changes",
+              required: true %>
+
+        <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Edit personal sizes</a>
+      </div>
+
+      <br/>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Update" %>
+      </div>
+    <% end %>
+
+    <br/>
+    <h6>Unhappy?</h6>
+
+    <%= link_to "Cancel my account",
+          registration_path(resource_name),
+          data: { confirm: "Are you sure?" },
+          method: :delete,
+          class: "waves-effect waves-light btn button-margin-top" %>
+    <%= link_to 'logout',
+          destroy_user_session_path,
+          method: :delete,
+          class: "waves-effect waves-light btn button-margin-top"%>
   </div>
 </div>
 
 <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Edit your Sizes</h4>
+  <div class="modal-content">
+    <h4>Edit your Sizes</h4>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource,
+          as: resource_name,
+          url: registration_path(resource_name),
+          html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <h5>Top size</h5>
-    <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Top-size to optimise the cards" %>
+      <div class="form-inputs">
+        <h5>Top size</h5>
+        <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Top-size to optimise the cards" %>
 
-    <h5>Jacket size</h5>
-    <%= f.input :jacket_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jacket-size to optimise the cards" %>
+        <h5>Jacket size</h5>
+        <%= f.input :jacket_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jacket-size to optimise the cards" %>
 
-    <h5>Underwear size</h5>
-    <%= f.input :underwear_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Undies-size to optimise the cards" %>
+        <h5>Underwear size</h5>
+        <%= f.input :underwear_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Undies-size to optimise the cards" %>
 
-    <h5>Accessory size</h5>
-    <%= f.input :accessoire_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Accessory-size to optimise the cards" %>
+        <h5>Accessory size</h5>
+        <%= f.input :accessoire_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Accessory-size to optimise the cards" %>
 
-    <h5>Jewlery size</h5>
-    <%= f.input :jewelry_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jewlery-size to optimise the cards" %>
+        <h5>Jewlery size</h5>
+        <%= f.input :jewelry_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jewlery-size to optimise the cards" %>
 
-    <h5>Swimsuit size</h5>
-    <%= f.input :swimsuit_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Swimsuit-size to optimise the cards" %>
+        <h5>Swimsuit size</h5>
+        <%= f.input :swimsuit_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Swimsuit-size to optimise the cards" %>
 
-    <% if current_user.female? %>
-
-      <h5>Dress size</h5>
-        <output name="dressOutputName" id="userdressOutput"><%=current_user.dress_size%></output>
+        <% if current_user.female? %>
+          <h5>Dress size</h5>
+          <output name="dressOutputName" id="userdressOutput">
+            <%=current_user.dress_size%>
+          </output>
           <p class="range-field">
             <%= f.input_field :dress_size, type: "range", id: "user_dress_size", min:30, max:50, oninput: "userdressOutput.value = user_dress_size.value" %>
           </p>
-    <% end %>
+        <% end %>
 
+        <h5>Bottom size</h5>
+        <output name="bottomOutputName" id="userbottomOutput">
+          <%=current_user.bottom_size%>
+        </output>
+        <p class="range-field">
+          <%= f.input_field :bottom_size, type: "range", id: "user_bottom_size", min:30, max:50, oninput: "userbottomOutput.value = user_bottom_size.value" %>
+        </p>
 
-    <h5>Bottom size</h5>
-    <output name="bottomOutputName" id="userbottomOutput"><%=current_user.bottom_size%></output>
-      <p class="range-field">
-        <%= f.input_field :bottom_size, type: "range", id: "user_bottom_size", min:30, max:50, oninput: "userbottomOutput.value = user_bottom_size.value" %>
-      </p>
+        <h5>Shoe size</h5>
+        <output name="shoeOutputName" id="usershoeOutput">
+          <%=current_user.shoe_size%>
+        </output>
+        <p class="range-field">
+          <%= f.input_field :shoe_size, type: "range", id: "user_shoe_size", min:32, max:50, oninput: "usershoeOutput.value = user_shoe_size.value" %>
+        </p>
 
-    <h5>Shoe size</h5>
-    <output name="shoeOutputName" id="usershoeOutput"><%=current_user.shoe_size%></output>
-    <p class="range-field">
-    <%= f.input_field :shoe_size, type: "range", id: "user_shoe_size", min:32, max:50, oninput: "usershoeOutput.value = user_shoe_size.value" %>
-      </p>
+        <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+        <br/>
 
-
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-    <br/>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-
+        <div class="form-actions">
+          <%= f.button :submit, "Update" %>
+        </div>
+      </div>
     </div>
-
-  </div>
   <% end %>
 
 
-<!-- SCRIPTS -->
-<script>
-  $(document).ready(function(){
+  <!-- SCRIPTS -->
+  <script>
+    $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
     $('.datepicker').pickadate({
