@@ -51,7 +51,7 @@
 
 <!-- Modal Structure -->
 <% @items.each do |c| %>
-  <div id="modal<%= c.id %>" class="modal" data-item="<%= c.id %>">
+  <div id="modal<%= c.id %>" class="modal item-modal" data-item="<%= c.id %>">
     <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
     <div class="modal-content">
       <div class="center">

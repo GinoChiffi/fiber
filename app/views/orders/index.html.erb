@@ -1,8 +1,8 @@
 <div class="center">
   <% if current_user.orders.count == 1 %>
-    <h3> You have <%= current_user.orders.count %> order</h3>
+    <h5> You have <%= current_user.orders.count %> Order</h5>
   <% else %>
-    <h3> You have <%= current_user.orders.count %> orders</h3>
+    <h5> You have <%= current_user.orders.count %> Orders</h5>
   <% end %>
 </div>
 
@@ -19,6 +19,7 @@
         <div class="card-content">
           <div class="card-title"><%= o.item.name %></div>
           <p>Price: $<%= o.item.price %></p>
+          <p>Pick-Up: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %></p>
           <span class="like-count">
             <%= o.item.item_likes.count %>
           </span> likes
@@ -34,7 +35,7 @@
 
 <!-- Modal Structure -->
 <% @orders.each do |o| %>
-  <div id="modal<%= o.id %>" class="modal profil item" data-item="<%= o.id %>">
+  <div id="modal<%= o.id %>" class="modal item-modal" data-item="<%= o.id %>">
     <div class="modal-content">
       <div class="center">
         <div class="pull-right">
@@ -60,9 +61,8 @@
           Description: <%= o.item.description %><br/>
         </div>
         <div class= "col s6 m6">
-          Price: <%= o.item.price %><br/>
           Advance: <%= o.item.downpayment_price %><br/>
-          Date: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
+          Pick-Up: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
           <br/>
         </div>
         <div class="center">

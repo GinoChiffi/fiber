@@ -67,7 +67,7 @@
 
 <!-- Modal Structure -->
 <% current_user.liked_items.each do |c| %>
-  <div id="modal<%= c.id %>" class="modal profil item" data-item="<%= c.id %>">
+  <div id="modal<%= c.id %>" class="modal item-modal" data-item="<%= c.id %>">
     <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
     <div class="modal-content">
       <div class="center">
@@ -120,54 +120,3 @@
     $('.modal').modal();
   });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-<% current_user.liked_items.each do |item| %>
-<div class='profil item' data-item='<%= item.id %>'>
-  <%= item.tumbnail_img %><br/>
-  <%= item.name %><br/>
-  <%= item.price %> $<br/>
-  <%= item.description %><br/>
-  <%= item.gender %><br/>
-  <%= item.brand.name %><br/>
-  <%= item.colors.map(&:name).join(', ') %><br/>
-  <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == item.id} %>
-  <%= item.item_likes.count %> likes<br/>
-  <%= link_to 'unlike', item_item_like_path(item.id, item_like), remote: true, method: :delete %><br/>
-  <%= link_to new_order_path(item_id: item.id), method: :get do %>
-  <div class="btn btn-primary">Order</div>
-  <br/>
-  <% end %>
-</div>
-<% end %> -->
-
