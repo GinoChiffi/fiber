@@ -16,13 +16,20 @@
 @import "profile_header";
 @import "modal";
 @import "card";
-@import "materialize";
 @import "landing";
+@import "materialize";
+
+
 
 body {
   font-family: 'Noto Sans', sans-serif;
   font-weight: 400;
   color: black !important;
+}
+
+h1 {
+  font-family: 'Comfortaa', cursive;
+
 }
 
 .btn {

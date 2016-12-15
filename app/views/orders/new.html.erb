@@ -1,5 +1,6 @@
 <div class="center">
-  <h1>Order for: <%= @order.item.name %></h1>
+  <h4>Making an order for: </br>
+  <%= @order.item.name %></h4>
 </div>
   <div class="row">
     <div class="col s12 m6 l3">
@@ -10,12 +11,33 @@
               <%= image_tag @order.item.tumbnail_img  %>
             </div>
           </a>
-          <%= @order.item.name %></br>
-          Brand: <%= @order.item.brand.name %> </br>
-          Shop: <%= @order.item.shop.name %></br>
-          Price: <%= @order.item.price %></br>
-          Advance: <%= @order.item.downpayment_price %></br>
-          City: <%= @order.item.shop.city %>
+          <div class="row">
+          <div class="center">
+          <table>
+          <tbody>
+          <tr>
+            <td>Brand:</td>
+            <td><%= @order.item.brand.name %></td>
+          </tr>
+          <tr>
+            <td>Shop:</td>
+            <td><%= @order.item.shop.name %></td>
+          </tr>
+          <tr>
+            <td>Price:</td>
+            <td><%= @order.item.price %></td>
+          </tr>
+          <tr>
+            <td>Advance:</td>
+            <td><%= @order.item.downpayment_price %></td>
+          </tr>
+          <tr>
+            <td>City:</td>
+            <td><%= @order.item.shop.city %></td>
+          </tr>
+        </tbody>
+         </table>
+         </div>
         </div>
       </div>
     </div>
@@ -26,15 +48,24 @@
 <%= simple_form_for(@order, as: @order, url: orders_path(@order), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
     <div class="input-field">
+    Please select a color:
       <%= f.select :color_id, options_for_select(@colors)%>
+      </br>
+      </br>
+      Please select your size:
       <%= f.select :size_id, options_for_select(@sizes)%>
+      </br>
+      </br>
+      Please select the pick up date:
       <input data-birthdate='<%= @order.pick_up_date %>' name="order[pick_up_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
-      <label ng-class="{active: user.birth_date.length}">
+      <!-- <label ng-class="{active: user.birth_date.length}">
           Pick up date
-      </label>
+      </label> -->
       <%= f.input :item_id, as: :hidden, input_html: { value: @item_id } %>
     </div>
+    <div class="center">
     <%= f.button :submit, "Confirm" %>
+    </div>
 <% end %>
 
 <%#= link_to ' All Orders', orders_path, method: :get %>
