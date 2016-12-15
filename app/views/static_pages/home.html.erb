@@ -10,6 +10,8 @@
       <% @items.each do |c| %>
         <div class="col s6 m6 l3">
           <div class="center-align">
+          <div class="card-deck-wrapper">
+            <div class="card-deck">
             <div class="card" data-item="<%= c.id %>">
               <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
                 <div class="card-image">
@@ -37,6 +39,8 @@
                   <% end %>
                 </div>
               </div>
+               </div>
+          </div>
             </div>
           </div>
         </div>
@@ -74,7 +78,7 @@
     <div class="modal-footer ">
       <div class="like-btn modal-close btn-flat">
         <% if item_like.nil? %>
-          <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
+          <%= link_to "like", item_item_likes_path(c.id, item_like), method: :post, remote: true %>
         <% end %>
       </div>
       <div class="unlike-btn modal-close btn-flat">
@@ -95,23 +99,3 @@
     $(".letter-container").lettering();
   });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

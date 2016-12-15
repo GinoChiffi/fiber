@@ -10,6 +10,7 @@
 //     overflow: hidden;
 // }
 
-// .card .card-content .card-title {
-//   line-height: 30px !important;
-// }
+.card .card-content .card-title {
+  line-height: 30px !important;
+  min-height:100px !important
+}
