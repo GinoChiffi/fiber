@@ -47,8 +47,6 @@
               required: true %>
       </div>
 
-      <br/>
-
       <div class="input-field">
         <a class="modal-trigger waves-effect waves-light btn margin-top-5" href="#modal1">Edit personal sizes</a>
         <br>
@@ -81,12 +79,9 @@
   </div>
 </div>
 
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <a href="#!" class="modal-action modal-close btn-flat pull-right">&times</a>
-    <div class="center-align">
-      <h5>Edit your Sizes</h5>
-    </div>
+<div id="modal1" class="modal item-modal">
+  <div class="modal-content center">
+    <h5>Edit your Sizes</h5>
 
     <%= simple_form_for(resource,
           as: resource_name,
@@ -130,10 +125,13 @@
           <%= f.input_field :shoe_size, type: "range", id: "user_shoe_size", min:32, max:50, oninput: "usershoeOutput.value = user_shoe_size.value" %>
         </p>
 
-        <%= f.input :current_password, hint: "Please input your password to confirm changes.", required: true %>
+        <%= f.input :current_password,
+              placeholder: "Please input Password to change.",
+              required: true %>
       </div>
 
       <div class="form-actions">
+        <a href="#!" class="modal-action modal-close btn">Close</a>
         <%= f.button :submit, "Update" %>
       </div>
     </div>

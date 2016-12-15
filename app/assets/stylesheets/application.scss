@@ -50,13 +50,17 @@ h1 {
   &:hover {
     color: grey;
   }
-  &:active{
+  &:active {
     border-color: white;
     border-left-color: black;
     border-top-color: black;
     color: white;
     background-color: #adadad;
+  }
 }
+
+.help-block {
+  color: black;
 }
 
 .homepage-hero-module {
