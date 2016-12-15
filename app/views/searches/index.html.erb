@@ -1,45 +1,54 @@
 <div class="row">
-<div class="col m6 offset-m3 center">
-<h1>Search Page</h1>
-<%= search_form_for @q, url: home_path do |f| %>
+  <div class="col m6 offset-m3 center">
+    <h3>Search</h3>
+    <%= search_form_for @q, url: home_path do |f| %>
+      <%= f.label :name_or_brand_name_or_shop_name_or_colors_name_cont, "Search" %>
+      <%= f.search_field :name_or_brand_name_or_shop_name_or_colors_name_cont %>
 
- <%= f.label "Search" %>
- <%= f.search_field :name_or_brand_name_or_shop_name_or_colors_name_cont %>
+      <%= f.label :shop_city_eq, "City" %>
+      <%= f.search_field :shop_city_eq %>
 
- <%= f.label "City" %>
- <%= f.search_field :shop_city_eq %>
+      <%= f.label :price_gteq, "Min Price" %>
+      <%= f.search_field :price_gteq %>
 
- <%= f.label :price_gteq, "Min Price" %>
- <%= f.search_field :price_gteq %>
+      <%= f.label :price_lteq, "Max Price" %>
+      <%= f.search_field :price_lteq %>
 
- <%= f.label :price_lteq, "Max Price" %>
- <%= f.search_field :price_lteq %>
+      <%= f.label :gender_eq, "Gender" %>
+      <%= f.select :gender_eq, options_for_select([['Male'], ['Female']]), include_blank: true %>
 
- <%= f.label "Gender" %>
- <%= f.select :gender_eq, options_for_select([['Male'], ['Female']]), include_blank: true %>
+      <%= f.label :colors_id_eq, "Color" %>
+      <%= f.select :colors_id_eq,
+            options_from_collection_for_select(
+              Color.all, "id", "name",
+              @q.colors_id_eq
+            ),
+            include_blank: true %>
 
- <%= f.label "Color" %>
- <%= f.select :colors_id_eq, options_from_collection_for_select(Color.all, "id", "name", @q.colors_id_eq), include_blank: true %>
+      <%= f.label :subcategories_category_id_eq, "Category" %>
+      <%= f.select :subcategories_category_id_eq,
+            options_from_collection_for_select(
+              Category.all,
+              "id", "name",
+              @q.subcategories_category_id_eq
+            ),
+            include_blank: true %>
 
- <%= f.label "Category" %>
- <%= f.select :subcategories_category_id_eq,options_from_collection_for_select(
-     Category.all,
-     "id", "name",
-     @q.subcategories_category_id_eq
-   ), include_blank: true %>
+      <%= f.label :subcategories_id_eq, "Subcategory" %>
+      <%= f.select :subcategories_id_eq,
+            options_for_select(
+              Subcategory.all.map { |sc| [sc.name, sc.id, { 'data-category' => sc.category_id }] }
+            ),
+            include_blank: true %>
 
- <%= f.label "Subcategory" %>
- <%= f.select :subcategories_id_eq,  options_for_select(
-     Subcategory.all.map { |sc| [sc.name, sc.id, { 'data-category' => sc.category_id }] }
-   ), include_blank: true %>
+      <%= f.label :sizes_id_eq, "Size" %>
+      <%= f.select :sizes_id_eq,
+            options_for_select(
+              Size.all.map { |si| [si.value, si.id, { 'data-category' => si.category_id }] }
+            ),
+            include_blank: true %>
 
- <%= f.label "Size" %>
- <%= f.select :sizes_id_eq, options_for_select(
-   Size.all.map { |si| [si.value, si.id, { 'data-category' => si.category_id
-     }] }
- ), include_blank: true %>
-
-    <%= f.submit 'Search', class: "waves-effect waves-light btn" %>
+      <%= f.submit 'Search', class: "waves-effect waves-light btn margin-top-m" %>
     <% end %>
   </div>
 </div>
