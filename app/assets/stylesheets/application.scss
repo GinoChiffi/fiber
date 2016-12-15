@@ -16,8 +16,8 @@
 @import "profile_header";
 @import "modal";
 @import "card";
-@import "landing";
 @import "materialize";
+@import "landing";
 
 body {
   font-family: 'Noto Sans', sans-serif;
@@ -195,11 +195,11 @@ select {
 }
 
 #container{
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 main{
-      padding-top: 18px !important;
+      padding-top: 25px !important;
 }
 
 ////////////////////////////////

@@ -61,8 +61,11 @@
           Description: <%= o.item.description %><br/>
         </div>
         <div class= "col s6 m6">
+          Price: <%= o.item.price %><br/>
           Advance: <%= o.item.downpayment_price %><br/>
-          Pick-Up: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
+          Pick-Up: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %><br/>
+          Shop:   <%= o.item.shop.name %><br/>
+          Color:  <%= o.item.colors.map(&:name).map(&:capitalize).join(', ') %>
           <br/>
         </div>
         <div class="center">

@@ -3,9 +3,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 45vh;
+  padding-top: 40vh;
 }
 
 .devise-btn {
 	margin-top: 1vh;
+}
+
+.landing {
+  background-image: url("https://cdn.vectorstock.com/i/composite/95,66/abstract-fashion-background-vector-639566.jpg") !important;
+  height: 100vh;
+  background-size: cover;
+      line-height: 3.4;
+      margin-top: -28px;
+
 }
