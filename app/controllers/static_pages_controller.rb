@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
     if current_user
       redirect_to home_path
     end
+    @no_padding = true
   end
 
   def home
