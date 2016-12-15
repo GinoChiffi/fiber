@@ -21,11 +21,11 @@ module ApplicationHelper
   # 2. Priority is our local profile_pic url
   # 3. Priority is a font-awesome user icon
   #
-	def user_avatar
+	def user_avatar(options = { class: 'avatar' })
 		if current_user.has_profile_picture?
-			image_tag current_user.profile_picture_url, class: "avatar"
+			image_tag current_user.profile_picture_url, class: options[:class]
 		else
-			icon :user, class: "avatar"
+			icon 'user-circle-o', class: options[:class]
 		end
 	end
 end
