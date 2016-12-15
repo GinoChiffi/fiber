@@ -71,13 +71,18 @@
     <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
     <div class="modal-content">
       <div class="center">
-        <h4><%= c.name %></h4>
-          <%= image_tag c.tumbnail_img, class: "modal-image" %><br/>
-          <br/>
-          Price: $<%= c.price %> <br/>
-          <span class="like-count"><%= c.item_likes.count %></span> likes
-          <br/>
-          <br/>
+        <div class="pull-right">
+          <a href="#!" class="modal-action modal-close btn-flat">&times</a>
+        </div>
+        <div>
+          <h4><%= c.name %></h4>
+        </div>
+        <%= image_tag c.tumbnail_img, class: "modal-image" %><br/>
+        <br/>
+        Price: $<%= c.price %> <br/>
+        <span class="like-count"><%= c.item_likes.count %></span> likes
+        <br/>
+        <br/>
       </div>
       <div class= "row">
         <div class= "col s6 m6">
@@ -95,9 +100,6 @@
             <% end %>
         </div>
       </div>
-    </div>
-
-    <div class="modal-footer ">
       <div class="like-btn modal-close btn-flat">
         <% if item_like.nil? %>
           <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
@@ -108,12 +110,9 @@
           <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %><br/>
         <% end %>
       </div>
-      <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>
     </div>
   </div>
 <% end %>
-</div>
-
 
 <script>
     $(document).ready(function(){
