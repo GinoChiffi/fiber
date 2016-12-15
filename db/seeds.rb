@@ -486,8 +486,97 @@ items = [
     brand: Brand.all.sample,
     tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803184/yellowsweat_nvcuv5.jpg",
     shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Sequin Dress',
+    price: 60,
+    description: 'Red sequined dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814807/reddress_d6ihsi.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Shiny Dress',
+    price: 70,
+    description: 'Green shiny dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814810/greendress_x0oq3k.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Sleeved Dress',
+    price: 85,
+    description: 'Red sleeved dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814812/reddress2_wc7ufr.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Flower Dress',
+    price: 77,
+    description: 'Black dress with flowers',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814815/blackdressflowers_r6al8c.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Plaid Dress',
+    price: 90,
+    description: 'Blue plaid dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814817/bluedressplaid_pnrzvf.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Slouch Dress',
+    price: 95,
+    description: 'Gold slinky dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814823/golddress_ofzpcb.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Relaxed Dress',
+    price: 65,
+    description: 'Shiny light blue dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814826/lightbluedress_xw4lkd.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Slip Dress',
+    price: 75,
+    description: 'Silver slip dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814829/silverslipdress_yatcnq.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Full Length Dress',
+    price: 55,
+    description: 'Black checked dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814832/blackdresschecks_pwfybh.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Midi Dress',
+    price: 60,
+    description: 'Yellow midi dress',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481814834/yellowdresssmile_b8zrbv.jpg",
+    shop_id: Shop.all.sample.id
   }
-
 ]
 
 items.each { |params| Item.create!(params) }
@@ -523,6 +612,17 @@ ItemColor.create!(color_id: 5, item_id: 17)
 ItemColor.create!(color_id: 4, item_id: 18)
 ItemColor.create!(color_id: 4, item_id: 19)
 ItemColor.create!(color_id: 3, item_id: 20)
+ItemColor.create!(color_id: 1, item_id: 21)
+ItemColor.create!(color_id: 4, item_id: 22)
+ItemColor.create!(color_id: 1, item_id: 23)
+ItemColor.create!(color_id: 9, item_id: 24)
+ItemColor.create!(color_id: 5, item_id: 25)
+ItemColor.create!(color_id: 10, item_id: 26)
+ItemColor.create!(color_id: 5, item_id: 27)
+ItemColor.create!(color_id: 11, item_id: 28)
+ItemColor.create!(color_id: 9, item_id: 29)
+ItemColor.create!(color_id: 3, item_id: 30)
+
 
 ItemSubcategory.create!(item_id: 1, subcategory_id: 1)
 ItemSubcategory.create!(item_id: 2, subcategory_id: 34)
@@ -534,17 +634,26 @@ ItemSubcategory.create!(item_id: 7, subcategory_id: 32)
 ItemSubcategory.create!(item_id: 8, subcategory_id: 2)
 ItemSubcategory.create!(item_id: 9, subcategory_id: 46)
 ItemSubcategory.create!(item_id: 10, subcategory_id: 30)
-ItemSubcategory.create!(item_id: 11, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 12, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 13, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 14, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 15, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 16, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 17, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 18, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 19, subcategory_id: 74)
-ItemSubcategory.create!(item_id: 20, subcategory_id: 74)
-
+ItemSubcategory.create!(item_id: 11, subcategory_id: 1)
+ItemSubcategory.create!(item_id: 12, subcategory_id: 8)
+ItemSubcategory.create!(item_id: 13, subcategory_id: 1)
+ItemSubcategory.create!(item_id: 14, subcategory_id: 24)
+ItemSubcategory.create!(item_id: 15, subcategory_id: 32)
+ItemSubcategory.create!(item_id: 16, subcategory_id: 32)
+ItemSubcategory.create!(item_id: 17, subcategory_id: 11)
+ItemSubcategory.create!(item_id: 18, subcategory_id: 25)
+ItemSubcategory.create!(item_id: 19, subcategory_id: 32)
+ItemSubcategory.create!(item_id: 20, subcategory_id: 7)
+ItemSubcategory.create!(item_id: 21, subcategory_id: 57)
+ItemSubcategory.create!(item_id: 22, subcategory_id: 57)
+ItemSubcategory.create!(item_id: 23, subcategory_id: 57)
+ItemSubcategory.create!(item_id: 24, subcategory_id: 56)
+ItemSubcategory.create!(item_id: 25, subcategory_id: 60)
+ItemSubcategory.create!(item_id: 26, subcategory_id: 57)
+ItemSubcategory.create!(item_id: 27, subcategory_id: 64)
+ItemSubcategory.create!(item_id: 28, subcategory_id: 64)
+ItemSubcategory.create!(item_id: 29, subcategory_id: 61)
+ItemSubcategory.create!(item_id: 30, subcategory_id: 56)
 
 ItemSize.create!(item_id: 1, size_id: 3)
 ItemSize.create!(item_id: 2, size_id: 40)
@@ -566,4 +675,13 @@ ItemSize.create!(item_id: 17, size_id: 9)
 ItemSize.create!(item_id: 18, size_id: 13)
 ItemSize.create!(item_id: 19, size_id: 29)
 ItemSize.create!(item_id: 20, size_id: 3)
-
+ItemSize.create!(item_id: 21, size_id: 60)
+ItemSize.create!(item_id: 22, size_id: 60)
+ItemSize.create!(item_id: 23, size_id: 60)
+ItemSize.create!(item_id: 24, size_id: 60)
+ItemSize.create!(item_id: 25, size_id: 60)
+ItemSize.create!(item_id: 26, size_id: 60)
+ItemSize.create!(item_id: 27, size_id: 60)
+ItemSize.create!(item_id: 28, size_id: 60)
+ItemSize.create!(item_id: 29, size_id: 60)
+ItemSize.create!(item_id: 30, size_id: 60)
