@@ -1,9 +1,3 @@
-// function delete_row(e)
-// {
-//     e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
-// }
-
-
 item = $('.card[data-item=<%= @item_like.item.id %>]')
 if ( $('.profil.item').length > 0 ) {
   item.parent().remove();
@@ -14,7 +8,7 @@ if ( $('.profil.item').length > 0 ) {
     likeCount = likeCount - 1
     item.find('.like-count').html(likeCount)
     item.find('.unlike-btn').html('')
-    item.find('.like-btn').html('<a data-remote="true" rel="nofollow" data-method="post" href="/items/<%= @item_like.item.id %>/item_likes">like</a>')
+    item.find('.like-btn').html('<a data-remote="true" rel="nofollow" data-method="post" href="/items/<%= @item_like.item.id %>/item_likes">❤️</a>')
   }
 }
 
@@ -25,7 +19,7 @@ if ( modalLikeCount != 0 ) {
   modalLikeCount = modalLikeCount - 1
   modal.find('.like-count').html(modalLikeCount)
   modal.find('.unlike-btn').html('')
-  modal.find('.like-btn').html('<a data-remote="true" rel="nofollow" data-method="post" href="/items/<%= @item_like.item.id %>/item_likes">like</a>')
+  modal.find('.like-btn').html('<a data-remote="true" rel="nofollow" data-method="post" href="/items/<%= @item_like.item.id %>/item_likes">❤️</a>')
 }
 
 userLikeCount = $('.user-like-count').html()

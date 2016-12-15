@@ -5,7 +5,4 @@ likeCount = parseInt(likeCount) + 1
 item.find('.like-count').html(likeCount)
 
 item.find('.like-btn').html('')
-item.find('.unlike-btn').html('<a data-remote="true" rel="nofollow" data-method="delete" href="/items/<%= @item_like.item.id %>/item_likes/<%= @item_like.id %>">unlike</a>')
-
-
-
+item.find('.unlike-btn').html('<a data-remote="true" data-method="delete" href="/items/<%= @item_like.item.id %>/item_likes/<%= @item_like.id %>">💔</a>')

@@ -29,13 +29,12 @@
               <div class="card-action">
                 <div class="like-btn">
                   <% if item_like.nil? %>
-                    <%= link_to 'like', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
+                    <%= link_to '❤️', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
                   <% end %>
                 </div>
                 <div class="unlike-btn">
                   <% unless item_like.nil? %>
-                    <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
-                    <br/>
+                    <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
                   <% end %>
                 </div>
               </div>
@@ -85,7 +84,7 @@
       </div>
       <div class="unlike-btn modal-close btn-flat">
         <% unless item_like.nil? %>
-          <%= link_to 'unlike', item_item_like_path(c.id, item_like), method: :delete, remote: true %><br/>
+          <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
         <% end %>
       </div>
     </div>

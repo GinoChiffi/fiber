@@ -1,31 +1,28 @@
-// .card { width:180px !important;
-//   height:534px !important;
-// }
-
-// .card-content{
-//   height: 180px;
-
-// }.card-title{
-//       height: 70px;
-//     overflow: hidden;
-// }
-
 .card .card-content .card-title {
   line-height: 30px !important;
   min-height:100px !important;
   max-height: 534px !important;
-
 }
 
 .card-image {
-      height: 355px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  height: 355px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-// .card-content {
-//   position:relative;
-//    top:-30px;
-//    z-index: 5;
-// }
+.card-action {
+  .like-btn,
+  .unlike-btn {
+    font-size: 34px;
+    text-align: center;
+    a {
+      display: block;
+      margin-right: 0 !important;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}

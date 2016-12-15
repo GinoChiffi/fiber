@@ -11,8 +11,8 @@
 <%= item.brand.name %><br/>
 <%= item.colors.map(&:name).join(', ') %><br/>
 <%= item.item_likes.count %> likes<br/>
-  <%= link_to 'like', item_item_likes_path(item), method: :post %>
-  <%= link_to 'unlike', item_item_like_path(item, item.item_likes), method: :delete %><br/>
+  <%= link_to '❤️', item_item_likes_path(item), method: :post %>
+  <%= link_to '💔', item_item_like_path(item, item.item_likes), method: :delete %><br/>
   <br/>
 <% end %>
 
