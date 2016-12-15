@@ -289,16 +289,16 @@ iextralarge = Size.create!(value: 'XL', category: i)
 ionesize = Size.create!(value: "onesize", category: i)
 
 
-Shop.create!(name: "H & M", city: "Antwerp")
+Shop.create!(name: "Urban Outfitters", city: "Antwerp")
 Shop.create!(name: "Marks & Spencer", city: "Brussels")
-Shop.create!(name: "Urban Outfitters", city: "Ghent")
+Shop.create!(name: "Vier", city: "Ghent")
 Shop.create!(name: "J Crew", city: "Antwerp")
 Shop.create!(name: "Claire's", city: "Brussels")
 Shop.create!(name: "Madewell", city: "Ghent")
 Shop.create!(name: "Footlocker", city: "Antwerp")
 Shop.create!(name: "C&A", city: "Brussels")
 Shop.create!(name: "Macy's", city: "Ghent")
-Shop.create!(name: "Sunglass Hut", city: "Antwerp")
+Shop.create!(name: "Aeropostale", city: "Antwerp")
 
 j = Category.create!(name: "Age")
 Subcategory.create!(name: "Infants & Toddlers", category: j)
@@ -396,7 +396,98 @@ items = [
     brand: Brand.all.sample,
     tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/heels_cwyq2f.jpg",
     shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Jumper',
+    price: 30,
+    description: 'metallic shirt',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803331/metallicjumper_ankh3x.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Turtleneck',
+    price: 70,
+    description: 'Striped turtleneck',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803320/stripedturtleneck_fojfch.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Shirt',
+    price: 50,
+    description: 'Ribbed shirt',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803318/ribbedshirt_dc2jiq.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Skirt',
+    price: 40,
+    description: 'Pencil skirt',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803315/pencilskirt_wiberx.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Sneakers',
+    price: 75,
+    description: 'Knit sneakers',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803313/flyknits_k9v6ks.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Runners',
+    price: 90,
+    description: 'Running shoes',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803311/asics_iohlvi.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Jacket',
+    price: 120,
+    description: 'Jeans jacket',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803308/jeansjacket_gvikt7.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Trousers',
+    price: 65,
+    description: 'cargo trousers',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803204/greencargos_g40lxm.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Joggers',
+    price: 80,
+    description: 'Jogging shoes',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803187/nikeroshe_ajvekv.jpg",
+    shop_id: Shop.all.sample.id
+  },
+   {
+    name: 'Sweatshirt',
+    price: 90,
+    description: 'Bright sweatshirt',
+    gender: 'Female',
+    brand: Brand.all.sample,
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1481803184/yellowsweat_nvcuv5.jpg",
+    shop_id: Shop.all.sample.id
   }
+
 ]
 
 items.each { |params| Item.create!(params) }
