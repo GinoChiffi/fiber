@@ -1,24 +1,23 @@
 <div class="profile-banner">
   <div class="col s6 m6 center">
-
     <%= user_avatar(class: 'fa-4x avatar-profile') %>
-    <br/>
-    <h5><%= current_user.user_name %></h5>
-     <h6>
+      <br/>
+      <h5><%= current_user.user_name %></h5>
+      <h6>
         <span class='user-like-count'>
           <%= current_user.liked_items.count %>
         </span>
         <% if current_user.liked_items.count == 1 %>
-        like
+          like
         <% else %>
-        likes
+          likes
         <% end %>
       </h6>
-      <%= link_to(orders_path, method: :get) do %>
-      <span class="waves-effect waves-light btn">Orders</span>
+      <%= link_to orders_path, method: :get do %>
+        <span class="waves-effect waves-light btn margin-bottom-10">Orders</span>
       <% end %>
+    </div>
   </div>
-</div>
 
 
 <div class="row">
