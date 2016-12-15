@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col m6 offset-m3 center">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <h5>Edit <%= resource_name.to_s.humanize %></h5>
 
     <% unless current_user.uptodate? %>
       <div class="alert alert-warning">
@@ -45,29 +45,39 @@
         <%= f.input :current_password,
               include_blank: "we need your current password to confirm your changes",
               required: true %>
-
-        <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Edit personal sizes</a>
       </div>
 
       <br/>
 
-      <div class="form-actions">
-        <%= f.button :submit, "Update" %>
+      <div class="input-field">
+        <a class="modal-trigger waves-effect waves-light btn margin-top-5" href="#modal1">Edit personal sizes</a>
+        <br>
+        <%= f.button :submit, "Update", class: 'margin-top-5' %>
       </div>
     <% end %>
 
-    <br/>
-    <h6>Unhappy?</h6>
+    <br>
 
-    <%= link_to "Cancel my account",
-          registration_path(resource_name),
-          data: { confirm: "Are you sure?" },
-          method: :delete,
-          class: "waves-effect waves-light btn button-margin-top" %>
-    <%= link_to 'logout',
-          destroy_user_session_path,
-          method: :delete,
-          class: "waves-effect waves-light btn button-margin-top"%>
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card grey lighten-2">
+          <div class="card-content white-text">
+            <span class="card-title">Unhappy?</span>
+          </div>
+          <div class="card-action white-text">
+            <%= link_to "Cancel my account",
+                  registration_path(resource_name),
+                  data: { confirm: "Are you sure?" },
+                  method: :delete,
+                  class: "waves-effect waves-light btn-flat button-margin-top" %>
+            <%= link_to 'logout',
+                  destroy_user_session_path,
+                  method: :delete,
+                  class: "waves-effect waves-light btn-flat button-margin-top"%>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
