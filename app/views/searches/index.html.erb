@@ -3,11 +3,10 @@
 <h1>Search Page</h1>
 <%= search_form_for @q, url: home_path do |f| %>
 
- <%= f.label "Search" %>
- <%= f.search_field :name_or_brand_name_or_shop_name_or_colors_name_cont %>
 
- <%= f.label "City" %>
- <%= f.search_field :shop_city_eq %>
+ <%= f.search_field :name_or_brand_name_or_shop_name_or_colors_name_cont, placeholder: 'Search' %>
+
+ <%= f.search_field :shop_city_eq, placeholder: 'City' %>
 
  <%= f.label :price_gteq, "Min Price" %>
  <%= f.search_field :price_gteq %>
@@ -15,8 +14,7 @@
  <%= f.label :price_lteq, "Max Price" %>
  <%= f.search_field :price_lteq %>
 
- <%= f.label "Gender" %>
- <%= f.select :gender_eq, options_for_select([['Male'], ['Female']]), include_blank: true %>
+ <%= f.select :gender_eq, options_for_select([['Male'], ['Female']]),include_blank: true %>
 
  <%= f.label "Color" %>
  <%= f.select :colors_id_eq, options_from_collection_for_select(Color.all, "id", "name", @q.colors_id_eq), include_blank: true %>
