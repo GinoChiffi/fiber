@@ -23,10 +23,6 @@ Rails.application.routes.draw do
   resource :settings, only: [:show, :edit, :update]
 
   resources :searches, only: [:index]
-  namespace :searches do
-    get '/subcategories_collection' => 'searches#subcategories_collection', as: :subcategories_collection
-    get '/sizes_collection' => 'searches#sizes_collection', as: :sizes_collection
-  end
 
   resources :users, only: [:show]
 
