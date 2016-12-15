@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  # before_action :authenticate_user!
 
   def landing
     if current_user
