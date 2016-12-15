@@ -3,7 +3,7 @@
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
     <% unless current_user.uptodate? %>
-      <div class="alert alert-danger">
+      <div class="alert alert-warning">
         Update your sizes to have a better experience.
       </div>
     <% end %>
