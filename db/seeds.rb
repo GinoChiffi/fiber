@@ -48,6 +48,22 @@ users = [
     top_size: "L",
     bottom_size: "40",
     search_radius: 3
+  },
+    {
+    email: 'anne@collet.com',
+    password: 'annecollet',
+    user_name: 'AnneCollet',
+    first_name: "Anne",
+    last_name:  "Collet",
+    address:  "Brussels",
+    url_address: "not applicable",
+    gender: "Female",
+    birth_date: "01/01/1980",
+    shoe_size: "40",
+    top_size: "M",
+    bottom_size: "30",
+    dress_size: "40",
+    search_radius: 3
   }
 ]
 
@@ -292,93 +308,93 @@ Subcategory.create!(name: "Adults", category: j)
 
 items = [
   {
-    name: 'Thermal Shirt',
+    name: 'Shirt',
     price: 20,
-    description: 'Classic thermal shirt with button collar',
+    description: 'Thermal shirt',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/ThermalShirt.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/ThermalShirt_dojkrm.jpg",
     shop_id: Shop.all.sample.id
   },
    {
-    name: 'Triangle Bra',
+    name: 'Bra',
     price: 30,
-    description: 'half mesh triangle shaped brassiere',
+    description: 'Triangle bra',
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/TriangleBra.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/trianglebra_s7rvfl.jpg",
     shop_id: Shop.all.sample.id
   },
    {
-    name: 'Casio Watch',
+    name: 'Watch',
     price: 50,
-    description: 'Vintage gold Casio digital watch',
+    description: 'Vintage gold watch',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/CasioWatch.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/CasioWatch_mydzhc.jpg",
     shop_id: Shop.all.sample.id
     },
    {
-    name: 'Bomber Jacket',
+    name: 'Jacket',
     price: 90,
-    description: "Black women's bomber jacket",
+    description: "Bomber jacket",
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/BomberJacket.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/BomberJacket_bhybsu.jpg",
     shop_id: Shop.all.sample.id
   },
    {
-    name: 'Mesh Midi Dress',
+    name: 'Midi',
     price: 60,
-    description: 'Black mesh midi dress, grrrrrr',
+    description: 'Mesh dress',
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/MidiDress.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/MidiDress_j3wihq.jpg",
     shop_id: Shop.all.sample.id
   },
    {
-    name: 'Skinny hipster jeans',
+    name: 'Jeans',
     price: 70,
-    description: 'Super skinny black hipster jeans. Be like everyone else!',
+    description: 'Skinny hipster jeans',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/SkinnyJeans.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/SkinnyJeans_cpm7fr.jpg",
     shop_id: Shop.all.sample.id
     },
    {
-    name: 'Classic trainers',
+    name: 'Trainers',
     price: 85,
-    description: 'black vintage Reebok sneakers',
+    description: 'Vintage Reebok sneakers',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/BlackTrainers.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/BlackTrainers_cvmbae.jpg",
     shop_id: Shop.all.sample.id
   },
    {
     name: 'T Shirt',
     price: 15,
-    description: "Classic olive T-shirt. A staple of everyone's wardrobe",
+    description: "Classic T-shirt",
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/TShirt.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/TShirt_djsk8r.jpg",
     shop_id: Shop.all.sample.id
   },
    {
     name: 'Scarf',
     price: 30,
-    description: 'Yellow wool scarf with large check pattern',
+    description: 'Wool scarf',
     gender: 'Male',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/Scarf.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/Scarf_vghlmk.jpg",
     shop_id: Shop.all.sample.id
   },
    {
-    name: 'Strappy heels',
+    name: 'Heels',
     price: 150,
-    description: 'Super sexy high heels with straps',
+    description: 'Strappy heels',
     gender: 'Female',
     brand: Brand.all.sample,
-    tumbnail_img: "catalog/Heels.jpg",
+    tumbnail_img: "http://res.cloudinary.com/sggw/image/upload/v1480674094/heels_cwyq2f.jpg",
     shop_id: Shop.all.sample.id
   }
 ]
@@ -424,7 +440,7 @@ ItemSubcategory.create!(item_id: 10, subcategory_id: 74)
 ItemSubcategory.create!(item_id: 2, subcategory_id: 75)
 ItemSubcategory.create!(item_id: 9, subcategory_id: 74)
 
-ItemSize.create!(item_id: 1, size_id: 4)
+ItemSize.create!(item_id: 1, size_id: 3)
 ItemSize.create!(item_id: 2, size_id: 40)
 ItemSize.create!(item_id: 3, size_id: 54)
 ItemSize.create!(item_id: 4, size_id: 10)
