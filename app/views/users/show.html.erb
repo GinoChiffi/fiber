@@ -1,55 +1,108 @@
-<div class="profile-banner">
-  <div class="col s6 m6 center">
-    <%= user_avatar(class: 'fa-4x avatar-profile') %>
-      <br/>
-      <h5><%= current_user.user_name %></h5>
-      <h6>
-        <span class='user-like-count'>
-          <%= current_user.liked_items.count %>
-        </span>
-        <% if current_user.liked_items.count == 1 %>
-          like
-        <% else %>
-          likes
+<div class="dirty-hack-for-heart">
+  <div class="profile-banner">
+    <div class="col s6 m6 center">
+      <%= user_avatar(class: 'fa-4x avatar-profile') %>
+        <br/>
+        <h5><%= current_user.user_name %></h5>
+        <h6>
+          <span class='user-like-count'>
+            <%= current_user.liked_items.count %>
+          </span>
+          <% if current_user.liked_items.count == 1 %>
+            like
+          <% else %>
+            likes
+          <% end %>
+        </h6>
+        <%= link_to orders_path, method: :get do %>
+          <span class="waves-effect waves-light btn margin-bottom-10">Orders</span>
         <% end %>
-      </h6>
-      <%= link_to orders_path, method: :get do %>
-        <span class="waves-effect waves-light btn margin-bottom-10">Orders</span>
-      <% end %>
 
+      </div>
     </div>
-  </div>
 
 
-<div class="row">
-  <% current_user.liked_items.each do |c| %>
-    <div class="col s6 m6 l3">
-      <div class="card" data-item="<%= c.id %>">
-        <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
-          <div class="card-image" style="background-image: url(<%= image_path c.tumbnail_img %>)">
-            <%#= image_tag c.tumbnail_img %>
+  <div class="row">
+    <% current_user.liked_items.each do |c| %>
+      <div class="col s6 m6 l3">
+        <div class="card" data-item="<%= c.id %>">
+          <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
+            <div class="card-image" style="background-image: url(<%= image_path c.tumbnail_img %>)">
+              <%#= image_tag c.tumbnail_img %>
+            </div>
+          </a>
+
+          <div class="card-content">
+            <div class= "center">
+              <div class="card-title"><%= c.name %></div>
+              <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
+              <p>Price: $<%= c.price %></p>
+              <span class="like-count"><%= c.item_likes.count %></span> likes
+              <%= link_to new_order_path(item_id: c.id), method: :get do %>
+                <div class="btn btn-primary center">Order</div>
+              <% end %>
+            </div>
           </div>
-        </a>
 
-        <div class="card-content">
-          <div class= "center">
-            <div class="card-title"><%= c.name %></div>
-            <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
-            <p>Price: $<%= c.price %></p>
-            <span class="like-count"><%= c.item_likes.count %></span> likes
-            <%= link_to new_order_path(item_id: c.id), method: :get do %>
-              <div class="btn btn-primary center">Order</div>
-            <% end %>
+          <div class="card-action">
+            <div class="like-btn">
+              <% if item_like.nil? %>
+                <%= link_to '❤️', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
+              <% end %>
+            </div>
+            <div class="unlike-btn">
+              <% unless item_like.nil? %>
+                <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
+              <% end %>
+            </div>
           </div>
         </div>
+      </div>
+    <% end %>
+  </div>
 
-        <div class="card-action">
-          <div class="like-btn">
+  <!-- Modal Structure -->
+  <% current_user.liked_items.each do |c| %>
+    <div id="modal<%= c.id %>" class="modal profil item item-modal" data-item="<%= c.id %>">
+      <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
+      <div class="modal-content">
+        <div class="center">
+          <div class="pull-right">
+            <a href="#!" class="modal-action modal-close btn-flat">&times</a>
+          </div>
+          <div>
+            <h4><%= c.name %></h4>
+          </div>
+          <%= image_tag c.tumbnail_img, class: "modal-image" %><br/>
+          <br/>
+          Price: $<%= c.price %> <br/>
+          <span class="like-count"><%= c.item_likes.count %></span> likes
+          <br/>
+          <br/>
+        </div>
+        <div class= "row">
+          <div class= "col s6 m6">
+            Description: <%= c.description %><br/>
+          </div>
+          <div class= "col s6 m6">
+            Gender: <%= c.gender %><br/>
+            Brand: <%= c.brand.name %><br/>
+            Colors: <%= c.colors.map(&:name).join(', ') %><br/>
+            <br/>
+            </div>
+            <div class="center">
+              <%= link_to new_order_path(item_id: c.id), method: :get do %>
+                <div class="btn center margin-top-15">Order</div>
+              <% end %>
+          </div>
+        </div>
+        <div class="center">
+          <div class="like-btn modal-close btn-flat">
             <% if item_like.nil? %>
               <%= link_to '❤️', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
             <% end %>
           </div>
-          <div class="unlike-btn">
+          <div class="unlike-btn modal-close btn-flat">
             <% unless item_like.nil? %>
               <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
             <% end %>
@@ -58,62 +111,11 @@
       </div>
     </div>
   <% end %>
+
+  <script>
+      $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
+  </script>
 </div>
-
-<!-- Modal Structure -->
-<% current_user.liked_items.each do |c| %>
-  <div id="modal<%= c.id %>" class="modal profil item item-modal" data-item="<%= c.id %>">
-    <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
-    <div class="modal-content">
-      <div class="center">
-        <div class="pull-right">
-          <a href="#!" class="modal-action modal-close btn-flat">&times</a>
-        </div>
-        <div>
-          <h4><%= c.name %></h4>
-        </div>
-        <%= image_tag c.tumbnail_img, class: "modal-image" %><br/>
-        <br/>
-        Price: $<%= c.price %> <br/>
-        <span class="like-count"><%= c.item_likes.count %></span> likes
-        <br/>
-        <br/>
-      </div>
-      <div class= "row">
-        <div class= "col s6 m6">
-          Description: <%= c.description %><br/>
-        </div>
-        <div class= "col s6 m6">
-          Gender: <%= c.gender %><br/>
-          Brand: <%= c.brand.name %><br/>
-          Colors: <%= c.colors.map(&:name).join(', ') %><br/>
-          <br/>
-          </div>
-          <div class="center">
-            <%= link_to new_order_path(item_id: c.id), method: :get do %>
-              <div class="btn center margin-top-15">Order</div>
-            <% end %>
-        </div>
-      </div>
-      <div class="center">
-        <div class="like-btn modal-close btn-flat">
-          <% if item_like.nil? %>
-            <%= link_to '❤️', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
-          <% end %>
-        </div>
-        <div class="unlike-btn modal-close btn-flat">
-          <% unless item_like.nil? %>
-            <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<script>
-    $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });
-</script>

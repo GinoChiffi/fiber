@@ -22,11 +22,10 @@
           <span class="like-count">
             <%= o.item.item_likes.count %>
           </span> likes
+          <br><br>
+          <%= link_to "Cancel", order_path(id: o.id), method: :delete, class: 'waves-effect waves-light btn' %>
         </div>
 
-        <div class="card-action">
-          <%= link_to "Cancel Order", order_path(id: o.id), method: :delete %>
-        </div>
       </div>
     </div>
   <% end %>
@@ -68,6 +67,7 @@
           Color:  <%= o.item.colors.map(&:name).map(&:capitalize).join(', ') %>
         </div>
         <div class="center">
+          <br><br>
           <%= link_to "Cancel Order", order_path(id: o.id), method: :delete, class: "waves-effect waves-light btn margin-top-15"%>
         </div>
       </div>

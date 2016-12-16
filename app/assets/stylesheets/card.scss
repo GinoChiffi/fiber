@@ -23,6 +23,15 @@
   padding: 0 !important;
 }
 
+.dirty-hack-for-heart {
+  .card-action {
+    .like-btn,
+    .unlike-btn {
+      top: -214px;
+    }
+  }
+}
+
 .card-action {
   .like-btn,
   .unlike-btn {
