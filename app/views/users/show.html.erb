@@ -95,15 +95,17 @@
             <% end %>
         </div>
       </div>
-      <div class="like-btn modal-close btn-flat">
-        <% if item_like.nil? %>
-          <%= link_to '❤️', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
-        <% end %>
-      </div>
-      <div class="unlike-btn modal-close btn-flat">
-        <% unless item_like.nil? %>
-          <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
-        <% end %>
+      <div class="center">
+        <div class="like-btn modal-close btn-flat">
+          <% if item_like.nil? %>
+            <%= link_to '❤️', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
+          <% end %>
+        </div>
+        <div class="unlike-btn modal-close btn-flat">
+          <% unless item_like.nil? %>
+            <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

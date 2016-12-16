@@ -77,23 +77,24 @@
           Colors: <%= c.colors.map(&:name).join(', ') %><br/>
         </div>
       </div>
-      <div class="like-btn modal-close btn-flat">
-        <% if item_like.nil? %>
-          <%= link_to "like", item_item_likes_path(c.id, item_like), method: :post, remote: true %>
-        <% end %>
-      </div>
-      <div class="unlike-btn modal-close btn-flat">
-        <% unless item_like.nil? %>
-          <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
-        <% end %>
+      <div class="center">
+        <div class="like-btn modal-close btn-flat">
+          <% if item_like.nil? %>
+            <%= link_to '❤️', item_item_likes_path(c.id, item_like), method: :post, remote: true %>
+          <% end %>
+        </div>
+        <div class="unlike-btn modal-close btn-flat">
+          <% unless item_like.nil? %>
+            <%= link_to '💔', item_item_like_path(c.id, item_like), method: :delete, remote: true %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 <% end %>
 
 <script>
-    $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $(document).ready(function(){
     $('.modal').modal();
     $(".letter-container").lettering();
   });

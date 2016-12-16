@@ -1,21 +1,43 @@
 .card .card-content .card-title {
-  line-height: 30px !important;
-  min-height:100px !important;
-  max-height: 534px !important;
+    line-height: 48px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
+.card .card-content {
+  padding: 10px 20px;
+}
+
+
+
 .card-image {
-  height: 355px;
+  height: 245px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top center;
+}
+
+.card .card-action {
+  padding: 0 !important;
 }
 
 .card-action {
   .like-btn,
   .unlike-btn {
+
     font-size: 34px;
     text-align: center;
+    position: absolute;
+    top: -164px;
+    left: 50%;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    margin-left: -22px;
+
+
     a {
       display: block;
       margin-right: 0 !important;
@@ -24,5 +46,15 @@
         text-decoration: none;
       }
     }
+  }
+}
+
+
+
+.like-btn.modal-close.btn-flat,
+.unlike-btn.modal-close.btn-flat {
+  padding: 0 120px;
+  a {
+    font-size: 34px;
   }
 }

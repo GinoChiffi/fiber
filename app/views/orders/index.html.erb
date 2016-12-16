@@ -12,7 +12,6 @@
       <div class="card" data-item="<%= o.id %>">
         <a class="modal-trigger  waves-light " href="#modal<%= o.id %>">
           <div class="card-image" style="background-image: url(<%= image_path o.item.tumbnail_img %>)">
-            <%#= image_tag o.item.tumbnail_img %>
           </div>
         </a>
 
@@ -67,10 +66,9 @@
           Pick-Up: <%= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %><br/>
           Shop:   <%= o.item.shop.name %><br/>
           Color:  <%= o.item.colors.map(&:name).map(&:capitalize).join(', ') %>
-          <br/>
         </div>
         <div class="center">
-          <%= link_to "Cancel Order", order_path(id: o.id), method: :delete, class: "btn margin-top-15"%>
+          <%= link_to "Cancel Order", order_path(id: o.id), method: :delete, class: "waves-effect waves-light btn margin-top-15"%>
         </div>
       </div>
     </div>
@@ -78,24 +76,7 @@
 <% end %>
 
 <script>
-    $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $(document).ready(function(){
     $('.modal').modal();
   });
 </script>
-
-<%# @orders.each do |o| %>
-<!--   <div>
-            <%#= o.item.tumbnail_img  %>
-            <%#= o.item.name %>
-            <%#= o.size.value %>
-    Brand:  <%#= o.item.brand.name %>
-    Shop:   <%#= o.item.shop.name %>
-    Color:  <%#= o.item.colors.map(&:name).map(&:capitalize).join(', ') %>#
-    City:   <%#= o.item.shop.city %>
-    Price:  <%#= o.item.price %>
-    Advance:<%#= o.item.downpayment_price %>
-    Date:   <%#= o.pick_up_date.to_date.to_formatted_s(:long_ordinal) %>
-    <%#= link_to "Cancel Order", order_path(id: o.id), method: :delete %>
-  </div> -->
-<%# end %>
