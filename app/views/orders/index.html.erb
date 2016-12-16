@@ -11,8 +11,8 @@
     <div class="col s6 m6 l3">
       <div class="card" data-item="<%= o.id %>">
         <a class="modal-trigger  waves-light " href="#modal<%= o.id %>">
-          <div class="card-image">
-            <%= image_tag o.item.tumbnail_img %>
+          <div class="card-image" style="background-image: url(<%= image_path o.item.tumbnail_img %>)">
+            <%#= image_tag o.item.tumbnail_img %>
           </div>
         </a>
 
