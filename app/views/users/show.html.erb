@@ -16,6 +16,7 @@
       <%= link_to orders_path, method: :get do %>
         <span class="waves-effect waves-light btn margin-bottom-10">Orders</span>
       <% end %>
+
     </div>
   </div>
 
@@ -25,8 +26,8 @@
     <div class="col s6 m6 l3">
       <div class="card" data-item="<%= c.id %>">
         <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
-          <div class="card-image">
-            <%= image_tag c.tumbnail_img %>
+          <div class="card-image" style="background-image: url(<%= image_path c.tumbnail_img %>)">
+            <%#= image_tag c.tumbnail_img %>
           </div>
         </a>
 
