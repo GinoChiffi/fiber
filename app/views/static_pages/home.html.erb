@@ -14,8 +14,8 @@
             <div class="card-deck">
             <div class="card" data-item="<%= c.id %>">
               <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
-                <div class="card-image">
-                  <%= image_tag c.tumbnail_img %>
+                <div class="card-image" style="background-image: url(<%= image_path c.tumbnail_img %>)">
+                  <%#= image_tag c.tumbnail_img %>
                 </div>
               </a>
               <div class="card-content">
