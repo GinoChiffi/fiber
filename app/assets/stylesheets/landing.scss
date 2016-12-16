@@ -22,7 +22,12 @@
 
 .card-landing {
   background-color: white !important;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 20px;
-  box-shadow: 5px 5px 44px 10px rgba(0,0,0,0.45);
+  box-shadow: 5px 5px 44px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+strong {
+  font-weight: 700;
 }
