@@ -7,11 +7,12 @@
 }
 
 .devise-btn {
-	margin-top: 1vh;
+  margin-top: 10px;
+  min-width: 130px;
 }
 
 .landing {
-  background-image: url("https://cdn.vectorstock.com/i/composite/95,66/abstract-fashion-background-vector-639566.jpg") !important;
+  background-image: image-url("fashion-background.jpg") !important;
   height: 100vh;
   background-size: cover;
       line-height: 3.4;
