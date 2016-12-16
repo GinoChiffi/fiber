@@ -35,7 +35,7 @@
 
 <!-- Modal Structure -->
 <% @orders.each do |o| %>
-  <div id="modal<%= o.id %>" class="modal item-modal" data-item="<%= o.id %>">
+  <div id="modal<%= o.id %>" class="modal profil item item-modal" data-item="<%= o.id %>">
     <div class="modal-content">
       <div class="center">
         <div class="pull-right">
@@ -48,7 +48,8 @@
         <br/>
         <br/>
         Price: $<%= o.item.price %> <br/>
-        Selected Size: <%= o.size.value %><br/>
+        Size: <%= o.size.value %><br/>
+        Color: <%= o.item.item_colors.map(&:color).map(&:name).join(', ') %><br/>
         <span class="like-count">
           <%= o.item.item_likes.count %>
         </span> likes

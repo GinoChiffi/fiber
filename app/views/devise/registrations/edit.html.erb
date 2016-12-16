@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col m6 offset-m3 center">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <h5>Edit <%= resource_name.to_s.humanize %></h5>
 
     <% unless current_user.uptodate? %>
       <div class="alert alert-warning">
@@ -45,35 +45,43 @@
         <%= f.input :current_password,
               include_blank: "we need your current password to confirm your changes",
               required: true %>
-
-        <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Edit personal sizes</a>
       </div>
 
-      <br/>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Update" %>
+      <div class="input-field">
+        <a class="modal-trigger waves-effect waves-light btn margin-top-5" href="#modal1">Edit personal sizes</a>
+        <br>
+        <%= f.button :submit, "Update", class: 'margin-top-5' %>
       </div>
     <% end %>
 
-    <br/>
-    <h6>Unhappy?</h6>
+    <br>
 
-    <%= link_to "Cancel my account",
-          registration_path(resource_name),
-          data: { confirm: "Are you sure?" },
-          method: :delete,
-          class: "waves-effect waves-light btn button-margin-top" %>
-    <%= link_to 'logout',
-          destroy_user_session_path,
-          method: :delete,
-          class: "waves-effect waves-light btn button-margin-top"%>
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card blue-grey lighten-5">
+          <div class="card-content white-text">
+            <span class="card-title">Unhappy?</span>
+          </div>
+          <div class="card-action white-text">
+            <%= link_to "Cancel my account",
+                  registration_path(resource_name),
+                  data: { confirm: "Are you sure?" },
+                  method: :delete,
+                  class: "waves-effect waves-light btn-flat button-margin-top" %>
+            <%= link_to 'logout',
+                  destroy_user_session_path,
+                  method: :delete,
+                  class: "waves-effect waves-light btn-flat button-margin-top"%>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Edit your Sizes</h4>
+<div id="modal1" class="modal item-modal">
+  <div class="modal-content center">
+    <h5>Edit your Sizes</h5>
 
     <%= simple_form_for(resource,
           as: resource_name,
@@ -82,26 +90,20 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <h5>Top size</h5>
-        <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Top-size to optimise the cards" %>
+        <%= f.input :top_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Top Size" %>
 
-        <h5>Jacket size</h5>
-        <%= f.input :jacket_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jacket-size to optimise the cards" %>
+        <%= f.input :jacket_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Jacket Size" %>
 
-        <h5>Underwear size</h5>
-        <%= f.input :underwear_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Undies-size to optimise the cards" %>
+        <%= f.input :underwear_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Underwear Size" %>
 
-        <h5>Accessory size</h5>
-        <%= f.input :accessoire_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Accessory-size to optimise the cards" %>
+        <%= f.input :accessoire_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Accessory Size" %>
 
-        <h5>Jewlery size</h5>
-        <%= f.input :jewelry_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Jewlery-size to optimise the cards" %>
+        <%= f.input :jewelry_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Jewelry Size" %>
 
-        <h5>Swimsuit size</h5>
-        <%= f.input :swimsuit_size, required: true, :collection => %w[XS S M L XL], include_blank: "Enter your Swimsuit-size to optimise the cards" %>
+        <%= f.input :swimsuit_size, required: true, :collection => %w[XS S M L XL], include_blank: "Select Swimsuit Size" %>
 
         <% if current_user.female? %>
-          <h5>Dress size</h5>
+          <%= f.label 'Dress Size', required: true %>
           <output name="dressOutputName" id="userdressOutput">
             <%=current_user.dress_size%>
           </output>
@@ -110,7 +112,7 @@
           </p>
         <% end %>
 
-        <h5>Bottom size</h5>
+        <%= f.label 'Trouser Size', required: true %>
         <output name="bottomOutputName" id="userbottomOutput">
           <%=current_user.bottom_size%>
         </output>
@@ -118,7 +120,7 @@
           <%= f.input_field :bottom_size, type: "range", id: "user_bottom_size", min:30, max:50, oninput: "userbottomOutput.value = user_bottom_size.value" %>
         </p>
 
-        <h5>Shoe size</h5>
+        <%= f.label 'Shoe Size', required: true %>
         <output name="shoeOutputName" id="usershoeOutput">
           <%=current_user.shoe_size%>
         </output>
@@ -126,12 +128,14 @@
           <%= f.input_field :shoe_size, type: "range", id: "user_shoe_size", min:32, max:50, oninput: "usershoeOutput.value = user_shoe_size.value" %>
         </p>
 
-        <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-        <br/>
+        <%= f.input :current_password,
+              placeholder: "Please input Password to change.",
+              required: true %>
+      </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Update" %>
-        </div>
+      <div class="form-actions">
+        <a href="#!" class="modal-action modal-close btn">Close</a>
+        <%= f.button :submit, "Update" %>
       </div>
     </div>
   <% end %>

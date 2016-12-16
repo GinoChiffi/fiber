@@ -1,13 +1,20 @@
 <div class="landing">
-<div class="landing-container valign-wrapper">
-  <div class="valign center-align">
-    <div>
-    <%= link_to 'Login', new_user_session_path, class: "btn devise-btn" %>
-      <%= link_to 'Sign Up', new_user_registration_path, class: "btn devise-btn" %>
-    </div>
-    <div>
-      <%= link_to "Sign Up with Facebook", user_facebook_omniauth_authorize_path, class: "btn devise-btn" %>
-    </div>
-  </div>
-</div>
+	<div class="landing-container valign-wrapper">
+	  <div class="valign center-align">
+	  	<div class="row">
+		  	<div class="col s10 offset-s1">
+	  			<div class="card-panel teal card-landing">
+	  					Welcome to Fiber! We are committed to finding you the newest styles from all the best brands in your area. Sign up for free and find your next outfit now!
+	  			</div>
+	  		</div>
+	  	</div>
+	    <div>
+		    <%= link_to 'Login', new_user_session_path, class: "btn devise-btn" %>
+	      <%= link_to 'Sign Up', new_user_registration_path, class: "btn devise-btn" %>
+	    </div>
+	    <div>
+	      <%= link_to "Sign Up with Facebook", user_facebook_omniauth_authorize_path, class: "btn devise-btn" %>
+	    </div>
+	  </div>
+	</div>
 </div>

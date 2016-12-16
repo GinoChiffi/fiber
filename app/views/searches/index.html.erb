@@ -11,6 +11,11 @@
       <%= f.label :price_gteq, "Min Price" %>
       <%= f.search_field :price_gteq %>
 
+      <div id="html5"></div>
+
+      <%= f.search_field :price_lteq, id: "input-max" %>
+      <%= f.search_field :price_gteq, id: "input-min" %>
+
       <%= f.label :price_lteq, "Max Price" %>
       <%= f.search_field :price_lteq %>
 
@@ -52,3 +57,41 @@
     <% end %>
   </div>
 </div>
+
+
+<script>
+
+var html5Slider = document.getElementById('html5');
+
+noUiSlider.create(html5Slider, {
+  start: [ 10, 30 ],
+  connect: true,
+  range: {
+    'min': 0,
+    'max': 500
+  }
+});
+
+var inputMax = document.getElementById('input-max');
+var inputMin = document.getElementById('input-min');
+
+html5Slider.noUiSlider.on('update', function( values, handle ) {
+
+  var value = values[handle];
+
+  if ( handle ) {
+    inputMax.value = Math.round(value);
+  } else {
+    inputMin.value = Math.round(value);
+  }
+});
+
+inputMin.addEventListener('change', function(){
+  html5Slider.noUiSlider.set([this.value, null]);
+});
+
+inputMax.addEventListener('change', function(){
+  html5Slider.noUiSlider.set([null, this.value]);
+});
+
+</script>

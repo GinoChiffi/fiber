@@ -1,26 +1,24 @@
 <div class="profile-banner">
   <div class="col s6 m6 center">
-</br>
     <%= user_avatar(class: 'fa-4x avatar-profile') %>
-    <br/>
-    <h5><%= current_user.user_name %></h5>
-     <h6>
+      <br/>
+      <h5><%= current_user.user_name %></h5>
+      <h6>
         <span class='user-like-count'>
           <%= current_user.liked_items.count %>
         </span>
         <% if current_user.liked_items.count == 1 %>
-        like
+          like
         <% else %>
-        likes
+          likes
         <% end %>
       </h6>
-      <%= link_to(orders_path, method: :get) do %>
-      <span class="waves-effect waves-light btn">Orders</span>
+      <%= link_to orders_path, method: :get do %>
+        <span class="waves-effect waves-light btn margin-bottom-10">Orders</span>
       <% end %>
-      </br>
-      </br>
+
+    </div>
   </div>
-</div>
 
 
 <div class="row">
@@ -64,7 +62,7 @@
 
 <!-- Modal Structure -->
 <% current_user.liked_items.each do |c| %>
-  <div id="modal<%= c.id %>" class="modal item-modal" data-item="<%= c.id %>">
+  <div id="modal<%= c.id %>" class="modal profil item item-modal" data-item="<%= c.id %>">
     <% item_like = current_user.item_likes.find{ |item_like| item_like if item_like.item_id == c.id } %>
     <div class="modal-content">
       <div class="center">
