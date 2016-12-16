@@ -8,16 +8,12 @@
       <%= f.label :shop_city_eq, "City" %>
       <%= f.search_field :shop_city_eq %>
 
-      <%= f.label :price_gteq, "Min Price" %>
-      <%= f.search_field :price_gteq %>
+      <%= f.label :price_range %>
 
-      <div id="html5"></div>
+      <div id="html5" style="margin-top: 30px; margin-bottom: 10px;"></div>
 
-      <%= f.search_field :price_lteq, id: "input-max" %>
-      <%= f.search_field :price_gteq, id: "input-min" %>
-
-      <%= f.label :price_lteq, "Max Price" %>
-      <%= f.search_field :price_lteq %>
+      <%= f.search_field :price_lteq, id: "input-max", style: "display:none" %>
+      <%= f.search_field :price_gteq, id: "input-min", style: "display:none" %>
 
       <%= f.label :gender_eq, "Gender" %>
       <%= f.select :gender_eq, options_for_select([['Male'], ['Female']]), include_blank: true %>
@@ -64,11 +60,12 @@
 var html5Slider = document.getElementById('html5');
 
 noUiSlider.create(html5Slider, {
-  start: [ 10, 30 ],
+  start: [ 30, 100 ],
   connect: true,
+  tooltips: [ true, true ],
   range: {
     'min': 0,
-    'max': 500
+    'max': 200
   }
 });
 
