@@ -1,43 +1,44 @@
 <div class="center">
-  <h4>Making an order for: </br>
-  <%= @order.item.name %></h4>
-</div>
-  <div class="row">
-    <div class="col s12 m6 l3">
-      <div class="center-align">
-        <div class="card">
-          <a class="modal-trigger  waves-light ">
-            <div class="card-image">
-              <%= image_tag @order.item.tumbnail_img  %>
+  <h4 class="">Making an order for: </br>
+    <%= @order.item.name %></h4>
+  </div>
+  <div class="container">
+    <div class="center">
+      <div class="row">
+        <div class="col s12">
+          <div class="center-align">
+
+            <div class="order-picture">
+              <%= image_tag @order.item.tumbnail_img,:class => "responsive-img"%>
             </div>
-          </a>
-          <div class="row">
-          <div class="center">
-          <table>
-          <tbody>
-          <tr>
-            <td>Brand:</td>
-            <td><%= @order.item.brand.name %></td>
-          </tr>
-          <tr>
-            <td>Shop:</td>
-            <td><%= @order.item.shop.name %></td>
-          </tr>
-          <tr>
-            <td>Price:</td>
-            <td><%= @order.item.price %></td>
-          </tr>
-          <tr>
-            <td>Advance:</td>
-            <td><%= @order.item.downpayment_price %></td>
-          </tr>
-          <tr>
-            <td>City:</td>
-            <td><%= @order.item.shop.city %></td>
-          </tr>
-        </tbody>
-         </table>
-         </div>
+
+            <div class="" style="padding: 2%">
+              <table >
+                <tbody>
+                  <tr>
+                    <td>Brand:</td>
+                    <td><%= @order.item.brand.name %></td>
+                  </tr>
+                  <tr>
+                    <td>Shop:</td>
+                    <td><%= @order.item.shop.name %></td>
+                  </tr>
+                  <tr>
+                    <td>Price:</td>
+                    <td><%= @order.item.price %></td>
+                  </tr>
+                  <tr>
+                    <td>Advance:</td>
+                    <td><%= @order.item.downpayment_price %></td>
+                  </tr>
+                  <tr>
+                    <td>City:</td>
+                    <td><%= @order.item.shop.city %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -45,34 +46,36 @@
 
 
 
-<%= simple_form_for(@order, as: @order, url: orders_path(@order), html: { method: :post }) do |f| %>
-    <%= f.error_notification %>
-    <div class="input-field">
+  <%= simple_form_for(@order, as: @order, url: orders_path(@order), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+  <div class="input-field" style="padding: 2%">
     Please select a color:
-      <%= f.select :color_id, options_for_select(@colors)%>
-      </br>
-      </br>
-      Please select your size:
-      <%= f.select :size_id, options_for_select(@sizes)%>
-      </br>
-      </br>
-      Please select the pick up date:
-      <input data-birthdate='<%= @order.pick_up_date %>' name="order[pick_up_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
+    <%= f.select :color_id, options_for_select(@colors)%>
+  </br>
+</br>
+Please select your size:
+<%= f.select :size_id, options_for_select(@sizes)%>
+</br>
+</br>
+Please select the pick up date:
+<input data-birthdate='<%= @order.pick_up_date %>' name="order[pick_up_date]" ng-model="user.birth_date" type="text" class="datepicker" materialize-date-picker readonly />
       <!-- <label ng-class="{active: user.birth_date.length}">
           Pick up date
-      </label> -->
-      <%= f.input :item_id, as: :hidden, input_html: { value: @item_id } %>
-    </div>
-    <div class="center">
-    <%= f.button :submit, "Confirm" %>
-    </div>
-<% end %>
+        </label> -->
+        <%= f.input :item_id, as: :hidden, input_html: { value: @item_id } %>
+      </div>
+      <div class="row">
+        <div class="center">
+          <%= f.button :submit, "Confirm" %>
+        </div>
+      </div>
+      <% end %>
 
-<%#= link_to ' All Orders', orders_path, method: :get %>
+      <%#= link_to ' All Orders', orders_path, method: :get %>
 
-<!-- SCRIPTS -->
-<script>
-  $(document).ready(function(){
+      <!-- SCRIPTS -->
+      <script>
+        $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a  dropdown to control month
