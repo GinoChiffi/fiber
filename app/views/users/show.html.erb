@@ -1,6 +1,6 @@
 <div class="profile-banner">
   <div class="col s6 m6 center">
-
+</br>
     <%= user_avatar(class: 'fa-4x avatar-profile') %>
     <br/>
     <h5><%= current_user.user_name %></h5>
@@ -17,6 +17,8 @@
       <%= link_to(orders_path, method: :get) do %>
       <span class="waves-effect waves-light btn">Orders</span>
       <% end %>
+      </br>
+      </br>
   </div>
 </div>
 
@@ -26,8 +28,8 @@
     <div class="col s6 m6 l3">
       <div class="card" data-item="<%= c.id %>">
         <a class="modal-trigger  waves-light " href="#modal<%= c.id %>">
-          <div class="card-image">
-            <%= image_tag c.tumbnail_img %>
+          <div class="card-image" style="background-image: url(<%= image_path c.tumbnail_img %>)">
+            <%#= image_tag c.tumbnail_img %>
           </div>
         </a>
 
