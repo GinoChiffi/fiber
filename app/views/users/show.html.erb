@@ -73,19 +73,21 @@
           <h4><%= c.name %></h4>
         </div>
         <%= image_tag c.tumbnail_img, class: "modal-image" %><br/>
-        <br/>
-        Price: $<%= c.price %> <br/>
-        <span class="like-count"><%= c.item_likes.count %></span> likes
-        <br/>
-        <br/>
+        <br>
       </div>
       <div class= "row">
-        <div class= "col s6 m6">
-          Description: <%= c.description %><br/>
+        <div class= "col s6 m6 center">
+          $<%= c.price %> <br/>
+          <br>
+          <br>
+          <%= c.brand.name %><br/>
+          <%= c.description %><br/>
         </div>
-        <div class= "col s6 m6">
-          Gender: <%= c.gender %><br/>
-          Brand: <%= c.brand.name %><br/>
+        <div class= "col s6 m6 center">
+          <span class="like-count"><%= c.item_likes.count %></span> likes <br>
+          <br>
+          <br>
+          <i class="fa fa-<%= gender_icon(c.gender) %>" aria-hidden="true"></i><br/>
           Colors: <%= c.colors.map(&:name).join(', ') %><br/>
           <br/>
           </div>
